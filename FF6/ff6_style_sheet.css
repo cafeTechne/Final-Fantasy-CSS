@@ -1,0 +1,77 @@
+@font-face {
+  font-family: "Final Fantasy 3/6 Font Regular";
+  src: url("fonts/final_fantasy_36_font.eot?") format("eot"),
+    url("fonts/final_fantasy_36_font.woff") format("woff"),
+    url("fonts/final_fantasy_36_font.ttf") format("truetype"),
+    url("fonts/final_fantasy_36_font.svg#Final-Fantasy-3/6-Font") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+:root {
+  --outer-battle-window-color-0: #7c7874;
+  --outer-battle-window-color-1: #c8c4c0;
+  --outer-battle-window-color-2: #ccc9cc;
+  --outer-battle-window-color-3: #c9c9cb;
+  --outer-battle-window-color-4: #c2c1c5;
+  --outer-battle-window-color-5: #71767e;
+  --outer-battle-window-color-6: #6b6e87;
+
+  --battle-window-top-gradient-color: #6c70a6;
+  --battle-window-middle-gradient-color: #21217c;
+  --battle-window-bottom-gradient-color: #040136;
+
+  --battle-window-border-radius: 5px;
+}
+html{
+    font-family: "Final Fantasy 3/6 Font Regular", monospace;
+    color: #ecedee;
+    margin: 0px;
+    padding: 0px;
+    background-color: var(--battle-window-middle-gradient-color);
+    text-shadow: 3px 2px #2d2a4b;
+}
+div{
+    background-color: var(--battle-window-middle-gradient-color);
+}
+#outer-window-border-color_0{
+    border-color: var(--outer-battle-window-color-0);
+    border-width: 1px;
+    border-style: solid;
+    border-radius: var(--battle-window-border-radius);
+}
+#outer-window-border-color_1{
+    border-color: var(--outer-battle-window-color-1);
+    border-width: 1px;
+    border-style: solid;
+    border-radius: var(--battle-window-border-radius);
+}
+#outer-window-border-color_2{
+    border-color: var(--outer-battle-window-color-2);
+    border-width: 1px;
+    border-style: solid;
+    border-radius: var(--battle-window-border-radius);
+}
+#outer-window-border-color_3{
+    border-color: var(--outer-battle-window-color-3);
+    border-width: 1px;
+    border-style: solid;
+    border-radius: var(--battle-window-border-radius);
+}
+#outer-window-border-color_4{
+    border-color: var(--outer-battle-window-color-4);
+    border-width: 1px;
+    border-style: solid;
+    border-radius: var(--battle-window-border-radius);
+}
+#outer-window-border-color_5{
+    border-color: var(--outer-battle-window-color-5);
+    border-width: 1px;
+    border-style: solid;
+    border-radius: var(--battle-window-border-radius);
+}
+#outer-window-border-color_6{
+    border-color: var(--outer-battle-window-color-6);
+    border-width: 1px;
+    border-style: solid;
+    border-radius: var(--battle-window-border-radius);
+}
