@@ -17,61 +17,68 @@
   --outer-battle-window-color-6: #6b6e87;
 
   --battle-window-top-gradient-color: #6c70a6;
-  --battle-window-middle-gradient-color: #21217c;
+  --background-color-blue:#21217c;
+  --background-color-black:#181820;
   --battle-window-bottom-gradient-color: #040136;
 
+
+  --dialogue-window-color-gradient:#6d6db3,#5554ad,#5352a8,#3f4791,#354783,#32348d,#32328a,#313188,#222279,#14156d,#02045a,#040233,#020234,#020134;
   --battle-window-border-radius: 5px;
+
+  --br:5px;     /* border radius   */
+  --bg:#6b6e87,#71767e,#c2c1c5,#c9c9cb,#ccc9cc,#c8c4c0,#7c7874,#c0bcb3;/*border gradient */
+  --bgb: #6b6e87,#71767e,#c2c1c5,#c9c9cb,#ccc9cc,#c8c4c0,#7c7874,#c0bcb3,#020134;
+  --f:25px;/* minimum font size */
+
+  --highlighted-text: #edd758;
+
 }
 html{
     font-family: "Final Fantasy 3/6 Font Regular", monospace;
     color: #ecedee;
     margin: 0px;
     padding: 0px;
-    background-color: var(--battle-window-middle-gradient-color);
-    text-shadow: 3px 2px #2d2a4b;
+    background-color: var(--background-color-black);
+    text-shadow: 1px 1px #2d2a4b;
 }
 div{
-    background-color: var(--battle-window-middle-gradient-color);
+    background-color: var(--background-color-black);
 }
-#outer-window-border-color_0{
-    border-color: var(--outer-battle-window-color-0);
+h1,h2,h3,h4,h5{
+    font-weight: normal; /*This typeface does not look good bold*/
+}
+
+.outer-dialogue-window {
+    border-radius:var(--br);
+    padding:calc(var(--br) + 5px);
+    background:
+      /*corners*/
+      radial-gradient(farthest-side at bottom right,var(--bg)) top    left /var(--br) var(--br),
+      radial-gradient(farthest-side at top    right,var(--bg)) bottom left /var(--br) var(--br),
+      radial-gradient(farthest-side at bottom left ,var(--bg)) top    right/var(--br) var(--br),
+      radial-gradient(farthest-side at top    left ,var(--bg)) bottom right/var(--br) var(--br),
+      /* borders*/
+      linear-gradient(to top   ,var(--bg)) top   /calc(100% - 2*var(--br)) var(--br),
+      linear-gradient(to bottom,var(--bg)) bottom/calc(100% - 2*var(--br)) var(--br),
+      linear-gradient(to right ,var(--bg)) right /var(--br) calc(100% - 2*var(--br)),
+      linear-gradient(to left  ,var(--bg)) left  /var(--br) calc(100% - 2*var(--br));
+    background-repeat:no-repeat;
+    /*
+    My first approach to solving this led to unmaintainable code. 
+    As of now, I feel that my current gradients are "good enough" at 
+    approximating the pixelated anti-aliasing of the original ui menu window.
+    */
+
+    box-sizing:border-box;
+    display:inline-block;
+    vertical-align:top;
+    font-size:var(--f);
     border-width: 1px;
-    border-style: solid;
-    border-radius: var(--battle-window-border-radius);
-}
-#outer-window-border-color_1{
-    border-color: var(--outer-battle-window-color-1);
-    border-width: 1px;
-    border-style: solid;
-    border-radius: var(--battle-window-border-radius);
-}
-#outer-window-border-color_2{
-    border-color: var(--outer-battle-window-color-2);
-    border-width: 1px;
-    border-style: solid;
-    border-radius: var(--battle-window-border-radius);
-}
-#outer-window-border-color_3{
-    border-color: var(--outer-battle-window-color-3);
-    border-width: 1px;
-    border-style: solid;
-    border-radius: var(--battle-window-border-radius);
-}
-#outer-window-border-color_4{
-    border-color: var(--outer-battle-window-color-4);
-    border-width: 1px;
-    border-style: solid;
-    border-radius: var(--battle-window-border-radius);
-}
-#outer-window-border-color_5{
-    border-color: var(--outer-battle-window-color-5);
-    border-width: 1px;
-    border-style: solid;
-    border-radius: var(--battle-window-border-radius);
-}
-#outer-window-border-color_6{
-    border-color: var(--outer-battle-window-color-6);
-    border-width: 1px;
-    border-style: solid;
-    border-radius: var(--battle-window-border-radius);
-}
+    text-shadow: 2px 1px #2d2a4b;
+  }
+
+  .inner-dialogue-window{
+    background: linear-gradient(to bottom,var(--dialogue-window-color-gradient));
+    padding: 5px;
+    margin: -5px;
+  }
