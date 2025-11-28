@@ -16,21 +16,12 @@ Quick start (no build)
 <script src="/path/to/Final-Fantasy-CSS/js/ff.js"></script>
 ```
 
-Build (Node/PostCSS)
 
-1. Install dependencies:
+No build required
 
-```powershell
-npm install
-```
+This repository ships with pre-rendered documentation under `docs/` and ready-to-open example pages in `examples/components/`. You can open `docs/site/index.html` directly in a browser to browse docs and live previews.
 
-2. Build CSS and pre-render docs:
-
-```powershell
-npm run build
-```
-
-The build outputs live under `dist/` and generated docs appear in `docs/site/generated/`.
+If you want to regenerate the pre-rendered docs (optional), run the `scripts/build-docs.js` Node script. The project intentionally avoids a required build step so it remains simple to use.
 
 Theming
 
