@@ -41,6 +41,35 @@ Examples & docs
 - `examples/components/` — standalone example pages used by the in-repo docs viewer.
 - `docs/site/index.html` — open this file to browse component docs and try examples locally.
 
+Dist stylesheet (recommended for consumers)
+
+If you want a single stylesheet file that consumers can link to without running any build tools, use the pre-built distribution:
+
+```html
+<link rel="stylesheet" href="/path/to/Final-Fantasy-CSS/dist/final-fantasy.css">
+```
+
+Regenerating the distribution
+
+We keep a small, zero-dependency Node script that concatenates the project's CSS sources and resolves local `@import` rules into a single `dist/final-fantasy.css`. This avoids reintroducing a required build pipeline while making it easy to recreate the dist when you change source files.
+
+To regenerate the dist file (optional):
+
+1. Ensure Node.js is available on your machine.
+2. Run the script from the repository root:
+
+```powershell
+node scripts/build-dist.js
+```
+
+The script will write `dist/final-fantasy.css` by resolving local `@import` rules. It intentionally does not fetch remote `@import` URLs (for example Google Fonts); those are left in the built file so browsers can fetch them.
+
+Notes for future contributors / agents
+
+- Rationale: The project keeps pre-rendered docs and a built `dist/final-fantasy.css` to minimize friction for consumers who just want a single file to reference.
+- If you're an automated agent or contributor returning to this repo later: we intentionally removed a required Node build step to keep the repository portable. If you need to produce a minified version or use PostCSS features, reintroducing a `package.json` and a PostCSS pipeline is acceptable, but document the change and include the built `dist/` files in the commit so consumers continue to get a single-file stylesheet without running builds.
+- When making design iterations: edit the source files under `css/` (themes, `components/`, `core.css`, `fonts.css`), then run `node scripts/build-dist.js` and commit `dist/final-fantasy.css` along with your source changes so reviewers can see the combined output quickly.
+
 Notes
 
 - Fonts in `FF6/fonts/` may have licensing restrictions; check `FF6/fonts/readme.txt` before redistribution.
