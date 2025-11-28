@@ -1,3 +1,5 @@
 node_modules/
+.gitignore
 dist/
+!dist/final-fantasy.css
 .DS_Store
