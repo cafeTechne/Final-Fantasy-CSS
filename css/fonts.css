@@ -1,0 +1,29 @@
+/* 
+  Final Fantasy CSS - Typography
+  Custom fonts for authentic game aesthetics
+*/
+
+/* FF6 Font - Already included in project */
+@font-face {
+  font-family: 'Final Fantasy VI';
+  src: url('../FF6/fonts/final_fantasy_36_font.woff') format('woff'),
+    url('../FF6/fonts/final_fantasy_36_font.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Google Fonts - Import for other themes */
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Roboto:wght@300;400;500;700&family=Cinzel:wght@400;700&family=Rajdhani:wght@300;400;600&display=swap');
+
+/* 
+  Font Stack Reference:
+  - FF1: Courier New (8-bit NES style, readable)
+  - FF4: 'Final Fantasy VI' (reuse, similar era)
+  - FF6: 'Final Fantasy VI' (original)
+  - FF7: System sans-serif (modern, clean)
+  - FF8: 'Rajdhani' (tech, futuristic)
+  - FF9: 'Cinzel' (fantasy, medieval)
+  - FF13: 'Roboto' (modern, clean, readable)
+  - FF15: 'Rajdhani' (modern, sleek)
+*/

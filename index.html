@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Final Fantasy CSS Kitchen Sink</title>
+    <link rel="stylesheet" href="css/final-fantasy.css">
+    <link rel="preload" href="FF6/fonts/final_fantasy_36_font.woff" as="font" type="font/woff" crossorigin>
+    <link rel="stylesheet" href="css/demo.css">
+</head>
+
+<body>
+
+    <div class="container">
+        <header class="page-header">
+            <h1>Final Fantasy CSS Library</h1>
+            <p>Select a theme to switch styles and characters</p>
+            <div class="controls">
+                <button class="ff-btn" data-action="set-theme" data-theme="theme-ff1">FF I</button>
+                <button class="ff-btn" data-action="set-theme" data-theme="theme-ff4">FF IV</button>
+                <button class="ff-btn" data-action="set-theme" data-theme="theme-ff6">FF VI</button>
+                <button class="ff-btn" data-action="set-theme" data-theme="theme-ff7">FF VII</button>
+                <button class="ff-btn" data-action="set-theme" data-theme="theme-ff8">FF VIII</button>
+                <button class="ff-btn" data-action="set-theme" data-theme="theme-ff9">FF IX</button>
+                <button class="ff-btn" data-action="set-theme" data-theme="theme-ff13">FF XIII</button>
+                <button class="ff-btn" data-action="set-theme" data-theme="theme-ff15">FF XV</button>
+            </div>
+        </header>
+
+        <div id="app-root" class="theme-ff7 showcase-area">
+
+            <!-- Main Window -->
+            <div class="ff-window">
+                <div class="ff-window-content">
+
+                    <!-- Header / Nav -->
+                    <div class="ff-window-header">
+                        <h2 id="char-name" class="m-0">Cloud</h2>
+                        <span class="ff-badge">LV 99</span>
+                    </div>
+
+                    <ul class="ff-nav">
+                        <li class="ff-nav-item"><a href="#" class="ff-nav-link active">Status</a></li>
+                        <li class="ff-nav-item"><a href="#" class="ff-nav-link">Equip</a></li>
+                        <li class="ff-nav-item"><a href="#" class="ff-nav-link">Abilities</a></li>
+                        <li class="ff-nav-item"><a href="#" class="ff-nav-link">Config</a></li>
+                    </ul>
+
+                    <div class="grid-2">
+                        <!-- Stats Column -->
+                        <div>
+                            <div class="ff-card">
+                                <div class="ff-card-header">Vitals</div>
+                                <div class="mb-10">
+                                    <div class="d-flex-space mb-5">
+                                        <label>HP</label>
+                                        <span>9999/9999</span>
+                                    </div>
+                                    <div class="ff-progress hp">
+                                        <div class="ff-progress-bar w-100"></div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="d-flex-space mb-5">
+                                        <label>MP</label>
+                                        <span>999/999</span>
+                                    </div>
+                                    <div class="ff-progress mp">
+                                        <div class="ff-progress-bar w-100"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="ff-card">
+                                <div class="ff-card-header">Attributes</div>
+                                <div class="attrs-grid">
+                                    <span>STR: 255</span>
+                                    <span>DEF: 240</span>
+                                    <span>MAG: 210</span>
+                                    <span>SPR: 190</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Config Column -->
+                        <div>
+                            <div class="ff-card">
+                                <div class="ff-card-header">Settings</div>
+
+                                <div class="mb-15">
+                                    <label class="label-block">Battle Speed</label>
+                                    <input type="range" class="ff-range" min="0" max="100" value="50">
+                                </div>
+
+                                <div class="mb-15">
+                                    <label class="label-block">Message Speed</label>
+                                    <input type="range" class="ff-range" min="0" max="100" value="80">
+                                </div>
+
+                                <div class="mb-15">
+                                    <label class="label-block">Window Color</label>
+                                    <div class="d-flex gap-10">
+                                        <div class="window-swatch swatch-red"></div>
+                                        <div class="window-swatch swatch-green"></div>
+                                        <div class="window-swatch swatch-blue"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="ff-alert ff-alert-info">
+                                <span>ℹ️ Auto-Save Enabled</span>
+                                <button class="ff-close-btn">&times;</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Actions -->
+                    <div class="actions-right">
+                        <button class="ff-btn" data-action="show-modal" data-modal="save-modal">Save Game</button>
+                        <button class="ff-btn" data-action="load-game">Load Game</button>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- New Components Showcase -->
+            <div class="ff-window mt-20">
+                <div class="ff-window-content">
+                    <h3>New Components</h3>
+
+                    <div class="grid-2">
+                        <!-- Dropdowns & Tooltips -->
+                        <div>
+                            <h4>Dropdown Menu</h4>
+                            <div class="ff-dropdown" id="demo-dropdown">
+                                <button class="ff-btn ff-dropdown-toggle" data-action="toggle-dropdown" data-target="demo-dropdown">
+                                    Actions ▼
+                                </button>
+                                <ul class="ff-dropdown-menu">
+                                    <li><a class="ff-dropdown-item" href="#">Attack</a></li>
+                                    <li><a class="ff-dropdown-item" href="#">Magic</a></li>
+                                    <li><a class="ff-dropdown-item" href="#">Item</a></li>
+                                    <li class="ff-dropdown-divider"></li>
+                                    <li><a class="ff-dropdown-item" href="#">Defend</a></li>
+                                </ul>
+                            </div>
+
+                            <h4 class="mt-20">Tooltips</h4>
+                            <div class="ff-tooltip">
+                                <button class="ff-btn">Hover Me</button>
+                                <span class="ff-tooltip-text">This is a tooltip!</span>
+                            </div>
+                        </div>
+
+                        <!-- List Group & Pagination -->
+                        <div>
+                            <h4>Party Members</h4>
+                            <ul class="ff-list-group">
+                                <li class="ff-list-group-item active">
+                                    <span id="char-name-2">Cloud</span>
+                                    <span class="ff-badge">HP 9999</span>
+                                </li>
+                                <li class="ff-list-group-item">
+                                    <span id="party-member-2">Tifa</span>
+                                    <span class="ff-badge">HP 8500</span>
+                                </li>
+                                <li class="ff-list-group-item">
+                                    <span id="party-member-3">Barret</span>
+                                    <span class="ff-badge">HP 9200</span>
+                                </li>
+                            </ul>
+
+                            <h4 class="mt-20">Pagination</h4>
+                            <ul class="ff-pagination">
+                                <li class="ff-page-item disabled">
+                                    <a class="ff-page-link" href="#">‹</a>
+                                </li>
+                                <li class="ff-page-item active">
+                                    <a class="ff-page-link" href="#">1</a>
+                                </li>
+                                <li class="ff-page-item">
+                                    <a class="ff-page-link" href="#">2</a>
+                                </li>
+                                <li class="ff-page-item">
+                                    <a class="ff-page-link" href="#">3</a>
+                                </li>
+                                <li class="ff-page-item">
+                                    <a class="ff-page-link" href="#">›</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Game Specific Components -->
+            <div class="ff-window mt-20">
+                <div class="ff-window-content">
+                    <h3>Game Specific Components</h3>
+
+                    <div class="grid-2">
+                        <!-- Battle Menu (Generic/Themed) -->
+                        <div>
+                            <h4>Battle Menu (ATB)</h4>
+                            <div class="ff-battle-menu">
+                                <div class="ff-atb-gauge">
+                                    <div class="ff-atb-bar w-100"></div>
+                                </div>
+                                <ul class="ff-list-group">
+                                    <li class="ff-list-group-item active">Attack</li>
+                                    <li class="ff-list-group-item">Magic</li>
+                                    <li class="ff-list-group-item">Defend</li>
+                                    <li class="ff-list-group-item">Item</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- FF7 Materia & FF8 Junction -->
+                        <div>
+                            <div id="materia-section">
+                                <h4>Materia Slots (FF7 Only)</h4>
+                                <div class="ff-materia-container">
+                                    <div class="ff-materia-slots linked">
+                                        <div class="ff-materia-slot filled-green"></div>
+                                        <div class="ff-materia-slot filled-blue"></div>
+                                    </div>
+                                    <div class="ff-materia-slots">
+                                        <div class="ff-materia-slot filled-red"></div>
+                                        <div class="ff-materia-slot"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div id="junction-section">
+                                <h4 class="mt-20">Junction (FF8 Only)</h4>
+                                <div class="ff-junction-display">
+                                    <div class="ff-junction-row">
+                                        <span class="ff-junction-stat">HP</span>
+                                        <span class="ff-junction-spell">Curaga</span>
+                                    </div>
+                                    <div class="ff-junction-row">
+                                        <span class="ff-junction-stat">STR</span>
+                                        <span class="ff-junction-spell">Firaga</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Form Components -->
+            <div class="ff-window mt-20">
+                <div class="ff-window-content">
+                    <h3>Form Components</h3>
+
+                    <div class="grid-2">
+                        <!-- Basic Inputs -->
+                        <div>
+                            <div class="mb-15">
+                                <label class="label-block">Text Input</label>
+                                <input type="text" class="ff-input" placeholder="Enter text...">
+                            </div>
+
+                            <div class="mb-15">
+                                <label class="label-block">Select Dropdown</label>
+                                <select class="ff-select">
+                                    <option>Option 1</option>
+                                    <option>Option 2</option>
+                                    <option>Option 3</option>
+                                </select>
+                            </div>
+
+                            <div class="mb-15">
+                                <label class="label-block">Textarea</label>
+                                <textarea class="ff-textarea" rows="3" placeholder="Enter comments..."></textarea>
+                            </div>
+                        </div>
+
+                        <!-- Checks & Radios -->
+                        <div>
+                            <h4 class="mt-0">Checkboxes & Radios</h4>
+                            <div class="mb-10">
+                                <label class="ff-checkbox">
+                                    <input type="checkbox">
+                                    <span class="ff-checkmark"></span>
+                                    Enable Sound
+                                </label>
+                            </div>
+                            <div class="mb-20">
+                                <label class="ff-checkbox">
+                                    <input type="checkbox" checked>
+                                    <span class="ff-checkmark"></span>
+                                    Show Subtitles
+                                </label>
+                            </div>
+
+                            <div class="mb-10">
+                                <label class="ff-radio">
+                                    <input type="radio" name="difficulty" checked>
+                                    <span class="ff-radio-mark"></span>
+                                    Normal
+                                </label>
+                            </div>
+                            <div class="mb-15">
+                                <label class="ff-radio">
+                                    <input type="radio" name="difficulty">
+                                    <span class="ff-radio-mark"></span>
+                                    Hard
+                                </label>
+                            </div>
+
+                            <h4 class="mt-20">Toggles</h4>
+                            <label class="ff-toggle">
+                                <input type="checkbox">
+                                <span class="ff-slider"></span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Validation States -->
+                    <h4 class="mt-20">Validation States</h4>
+                    <div class="grid-2">
+                        <div>
+                            <input type="text" class="ff-input is-valid" value="Valid Input">
+                            <span class="ff-feedback-success">Looks good!</span>
+                        </div>
+                        <div>
+                            <input type="text" class="ff-input is-invalid" value="Invalid Input">
+                            <span class="ff-feedback-error">Please correct this.</span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Modal Demo -->
+    <div id="save-modal" class="ff-modal-backdrop">
+        <div class="ff-window ff-modal">
+            <div class="ff-window-content">
+                <div class="ff-modal-header">
+                    <h3>Save Game?</h3>
+                    <button class="ff-close-btn" data-action="hide-modal" data-modal="save-modal">&times;</button>
+                </div>
+                <p>Overwrite Save Slot 1?</p>
+                <div class="actions-right">
+                    <button class="ff-btn" data-action="hide-modal" data-modal="save-modal">Cancel</button>
+                    <button class="ff-btn" data-action="hide-modal" data-modal="save-modal">Confirm</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/ff.js"></script>
+</body>
+
+</html>

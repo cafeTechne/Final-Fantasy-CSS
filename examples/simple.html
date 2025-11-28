@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Final Fantasy CSS — Simple Example</title>
+    <!-- Use the CSS directly from the repo (no build required) -->
+    <link rel="stylesheet" href="../css/final-fantasy.css">
+    <style>body { background:#111; color:#fff; font-family: sans-serif; padding:20px; }</n+    </style>
+  </head>
+  <body class="theme-ff7">
+    <h1>Final Fantasy CSS — Demo</h1>
+
+    <p>
+      Theme: <button class="ff-btn" data-action="set-theme" data-theme="theme-ff7">FF7</button>
+      <button class="ff-btn" data-action="set-theme" data-theme="theme-ff6">FF6</button>
+    </p>
+
+    <div class="ff-window">
+      <div class="ff-window-content">
+        <h2>Cloud <span class="ff-badge">LV 99</span></h2>
+        <p>Basic components below.</p>
+
+        <div>
+          <button class="ff-btn" data-action="show-modal" data-modal="save-modal">Save Game</button>
+          <button class="ff-btn" data-action="load-game">Load Game</button>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Modal markup -->
+    <div id="save-modal" class="ff-modal-backdrop">
+      <div class="ff-window ff-modal" role="dialog" aria-modal="true">
+        <div class="ff-window-content">
+          <div class="ff-modal-header">
+            <h3>Save Game?</h3>
+            <button class="ff-close-btn" data-action="hide-modal" data-modal="save-modal">&times;</button>
+          </div>
+          <p>Overwrite Save Slot 1?</p>
+          <div style="text-align:right; margin-top:10px;">
+            <button class="ff-btn" data-action="hide-modal" data-modal="save-modal">Cancel</button>
+            <button class="ff-btn" data-action="hide-modal" data-modal="save-modal">Confirm</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Include the interactive JS (optional) -->
+    <script src="../js/ff.js"></script>
+  </body>
+</html>

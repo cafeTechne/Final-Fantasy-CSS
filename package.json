@@ -1,0 +1,21 @@
+{
+  "name": "final-fantasy-css",
+  "version": "0.0.0",
+  "description": "Retro Final Fantasy inspired CSS component library",
+  "main": "dist/final-fantasy.css",
+  "scripts": {
+    "build:css": "postcss css/final-fantasy.css -o dist/final-fantasy.css",
+    "build:css:min": "NODE_ENV=production postcss css/final-fantasy.css -o dist/final-fantasy.min.css",
+    "dev:docs": "live-server docs/site --port=5173 --entry-file=docs/site/index.html",
+    "build:docs": "node scripts/build-docs.js",
+    "build": "npm run build:css && npm run build:css:min && npm run build:docs"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.0.0",
+    "live-server": "^1.3.1",
+    "cssnano": "^5.0.0",
+    "postcss": "^8.0.0",
+    "postcss-cli": "^9.0.0",
+    "postcss-import": "^14.0.0"
+  }
+}

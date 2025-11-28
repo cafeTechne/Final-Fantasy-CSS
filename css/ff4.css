@@ -1,0 +1,190 @@
+/* FF4 Theme Variables (SNES Style) */
+.theme-ff4 {
+    --window-border-radius: 8px;
+    --window-bg-color: #000000;
+
+    /* Deep Blue Gradient */
+    --content-bg-gradient: linear-gradient(to bottom, #000080 0%, #000040 100%);
+
+    --border-color-outer: #e0e0e0;
+    --border-color-inner: #a0a0a0;
+
+    --highlight-color: #ffffff;
+    --font-family: 'Final Fantasy VI', 'Georgia', serif;
+}
+
+.theme-ff4 {
+    font-family: var(--font-family);
+    font-size: 18px;
+    line-height: 1.6;
+    letter-spacing: -0.5px;
+    /* Tighten spacing for CRT effect */
+}
+
+.theme-ff4 .ff-window {
+    border-radius: var(--window-border-radius);
+    padding: 4px;
+    background: #fff;
+    border: 3px solid #a0a0a0;
+    /* Checkered/Marble border simulation */
+    box-shadow:
+        0 0 0 2px #505050,
+        inset 0 0 0 2px #505050;
+}
+
+.theme-ff4 .ff-window-content {
+    background: var(--content-bg-gradient);
+    padding: 15px;
+    border: 1px solid #fff;
+    border-radius: 4px;
+}
+
+/* --- FF4 Component Overrides --- */
+
+/* Sliders: SNES style */
+.theme-ff4 input[type=range].ff-range::-webkit-slider-runnable-track {
+    background: #000040;
+    border: 1px solid #a0a0a0;
+    height: 6px;
+}
+
+.theme-ff4 input[type=range].ff-range::-webkit-slider-thumb {
+    background: #fff;
+    border: 1px solid #505050;
+    width: 14px;
+    height: 14px;
+    margin-top: -5px;
+}
+
+/* FF4 Theme Variables (SNES Style) */
+.theme-ff4 {
+    --window-border-radius: 8px;
+    --window-bg-color: #000000;
+
+    /* Deep Blue Gradient */
+    --content-bg-gradient: linear-gradient(to bottom, #000080 0%, #000040 100%);
+
+    --border-color-outer: #e0e0e0;
+    --border-color-inner: #a0a0a0;
+
+    --highlight-color: #ffffff;
+    --font-family: 'Final Fantasy VI', 'Georgia', serif;
+}
+
+.theme-ff4 {
+    font-family: var(--font-family);
+    font-size: 18px;
+    line-height: 1.6;
+    letter-spacing: -0.5px;
+    /* Tighten spacing for CRT effect */
+}
+
+.theme-ff4 .ff-window {
+    border-radius: var(--window-border-radius);
+    padding: 4px;
+    background: #fff;
+    border: 3px solid #a0a0a0;
+    /* Checkered/Marble border simulation */
+    box-shadow:
+        0 0 0 2px #505050,
+        inset 0 0 0 2px #505050;
+}
+
+.theme-ff4 .ff-window-content {
+    background: var(--content-bg-gradient);
+    padding: 15px;
+    border: 1px solid #fff;
+    border-radius: 4px;
+}
+
+/* --- FF4 Component Overrides --- */
+
+/* Sliders: SNES style */
+.theme-ff4 input[type=range].ff-range::-webkit-slider-runnable-track {
+    background: #000040;
+    border: 1px solid #a0a0a0;
+    height: 6px;
+}
+
+.theme-ff4 input[type=range].ff-range::-webkit-slider-thumb {
+    background: #fff;
+    border: 1px solid #505050;
+    width: 14px;
+    height: 14px;
+    margin-top: -5px;
+}
+
+/* Navs */
+.theme-ff4 .ff-nav-link.active {
+    background: rgba(255, 255, 255, 0.2);
+    border-bottom: 2px solid #fff;
+}
+
+/* Cards */
+.theme-ff4 .ff-card {
+    border: 2px solid #a0a0a0;
+    background: rgba(0, 0, 64, 0.8);
+}
+
+.theme-ff4 .ff-nav-link.active {
+    background: rgba(255, 255, 255, 0.2);
+    border-bottom: 2px solid #fff;
+}
+
+/* Dropdowns */
+.theme-ff4 .ff-dropdown-menu {
+    background: #000040;
+    background: linear-gradient(to bottom, #000080 0%, #000040 100%);
+    border: 2px solid #a0a0a0;
+    box-shadow: 0 0 0 1px #505050, inset 0 0 0 1px #505050;
+    border-radius: 4px;
+}
+
+.theme-ff4 .ff-dropdown-item:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+/* Tooltips */
+.theme-ff4 .ff-tooltip-text {
+    background: #000040;
+    border: 2px solid #a0a0a0;
+    border-radius: 4px;
+}
+
+.theme-ff4 .ff-tooltip-text::after {
+    border-color: #000040 transparent transparent transparent;
+}
+
+/* List Groups */
+.theme-ff4 .ff-list-group-item {
+    border-color: #a0a0a0;
+}
+
+.theme-ff4 .ff-list-group-item.active {
+    background: linear-gradient(to right, rgba(255, 255, 255, 0.2), transparent);
+    border-color: #fff;
+}
+
+/* Pagination */
+.theme-ff4 .ff-page-link {
+    background: #000040;
+    border-color: #a0a0a0;
+    border-radius: 4px;
+}
+
+.theme-ff4 .ff-page-link:hover,
+.theme-ff4 .ff-page-item.active .ff-page-link {
+    background: #000080;
+    border-color: #fff;
+}
+
+/* Modals */
+.theme-ff4 .ff-modal .ff-window {
+    box-shadow: 0 0 0 2px #505050;
+}
+
+/* Alerts */
+.theme-ff4 .ff-alert {
+    border: 2px solid #a0a0a0;
+    background: rgba(0, 0, 64, 0.8);
+}

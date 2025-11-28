@@ -1,0 +1,194 @@
+/* FF1 Theme Variables (NES Style) */
+.theme-ff1 {
+    --window-border-radius: 4px;
+    --window-bg-color: #000000;
+
+    /* Solid Blue Background (No gradient for authentic NES feel) */
+    --content-bg-gradient: #0000bc;
+
+    --border-color-outer: #ffffff;
+    --border-color-inner: #ffffff;
+
+    --highlight-color: #fcfc30;
+    /* Classic NES yellow cursor */
+    --font-family: 'Courier New', 'Consolas', monospace;
+    --text-shadow-color: #000;
+}
+
+.theme-ff1 {
+    font-family: var(--font-family);
+    font-size: 16px;
+    line-height: 1.5;
+    font-weight: bold;
+}
+
+.theme-ff1 .ff-window {
+    border-radius: var(--window-border-radius);
+    padding: 4px;
+    background: #000;
+    border: 4px solid #fff;
+    /* Thick white border */
+    box-shadow: none;
+    image-rendering: pixelated;
+}
+
+.theme-ff1 .ff-window-content {
+    background: var(--content-bg-gradient);
+    padding: 15px;
+    border: none;
+}
+
+/* --- FF1 Component Overrides --- */
+
+/* Sliders: Simple 8-bit style */
+.theme-ff1 input[type=range].ff-range::-webkit-slider-runnable-track {
+    background: #0000bc;
+    border: 2px solid #fff;
+    height: 8px;
+}
+
+.theme-ff1 input[type=range].ff-range::-webkit-slider-thumb {
+    background: #fcfc30;
+    border: 2px solid #fff;
+    border-radius: 0;
+    width: 16px;
+    height: 16px;
+    margin-top: -6px;
+}
+
+/* Navs */
+/* FF1 Theme Variables (NES Style) */
+.theme-ff1 {
+    --window-border-radius: 4px;
+    --window-bg-color: #000000;
+
+    /* Solid Blue Background (No gradient for authentic NES feel) */
+    --content-bg-gradient: #0000bc;
+
+    --border-color-outer: #ffffff;
+    --border-color-inner: #ffffff;
+
+    --highlight-color: #fcfc30;
+    /* Classic NES yellow cursor */
+    --font-family: 'Courier New', 'Consolas', monospace;
+    --text-shadow-color: #000;
+}
+
+.theme-ff1 {
+    font-family: var(--font-family);
+    font-size: 16px;
+    line-height: 1.5;
+    font-weight: bold;
+}
+
+.theme-ff1 .ff-window {
+    border-radius: var(--window-border-radius);
+    padding: 4px;
+    background: #000;
+    border: 4px solid #fff;
+    /* Thick white border */
+    box-shadow: none;
+    image-rendering: pixelated;
+}
+
+.theme-ff1 .ff-window-content {
+    background: var(--content-bg-gradient);
+    padding: 15px;
+    border: none;
+}
+
+/* --- FF1 Component Overrides --- */
+
+/* Sliders: Simple 8-bit style */
+.theme-ff1 input[type=range].ff-range::-webkit-slider-runnable-track {
+    background: #0000bc;
+    border: 2px solid #fff;
+    height: 8px;
+}
+
+.theme-ff1 input[type=range].ff-range::-webkit-slider-thumb {
+    background: #fcfc30;
+    border: 2px solid #fff;
+    border-radius: 0;
+    width: 16px;
+    height: 16px;
+    margin-top: -6px;
+}
+
+/* Navs */
+.theme-ff1 .ff-nav-link.active {
+    background: #fcfc30;
+    color: #000;
+    border: 2px solid #fff;
+}
+
+/* Cards */
+.theme-ff1 .ff-card {
+    border: 3px solid #fff;
+    background: #0000bc;
+}
+
+/* Dropdowns */
+.theme-ff1 .ff-dropdown-menu {
+    background: #0000bc;
+    border: 3px solid #fff;
+    box-shadow: none;
+    border-radius: 0;
+}
+
+.theme-ff1 .ff-dropdown-item:hover {
+    background: #fcfc30;
+    color: #000;
+}
+
+/* Tooltips */
+.theme-ff1 .ff-tooltip-text {
+    background: #0000bc;
+    border: 2px solid #fff;
+    border-radius: 0;
+}
+
+.theme-ff1 .ff-tooltip-text::after {
+    border-color: #0000bc transparent transparent transparent;
+}
+
+/* List Groups */
+.theme-ff1 .ff-list-group-item {
+    border: 2px solid #fff;
+    margin-bottom: -2px;
+    /* Overlap borders */
+    border-radius: 0 !important;
+}
+
+.theme-ff1 .ff-list-group-item.active {
+    background: #fcfc30;
+    color: #000;
+    border-color: #fff;
+}
+
+/* Pagination */
+.theme-ff1 .ff-page-link {
+    background: #0000bc;
+    border: 2px solid #fff;
+    color: #fff;
+    border-radius: 0;
+}
+
+.theme-ff1 .ff-page-link:hover,
+.theme-ff1 .ff-page-item.active .ff-page-link {
+    background: #fcfc30;
+    color: #000;
+    border-color: #fff;
+}
+
+/* Modals */
+.theme-ff1 .ff-modal .ff-window {
+    border: 4px solid #fff;
+    box-shadow: none;
+}
+
+/* Alerts */
+.theme-ff1 .ff-alert {
+    border: 2px solid #fff;
+    background: #0000bc;
+}

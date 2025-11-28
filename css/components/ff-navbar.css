@@ -1,0 +1,44 @@
+/* FF Navbar component */
+.ff-navbar{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  padding:10px 14px;
+  background: rgba(0,0,0,0.25);
+  border: 1px solid rgba(255,255,255,0.04);
+  border-radius:6px;
+}
+.ff-navbar-brand{
+  font-weight:700;
+  font-size:1rem;
+}
+.ff-navbar-nav{
+  display:flex;
+  gap:8px;
+  align-items:center;
+}
+.ff-navbar .ff-nav-link{ padding:8px 12px; border-radius:4px }
+.ff-navbar-toggle{ display:none }
+
+/* Responsive: collapse nav into toggle */
+@media (max-width:720px){
+  .ff-navbar{ padding:8px; }
+  .ff-navbar-nav{ display:none; position:absolute; left:0; right:0; top:100%; background:rgba(0,0,0,0.9); padding:10px; flex-direction:column; gap:6px; border-radius:0 0 8px 8px }
+  .ff-navbar.expanded .ff-navbar-nav{ display:flex }
+  .ff-navbar-toggle{ display:inline-flex; background:transparent; border:1px solid rgba(255,255,255,0.06); padding:6px 8px; border-radius:6px }
+}
+
+/* Accessibility helpers */
+.ff-navbar-nav a{ color:inherit; text-decoration:none }
+.ff-navbar-nav a:focus{ outline:2px solid var(--highlight-color, #c09b6a); outline-offset:2px }
+/*
+  ff-navbar.css
+  Placeholder for site-level navigation (navbar) styles.
+
+  Plan:
+  - Add responsive layout, brand area, nav links, collapse behavior (CSS only where possible)
+  - Add ARIA examples in docs
+*/
+
+/* TODO: implement navbar styles */

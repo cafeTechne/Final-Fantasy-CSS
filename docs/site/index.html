@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Final Fantasy CSS — Docs</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="wrap">
+    <aside class="sidebar">
+      <h2>Components</h2>
+      <ul id="nav-list">
+        <!-- links inserted by JS -->
+      </ul>
+    </aside>
+
+    <main class="content">
+      <div class="doc">
+       <link rel="icon" href="favicon.svg" type="image/svg+xml">
+       <link rel="stylesheet" href="styles.css">
+          <a class="btn" href="../../README.md" target="_blank">README</a>
+          <a class="btn" href="../../examples/simple.html" target="_blank">Open Demo</a>
+        </div>
+
+        <div id="doc-content" class="md">
+            Loading...
+        </div>
+
+        <div class="preview" id="preview" style="display:none">
+          <div style="padding:8px;color:var(--muted)">Live Preview</div>
+          <iframe id="preview-frame" src="about:blank"></iframe>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script>
+  // Simple docs site: list of component docs and mapping to example previews
+  const pages = [
+    {id:'buttons',title:'Buttons',path:'../components/buttons.md',preview:'../../examples/simple.html'},
+    {id:'navbar',title:'Navbar',path:'../components/navbar.md',preview:'../../examples/components/navbar.html'},
+    {id:'dropdown',title:'Dropdown',path:'../components/dropdown.md',preview:'../../examples/simple.html'},
+    {id:'modal',title:'Modal',path:'../components/modal.md',preview:'../../examples/simple.html'},
+    {id:'forms',title:'Forms',path:'../components/forms.md',preview:'../../examples/simple.html'},
+    {id:'table',title:'Table',path:'../components/table.md',preview:'../../examples/components/table.html'},
+    {id:'popover',title:'Popover',path:'../components/popover.md',preview:''},
+    {id:'toast',title:'Toast',path:'../components/toast.md',preview:''},
+    {id:'accordion',title:'Accordion',path:'../components/accordion.md',preview:''},
+    {id:'input-group',title:'Input Group',path:'../components/input-group.md',preview:''},
+    {id:'avatar',title:'Avatar',path:'../components/avatar.md',preview:''},
+    {id:'spinner',title:'Spinner',path:'../components/spinner.md',preview:''},
+    {id:'table',title:'Table (again)',path:'../components/table.md',preview:'../../examples/components/table.html'}
+  ];
+
+  const nav = document.getElementById('nav-list');
+  pages.forEach(p => {
+    const li = document.createElement('li');
+    const a = document.createElement('a');
+    a.href = '#'+p.id;
+    a.textContent = p.title;
+    a.dataset.path = p.path;
+    a.dataset.preview = p.preview;
+    a.addEventListener('click', e => { e.preventDefault(); loadDoc(p); setActive(a); });
+    li.appendChild(a);
+    nav.appendChild(li);
+  });
+
+  function setActive(el){ document.querySelectorAll('#nav-list a').forEach(x=>x.classList.remove('active')); el.classList.add('active'); }
+
+  function safeFetch(path){ return fetch(path).then(r=>{ if(!r.ok) throw new Error('Fetch failed'); return r.text()}) }
+
+  // Minimal markdown -> HTML converter (supports headings, code fences, lists, paragraphs, inline code)
+  function mdToHtml(md){
+    // escape
+    md = md.replace(/</g,'&lt;').replace(/>/g,'&gt;');
+    // code fences
+    md = md.replace(/```([a-z]*)\n([\s\S]*?)```/g, function(_,lang,code){
+      return '<pre><code data-lang="'+lang+'">'+code.replace(/&lt;/g,'<').replace(/&gt;/g,'>')+'</code></pre>';
+    });
+    // headings
+    md = md.replace(/^### (.*$)/gm,'<h3>$1</h3>');
+    md = md.replace(/^## (.*$)/gm,'<h2>$1</h2>');
+    md = md.replace(/^# (.*$)/gm,'<h1>$1</h1>');
+    // lists
+    md = md.replace(/^\s*[-\*] (.*)$/gm,'<li>$1</li>');
+    md = md.replace(/(<li>[\s\S]*?<\/li>)/g, function(m){ if(m.indexOf('<ul>')===-1) return '<ul>'+m+'</ul>'; return m; });
+    // horizontal rules
+    md = md.replace(/^---$/gm,'<hr>');
+    // inline code
+    md = md.replace(/`([^`]+)`/g,'<code>$1</code>');
+    // links [text](url)
+    md = md.replace(/\[([^\]]+)\]\(([^)]+)\)/g,'<a href="$2">$1</a>');
+    // paragraphs
+    const lines = md.split(/\n\n+/);
+    return lines.map(l=>{
+      if(/^<h|^<ul|^<pre|^<hr|^<p|^<table/.test(l.trim())) return l;
+      return '<p>'+l.replace(/\n/g,' ')+'</p>';
+    }).join('\n');
+  }
+
+  function loadDoc(page){
+    const content = document.getElementById('doc-content');
+    content.innerHTML = 'Loading...';
+    safeFetch(page.path).then(md=>{
+      content.innerHTML = mdToHtml(md);
+      // show preview if available
+      const preview = document.getElementById('preview');
+      const frame = document.getElementById('preview-frame');
+      if(page.preview){ preview.style.display='block'; frame.src = page.preview; }
+      else { preview.style.display='none'; frame.src='about:blank'; }
+    }).catch(err=>{ content.innerHTML = '<p>Error loading: '+err.message+'</p>'; });
+  }
+
+  // load first page
+  if(pages.length) { const firstLink = document.querySelector('#nav-list a'); firstLink && firstLink.click(); }
+  </script>
+</body>
+</html>

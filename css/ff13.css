@@ -1,0 +1,259 @@
+/* FF13 Theme Variables (Crystal/Future) */
+.theme-ff13 {
+    --window-border-radius: 20px 0 20px 0;
+    /* Asymmetric curves */
+    --window-bg-color: rgba(255, 255, 255, 0.8);
+
+    /* Light/Glassy Gradient */
+    --content-bg-gradient: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(230, 240, 255, 0.8) 100%);
+
+    --border-color-outer: #a0c0e0;
+    --highlight-color: #00aaff;
+    --text-color: #1a1a1a;
+    /* Even darker for better readability */
+    --font-family: 'Roboto', 'Segoe UI', sans-serif;
+}
+
+.theme-ff13 {
+    color: var(--text-color);
+    font-family: var(--font-family);
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.6;
+    letter-spacing: 0.3px;
+}
+
+.theme-ff13 .ff-window {
+    border-radius: var(--window-border-radius);
+    padding: 1px;
+    /* Thin borders */
+    background: linear-gradient(45deg, #fff, #c0e0ff);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+}
+
+.theme-ff13 .ff-window-content {
+    background: var(--content-bg-gradient);
+    padding: 20px;
+    border-radius: var(--window-border-radius);
+    border: 1px solid rgba(255, 255, 255, 0.9);
+}
+
+.theme-ff13 .ff-btn {
+    color: #005588;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: bold;
+}
+
+.theme-ff13 .ff-btn:hover {
+    background: rgba(0, 170, 255, 0.3);
+    border-radius: 15px;
+    color: #003366;
+}
+
+/* --- FF13 Component Overrides --- */
+
+/* Sliders: Crystal/elegant style */
+.theme-ff13 input[type=range].ff-range::-webkit-slider-runnable-track {
+    background: rgba(255, 255, 255, 0.3);
+    border: 1px solid rgba(160, 192, 224, 0.5);
+    height: 4px;
+}
+
+.theme-ff13 input[type=range].ff-range::-webkit-slider-thumb {
+    background: linear-gradient(135deg, #fff, #c0e0ff);
+    border: 1px solid #00aaff;
+    width: 16px;
+    height: 16px;
+    margin-top: -6px;
+    box-shadow: 0 2px 8px rgba(0, 170, 255, 0.3);
+}
+
+/* Navs */
+.theme-ff13 .ff-nav-link {
+    text-transform: uppercase;
+    font-size: 0.85em;
+    letter-spacing: 1px;
+}
+
+/* FF13 Theme Variables (Crystal/Future) */
+.theme-ff13 {
+    --window-border-radius: 20px 0 20px 0;
+    /* Asymmetric curves */
+    --window-bg-color: rgba(255, 255, 255, 0.8);
+
+    /* Light/Glassy Gradient */
+    --content-bg-gradient: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(230, 240, 255, 0.8) 100%);
+
+    --border-color-outer: #a0c0e0;
+    --highlight-color: #00aaff;
+    --text-color: #1a1a1a;
+    /* Even darker for better readability */
+    --font-family: 'Roboto', 'Segoe UI', sans-serif;
+}
+
+.theme-ff13 {
+    color: var(--text-color);
+    font-family: var(--font-family);
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.6;
+    letter-spacing: 0.3px;
+}
+
+.theme-ff13 .ff-window {
+    border-radius: var(--window-border-radius);
+    padding: 1px;
+    /* Thin borders */
+    background: linear-gradient(45deg, #fff, #c0e0ff);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+}
+
+.theme-ff13 .ff-window-content {
+    background: var(--content-bg-gradient);
+    padding: 20px;
+    border-radius: var(--window-border-radius);
+    border: 1px solid rgba(255, 255, 255, 0.9);
+}
+
+.theme-ff13 .ff-btn {
+    color: #005588;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: bold;
+}
+
+.theme-ff13 .ff-btn:hover {
+    background: rgba(0, 170, 255, 0.3);
+    border-radius: 15px;
+    color: #003366;
+}
+
+/* --- FF13 Component Overrides --- */
+
+/* Sliders: Crystal/elegant style */
+.theme-ff13 input[type=range].ff-range::-webkit-slider-runnable-track {
+    background: rgba(255, 255, 255, 0.3);
+    border: 1px solid rgba(160, 192, 224, 0.5);
+    height: 4px;
+}
+
+.theme-ff13 input[type=range].ff-range::-webkit-slider-thumb {
+    background: linear-gradient(135deg, #fff, #c0e0ff);
+    border: 1px solid #00aaff;
+    width: 16px;
+    height: 16px;
+    margin-top: -6px;
+    box-shadow: 0 2px 8px rgba(0, 170, 255, 0.3);
+}
+
+/* Navs */
+.theme-ff13 .ff-nav-link {
+    text-transform: uppercase;
+    font-size: 0.85em;
+    letter-spacing: 1px;
+}
+
+.theme-ff13 .ff-nav-link.active {
+    background: rgba(0, 170, 255, 0.2);
+    border-bottom: 2px solid #00aaff;
+    color: #005588;
+}
+
+/* Cards */
+.theme-ff13 .ff-card {
+    border: 1px solid rgba(160, 192, 224, 0.4);
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.8), rgba(230, 240, 255, 0.7));
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Dropdowns */
+.theme-ff13 .ff-dropdown-menu {
+    background: rgba(255, 255, 255, 0.95);
+    border: 1px solid #a0c0e0;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    color: #222;
+}
+
+.theme-ff13 .ff-dropdown-item:hover {
+    background: rgba(0, 170, 255, 0.1);
+    color: #005588;
+}
+
+/* Tooltips */
+.theme-ff13 .ff-tooltip-text {
+    background: rgba(255, 255, 255, 0.95);
+    border: 1px solid #a0c0e0;
+    color: #222;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.theme-ff13 .ff-tooltip-text::after {
+    border-color: rgba(255, 255, 255, 0.95) transparent transparent transparent;
+}
+
+/* List Groups */
+.theme-ff13 .ff-list-group-item {
+    border-color: rgba(160, 192, 224, 0.4);
+    background: rgba(255, 255, 255, 0.5);
+}
+
+.theme-ff13 .ff-list-group-item:first-child {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.theme-ff13 .ff-list-group-item:last-child {
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.theme-ff13 .ff-list-group-item.active {
+    background: linear-gradient(to right, rgba(0, 170, 255, 0.2), transparent);
+    border-color: #00aaff;
+    color: #005588;
+}
+
+/* Pagination */
+.theme-ff13 .ff-page-link {
+    background: rgba(255, 255, 255, 0.6);
+    border-color: #a0c0e0;
+    border-radius: 50%;
+    /* Circular buttons */
+    width: 36px;
+    height: 36px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 2px;
+}
+
+.theme-ff13 .ff-page-link:hover,
+.theme-ff13 .ff-page-item.active .ff-page-link {
+    background: #00aaff;
+    color: #fff;
+    border-color: #00aaff;
+    box-shadow: 0 2px 8px rgba(0, 170, 255, 0.4);
+}
+
+/* Modals */
+.theme-ff13 .ff-modal .ff-window {
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* Alerts */
+.theme-ff13 .ff-alert {
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    color: #333;
+}

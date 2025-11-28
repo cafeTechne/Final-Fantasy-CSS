@@ -1,0 +1,182 @@
+/* FF8 Theme Variables */
+.theme-ff8 {
+    --window-border-radius: 0px;
+    /* Sharp corners */
+    --window-bg-color: #2a2a2a;
+
+    /* FF8 Grey/Gunmetal Gradient */
+    --content-bg-gradient: linear-gradient(to bottom, #2a2a2a 0%, #1a1a1a 100%);
+
+    --border-color-outer: #777;
+    --border-color-inner: #333;
+
+    --highlight-color: #00ff00;
+    /* Green highlight */
+    --font-family: 'Share Tech Mono', monospace;
+}
+
+.theme-ff8 {
+    font-family: var(--font-family);
+}
+
+.theme-ff8 .ff-window {
+    border-radius: var(--window-border-radius);
+    padding: 2px;
+    background: #555;
+    border: 1px solid #777;
+    box-shadow:
+        0 0 0 1px #111,
+        inset 0 0 0 1px #777;
+    position: relative;
+}
+
+/* Scanline effect overlay */
+.theme-ff8 .ff-window::after {
+    content: " ";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.1) 50%);
+    background-size: 100% 4px;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.theme-ff8 .ff-window-content {
+    background: var(--content-bg-gradient);
+    padding: 15px;
+    border: 1px solid #333;
+    position: relative;
+    z-index: 2;
+}
+
+/* --- FF8 Component Overrides --- */
+
+/* Sliders: Tech/Industrial look */
+.theme-ff8 input[type=range].ff-range::-webkit-slider-runnable-track {
+    background: #333;
+    border: 1px solid #777;
+    height: 6px;
+}
+
+.theme-ff8 input[type=range].ff-range::-webkit-slider-thumb {
+    background: #00ff00;
+    border: 2px solid #fff;
+    border-radius: 0;
+    /* Square thumb */
+    width: 12px;
+    height: 20px;
+    margin-top: -8px;
+    box-shadow: 0 0 5px #00ff00;
+}
+
+/* Navs */
+.theme-ff8 .ff-nav-link.active {
+    background: rgba(0, 255, 0, 0.2);
+    border-bottom: 2px solid #00ff00;
+    color: #fff;
+}
+
+/* Cards */
+.theme-ff8 .ff-card {
+    border: 1px solid #555;
+    background: rgba(0, 0, 0, 0.5);
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.8);
+}
+
+/* Dropdowns */
+.theme-ff8 .ff-dropdown-menu {
+    background: #2a2a2a;
+    border: 1px solid #777;
+    box-shadow: 0 0 0 1px #111, inset 0 0 0 1px #777;
+}
+
+.theme-ff8 .ff-dropdown-item:hover {
+    background: rgba(0, 255, 0, 0.2);
+    color: #fff;
+}
+
+/* Tooltips */
+.theme-ff8 .ff-tooltip-text {
+    background: #2a2a2a;
+    border: 1px solid #777;
+    box-shadow: 0 0 5px #00ff00;
+}
+
+.theme-ff8 .ff-tooltip-text::after {
+    border-color: #2a2a2a transparent transparent transparent;
+}
+
+/* List Groups */
+.theme-ff8 .ff-list-group-item {
+    border-color: #555;
+    background: rgba(0, 0, 0, 0.6);
+}
+
+.theme-ff8 .ff-list-group-item.active {
+    background: rgba(0, 255, 0, 0.15);
+    border-color: #00ff00;
+    box-shadow: inset 0 0 5px rgba(0, 255, 0, 0.3);
+}
+
+/* Pagination */
+.theme-ff8 .ff-page-link {
+    background: #333;
+    border-color: #555;
+    border-radius: 0;
+    /* Square buttons */
+}
+
+.theme-ff8 .ff-page-link:hover,
+.theme-ff8 .ff-page-item.active .ff-page-link {
+    background: #444;
+    border-color: #00ff00;
+    color: #00ff00;
+    box-shadow: 0 0 5px rgba(0, 255, 0, 0.5);
+}
+
+/* Modals */
+.theme-ff8 .ff-modal .ff-window {
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+}
+
+/* Alerts */
+.theme-ff8 .ff-alert {
+    border-left: 4px solid;
+    background: rgba(0, 0, 0, 0.7);
+}
+
+/* --- FF8 Game Specific --- */
+
+/* Junction Display */
+.theme-ff8 .ff-junction-display {
+    font-family: 'Share Tech Mono', monospace;
+    color: #ccc;
+}
+
+.theme-ff8 .ff-junction-row {
+    border-bottom: 1px solid #444;
+}
+
+.theme-ff8 .ff-junction-stat {
+    color: #888;
+    text-transform: uppercase;
+}
+
+.theme-ff8 .ff-junction-spell {
+    color: #fff;
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+}
+
+/* Battle Menu */
+.theme-ff8 .ff-atb-bar {
+    background: linear-gradient(to right, #555, #aaa, #fff);
+}
+
+.theme-ff8 .ff-battle-menu .ff-list-group-item.active {
+    background: rgba(0, 255, 0, 0.2);
+    border-left: 4px solid #00ff00;
+}

@@ -1,0 +1,37 @@
+name: Netlify preview for PRs
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+jobs:
+  preview:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Install
+        run: npm ci
+
+      - name: Build (CSS + Docs)
+        run: npm run build
+
+      - name: Deploy to Netlify (preview)
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+        run: |
+          npx netlify deploy --dir=docs/site/generated --auth=$NETLIFY_AUTH_TOKEN --site=$NETLIFY_SITE_ID --json > netlify-output.json
+          echo "Netlify deploy output:" && cat netlify-output.json
+
+      - name: Upload deploy output
+        uses: actions/upload-artifact@v4
+        with:
+          name: netlify-deploy-output
+          path: netlify-output.json

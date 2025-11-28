@@ -1,0 +1,141 @@
+/* FF7 Theme Variables */
+.theme-ff7 {
+    --window-border-radius: 8px;
+    --window-bg-color: #0000a0;
+
+    /* FF7 Classic Blue Gradient */
+    --content-bg-gradient: linear-gradient(to bottom right, #000040 0%, #0000a0 50%, #000040 100%);
+
+    --border-color-outer: #a0a0a0;
+    --border-color-inner: #404040;
+
+    --highlight-color: #00ff00;
+    /* Green highlight for cursor usually, or white text */
+}
+
+.theme-ff7 .ff-window {
+    border-radius: var(--window-border-radius);
+    padding: 4px;
+    background: #fff;
+    /* White border base */
+    border: 2px solid #999;
+    box-shadow:
+        0 0 0 2px #555,
+        /* Outer grey */
+        inset 0 0 0 2px #555;
+    /* Inner grey */
+    position: relative;
+}
+
+.theme-ff7 .ff-window-content {
+    background: var(--content-bg-gradient);
+    border-radius: 4px;
+    padding: 15px;
+    border: 1px solid #000040;
+}
+
+/* --- FF7 Component Overrides --- */
+
+/* Sliders: Classic Finger Pointer? Or just simple */
+.theme-ff7 input[type=range].ff-range::-webkit-slider-thumb {
+    border: 2px solid #999;
+    box-shadow: 0 0 0 1px #555, inset 0 0 0 1px #555;
+    border-radius: 4px;
+}
+
+/* Navs */
+.theme-ff7 .ff-nav-link.active {
+    background: linear-gradient(to right, rgba(255, 255, 255, 0.3), transparent);
+    border-left: 4px solid #fff;
+}
+
+/* Dropdowns */
+.theme-ff7 .ff-dropdown-menu {
+    background: #0000a0;
+    background: linear-gradient(to bottom right, #000040 0%, #0000a0 100%);
+    border: 2px solid #999;
+    box-shadow: 0 0 0 1px #555, inset 0 0 0 1px #555;
+    border-radius: 4px;
+}
+
+.theme-ff7 .ff-dropdown-item:hover {
+    background: linear-gradient(to right, rgba(255, 255, 255, 0.3), transparent);
+}
+
+/* Tooltips */
+.theme-ff7 .ff-tooltip-text {
+    background: #0000a0;
+    border: 2px solid #999;
+    box-shadow: 0 0 0 1px #555;
+    border-radius: 4px;
+}
+
+.theme-ff7 .ff-tooltip-text::after {
+    border-color: #0000a0 transparent transparent transparent;
+}
+
+/* List Groups */
+.theme-ff7 .ff-list-group-item {
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+.theme-ff7 .ff-list-group-item.active {
+    background: linear-gradient(to right, rgba(255, 255, 255, 0.3), transparent);
+    border-color: #fff;
+}
+
+/* Pagination */
+.theme-ff7 .ff-page-link {
+    background: rgba(0, 0, 64, 0.5);
+    border-color: #555;
+}
+
+.theme-ff7 .ff-page-link:hover,
+.theme-ff7 .ff-page-item.active .ff-page-link {
+    background: linear-gradient(to bottom, #0000a0, #000040);
+    border-color: #fff;
+}
+
+/* Modals */
+.theme-ff7 .ff-modal .ff-window-content {
+    box-shadow: none;
+    /* Reset base shadow if any */
+}
+
+/* Alerts */
+.theme-ff7 .ff-alert {
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    background: rgba(0, 0, 80, 0.8);
+}
+
+/* --- FF7 Game Specific --- */
+
+/* Materia Slots - Authentic Look */
+.theme-ff7 .ff-materia-slots {
+    background: #1a1a1a;
+    box-shadow: inset 0 0 8px #000;
+    border: 1px solid #333;
+}
+
+.theme-ff7 .ff-materia-slot {
+    background: #000;
+    border: 1px solid #555;
+    box-shadow: inset 0 0 5px #000;
+}
+
+.theme-ff7 .ff-materia-slots.linked::after {
+    background: #666;
+    height: 6px;
+    border-radius: 3px;
+    box-shadow: 0 0 2px #000;
+}
+
+/* Battle Menu */
+.theme-ff7 .ff-battle-menu .ff-list-group-item.active {
+    background: linear-gradient(to right, rgba(255, 255, 255, 0.3), transparent);
+    /* Hand cursor handled by global theme */
+}
+
+.theme-ff7 .ff-atb-bar {
+    background: linear-gradient(to right, #d00, #f00, #fa0);
+}

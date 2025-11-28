@@ -1,0 +1,244 @@
+/* FF9 Theme Variables */
+.theme-ff9 {
+    --window-border-radius: 4px;
+    --window-bg-color: #3a3a4a;
+
+    /* Stone/Slate Gradient - More texture/noise feel */
+    --content-bg-gradient: linear-gradient(to bottom, #505060, #303040);
+
+    --border-color-gold: #d4af37;
+    /* Richer gold */
+    --border-color-shadow: #1a1a2a;
+
+    --highlight-color: #ffd700;
+    --font-family: 'Cinzel', serif;
+}
+
+.theme-ff9 {
+    font-family: var(--font-family);
+}
+
+.theme-ff9 .ff-window {
+    border-radius: var(--window-border-radius);
+    padding: 5px;
+    background: #2a2a3a;
+    border: 3px solid #6a6a7a;
+    /* Complex double border for that "framed" look */
+    box-shadow:
+        0 0 0 2px #1a1a2a,
+        inset 0 0 0 1px #1a1a2a;
+    position: relative;
+}
+
+.theme-ff9 .ff-window-content {
+    background: var(--content-bg-gradient);
+    padding: 15px;
+    border: 1px solid #5a5a6a;
+    background-image: radial-gradient(circle at 50% 50%, transparent 0%, rgba(0, 0, 0, 0.2) 100%);
+    /* Texture overlay simulation */
+}
+
+/* Corner decorations (pseudo-elements) */
+.theme-ff9 .ff-window::before,
+.theme-ff9 .ff-window::after {
+    content: "";
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background: var(--border-color-gold);
+    border-radius: 50%;
+    z-index: 3;
+}
+
+.theme-ff9 .ff-window::before {
+    top: -4px;
+    left: -4px;
+    box-shadow: calc(100% + 8px) 0 0 0 var(--border-color-gold);
+    /* Top right */
+}
+
+.theme-ff9 .ff-window::after {
+    bottom: -4px;
+    right: -4px;
+    box-shadow: calc(-100% - 8px) 0 0 0 var(--border-color-gold);
+    /* Bottom left */
+}
+
+/* --- FF9 Component Overrides --- */
+
+/* Sliders: Ornate fantasy style */
+.theme-ff9 input[type=range].ff-range::-webkit-slider-runnable-track {
+    background: #303040;
+    border: 2px solid #6a6a7a;
+    height: 6px;
+}
+
+.theme-ff9 input[type=range].ff-range::-webkit-slider-thumb {
+    background: #d4af37;
+    border: 2px solid #fff;
+    width: 14px;
+    height: 14px;
+    margin-top: -6px;
+    box-shadow: 0 0 5px rgba(212, 175, 55, 0.5);
+}
+
+/* Navs */
+/* FF9 Theme Variables */
+.theme-ff9 {
+    --window-border-radius: 4px;
+    --window-bg-color: #3a3a4a;
+
+    /* Stone/Slate Gradient - More texture/noise feel */
+    --content-bg-gradient: linear-gradient(to bottom, #505060, #303040);
+
+    --border-color-gold: #d4af37;
+    /* Richer gold */
+    --border-color-shadow: #1a1a2a;
+
+    --highlight-color: #ffd700;
+    --font-family: 'Cinzel', serif;
+}
+
+.theme-ff9 {
+    font-family: var(--font-family);
+}
+
+.theme-ff9 .ff-window {
+    border-radius: var(--window-border-radius);
+    padding: 5px;
+    background: #2a2a3a;
+    border: 3px solid #6a6a7a;
+    /* Complex double border for that "framed" look */
+    box-shadow:
+        0 0 0 2px #1a1a2a,
+        inset 0 0 0 1px #1a1a2a;
+    position: relative;
+}
+
+.theme-ff9 .ff-window-content {
+    background: var(--content-bg-gradient);
+    padding: 15px;
+    border: 1px solid #5a5a6a;
+    background-image: radial-gradient(circle at 50% 50%, transparent 0%, rgba(0, 0, 0, 0.2) 100%);
+    /* Texture overlay simulation */
+}
+
+/* Corner decorations (pseudo-elements) */
+.theme-ff9 .ff-window::before,
+.theme-ff9 .ff-window::after {
+    content: "";
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background: var(--border-color-gold);
+    border-radius: 50%;
+    z-index: 3;
+}
+
+.theme-ff9 .ff-window::before {
+    top: -4px;
+    left: -4px;
+    box-shadow: calc(100% + 8px) 0 0 0 var(--border-color-gold);
+    /* Top right */
+}
+
+.theme-ff9 .ff-window::after {
+    bottom: -4px;
+    right: -4px;
+    box-shadow: calc(-100% - 8px) 0 0 0 var(--border-color-gold);
+    /* Bottom left */
+}
+
+/* --- FF9 Component Overrides --- */
+
+/* Sliders: Ornate fantasy style */
+.theme-ff9 input[type=range].ff-range::-webkit-slider-runnable-track {
+    background: #303040;
+    border: 2px solid #6a6a7a;
+    height: 6px;
+}
+
+.theme-ff9 input[type=range].ff-range::-webkit-slider-thumb {
+    background: #d4af37;
+    border: 2px solid #fff;
+    width: 14px;
+    height: 14px;
+    margin-top: -6px;
+    box-shadow: 0 0 5px rgba(212, 175, 55, 0.5);
+}
+
+/* Navs */
+.theme-ff9 .ff-nav-link.active {
+    background: rgba(212, 175, 55, 0.2);
+    border-bottom: 2px solid #d4af37;
+    color: #ffd700;
+}
+
+/* Cards */
+.theme-ff9 .ff-card {
+    border: 2px solid #6a6a7a;
+    background: linear-gradient(to bottom, #505060, #303040);
+}
+
+/* Dropdowns */
+.theme-ff9 .ff-dropdown-menu {
+    background: #303040;
+    border: 2px solid #6a6a7a;
+    box-shadow: 0 0 0 1px #1a1a2a, inset 0 0 0 1px #1a1a2a;
+    border-radius: 4px;
+}
+
+.theme-ff9 .ff-dropdown-item:hover {
+    background: rgba(212, 175, 55, 0.2);
+    color: #ffd700;
+}
+
+/* Tooltips */
+.theme-ff9 .ff-tooltip-text {
+    background: #303040;
+    border: 2px solid #6a6a7a;
+    box-shadow: 0 0 0 1px #1a1a2a;
+    border-radius: 4px;
+}
+
+.theme-ff9 .ff-tooltip-text::after {
+    border-color: #303040 transparent transparent transparent;
+}
+
+/* List Groups */
+.theme-ff9 .ff-list-group-item {
+    border-color: #6a6a7a;
+    background: rgba(48, 48, 64, 0.8);
+}
+
+.theme-ff9 .ff-list-group-item.active {
+    background: rgba(212, 175, 55, 0.15);
+    border-color: #d4af37;
+    color: #ffd700;
+}
+
+/* Pagination */
+.theme-ff9 .ff-page-link {
+    background: #303040;
+    border-color: #6a6a7a;
+}
+
+.theme-ff9 .ff-page-link:hover,
+.theme-ff9 .ff-page-item.active .ff-page-link {
+    background: #404050;
+    border-color: #d4af37;
+    color: #ffd700;
+    box-shadow: 0 0 5px rgba(212, 175, 55, 0.3);
+}
+
+/* Modals */
+.theme-ff9 .ff-modal .ff-window {
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+/* Alerts */
+.theme-ff9 .ff-alert {
+    border: 1px solid #6a6a7a;
+    background: rgba(48, 48, 64, 0.9);
+    border-left: 4px solid #d4af37;
+}

@@ -1,0 +1,868 @@
+/* --- Components CSS --- */
+/* Structural styles for components. Theme files override colors/borders. */
+
+@import url("components/ff-navbar.css");
+
+/* --- Breadcrumbs --- */
+.ff-breadcrumb {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0 0 15px 0;
+    font-size: 0.9em;
+}
+
+.ff-breadcrumb-item+.ff-breadcrumb-item::before {
+    content: ">";
+    padding: 0 8px;
+    opacity: 0.5;
+}
+
+/* --- Cards --- */
+.ff-card {
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(0, 0, 0, 0.2);
+    padding: 15px;
+    margin-bottom: 15px;
+    position: relative;
+}
+
+.ff-card-header {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+    font-weight: bold;
+    font-size: 1.1em;
+}
+
+/* --- Navigation --- */
+.ff-nav {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0 0 20px 0;
+    gap: 5px;
+}
+
+.ff-nav-item {
+    display: inline-block;
+}
+
+.ff-nav-link {
+    display: block;
+    padding: 10px 15px;
+    text-decoration: none;
+    color: inherit;
+    border-bottom: 2px solid transparent;
+    transition: all 0.2s;
+    cursor: pointer;
+}
+
+.ff-nav-link:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.ff-nav-link.active {
+    border-bottom-color: var(--highlight-color, #fff);
+    background: rgba(255, 255, 255, 0.15);
+}
+
+/* --- Alerts --- */
+.ff-alert {
+    padding: 10px 15px;
+    margin-bottom: 15px;
+    border: 1px solid transparent;
+    background: rgba(255, 255, 255, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.ff-alert-info {
+    border-color: #00d0ff;
+    background: rgba(0, 208, 255, 0.1);
+}
+
+.ff-alert-warning {
+    border-color: #ffd700;
+    background: rgba(255, 215, 0, 0.1);
+}
+
+.ff-alert-danger {
+    border-color: #ff4444;
+    background: rgba(255, 68, 68, 0.1);
+}
+
+/* --- Modals --- */
+.ff-modal-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s;
+}
+
+.ff-modal-backdrop.show {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.ff-modal {
+    width: 90%;
+    max-width: 500px;
+    position: relative;
+    transform: translateY(-20px);
+    transition: transform 0.3s;
+}
+
+.ff-modal-backdrop.show .ff-modal {
+    transform: translateY(0);
+}
+
+.ff-modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    padding-bottom: 10px;
+}
+
+.ff-close-btn {
+    background: none;
+    border: none;
+    color: inherit;
+    font-size: 1.5rem;
+    cursor: pointer;
+    line-height: 1;
+    opacity: 0.7;
+    transition: opacity 0.2s;
+}
+
+.ff-close-btn:hover {
+    opacity: 1;
+}
+
+/* --- Dropdowns --- */
+.ff-dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.ff-dropdown-toggle {
+    cursor: pointer;
+    user-select: none;
+}
+
+.ff-dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 1000;
+    min-width: 160px;
+    padding: 5px 0;
+    margin: 2px 0 0;
+    list-style: none;
+    background: rgba(0, 0, 0, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    display: none;
+}
+
+.ff-dropdown.show .ff-dropdown-menu {
+    display: block;
+}
+
+.ff-dropdown-item {
+    display: block;
+    padding: 8px 15px;
+    color: inherit;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.ff-dropdown-item:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.ff-dropdown-divider {
+    height: 1px;
+    margin: 5px 0;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* --- Tooltips --- */
+.ff-tooltip {
+    position: relative;
+    display: inline-block;
+}
+
+.ff-tooltip-text {
+    visibility: hidden;
+    position: absolute;
+    z-index: 1001;
+    bottom: 125%;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 5px 10px;
+    background: rgba(0, 0, 0, 0.95);
+    color: #fff;
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    white-space: nowrap;
+    font-size: 0.85em;
+    opacity: 0;
+    transition: opacity 0.2s;
+}
+
+.ff-tooltip-text::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: rgba(0, 0, 0, 0.95) transparent transparent transparent;
+}
+
+.ff-tooltip:hover .ff-tooltip-text {
+    visibility: visible;
+    opacity: 1;
+}
+
+/* --- List Groups --- */
+.ff-list-group {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 15px 0;
+}
+
+.ff-list-group-item {
+    padding: 10px 15px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-bottom: none;
+    background: rgba(0, 0, 0, 0.2);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.2s ease;
+}
+
+.ff-list-group-item:first-child {
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+}
+
+.ff-list-group-item:last-child {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+}
+
+.ff-list-group-item.active {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: var(--highlight-color, #fff);
+    font-weight: bold;
+}
+
+.ff-list-group-item:hover {
+    background: rgba(255, 255, 255, 0.15);
+    cursor: pointer;
+    transform: translateX(5px);
+    border-left: 3px solid var(--highlight-color, #fff);
+    padding-left: 12px;
+}
+
+/* --- Pagination --- */
+.ff-pagination {
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+    padding: 0;
+    margin: 15px 0;
+    gap: 5px;
+}
+
+.ff-page-item {
+    display: inline-block;
+}
+
+.ff-page-link {
+    display: block;
+    padding: 8px 12px;
+    text-decoration: none;
+    color: inherit;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    background: rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    transition: all 0.2s;
+    min-width: 40px;
+    text-align: center;
+}
+
+.ff-page-link:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: var(--highlight-color, #fff);
+}
+
+.ff-page-item.active .ff-page-link {
+    background: rgba(255, 255, 255, 0.3);
+    border-color: var(--highlight-color, #fff);
+    font-weight: bold;
+}
+
+.ff-page-item.disabled .ff-page-link {
+    opacity: 0.5;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+/* --- Game Specific Components --- */
+
+/* Battle Menu (ATB) */
+.ff-battle-menu {
+    margin-top: 10px;
+}
+
+.ff-atb-gauge {
+    height: 10px;
+    background: #333;
+    border: 1px solid #777;
+    margin-bottom: 10px;
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.ff-atb-bar {
+    height: 100%;
+    background: linear-gradient(to right, #888, #fff);
+    width: 0%;
+    transition: width 0.5s linear;
+    animation: atb-fill 3s infinite linear;
+}
+
+@keyframes atb-fill {
+    0% {
+        width: 0%;
+    }
+
+    100% {
+        width: 100%;
+    }
+}
+
+/* Materia Slots (FF7) */
+.ff-materia-container {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.ff-materia-slots {
+    display: flex;
+    align-items: center;
+    background: #222;
+    padding: 5px;
+    border-radius: 20px;
+    box-shadow: inset 0 0 5px #000;
+    gap: 5px;
+}
+
+.ff-materia-slots.linked {
+    gap: 15px;
+    /* Space for link */
+    position: relative;
+}
+
+.ff-materia-slots.linked::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 20px;
+    height: 4px;
+    background: #555;
+    z-index: 0;
+}
+
+.ff-materia-slot {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: #111;
+    box-shadow: inset 0 0 3px #000;
+    border: 1px solid #444;
+    position: relative;
+    z-index: 1;
+}
+
+.ff-materia-slot.filled-green {
+    background: radial-gradient(circle at 30% 30%, #8f8, #060);
+    box-shadow: 0 0 5px #0f0;
+}
+
+.ff-materia-slot.filled-blue {
+    background: radial-gradient(circle at 30% 30%, #88f, #006);
+    box-shadow: 0 0 5px #00f;
+}
+
+.ff-materia-slot.filled-red {
+    background: radial-gradient(circle at 30% 30%, #f88, #600);
+    box-shadow: 0 0 5px #f00;
+}
+
+.ff-materia-slot.filled-yellow {
+    background: radial-gradient(circle at 30% 30%, #ff8, #660);
+    box-shadow: 0 0 5px #ff0;
+}
+
+.ff-materia-slot.filled-purple {
+    background: radial-gradient(circle at 30% 30%, #f8f, #606);
+    box-shadow: 0 0 5px #f0f;
+}
+
+/* Junction Display (FF8) */
+.ff-junction-display {
+    margin-top: 10px;
+    font-family: sans-serif;
+    /* Tech font usually */
+}
+
+.ff-junction-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.ff-list-group-item {
+    padding: 10px 15px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-bottom: none;
+    background: rgba(0, 0, 0, 0.2);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.ff-list-group-item:first-child {
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+}
+
+.ff-list-group-item:last-child {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+}
+
+.ff-list-group-item.active {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: var(--highlight-color, #fff);
+    font-weight: bold;
+}
+
+.ff-list-group-item:hover {
+    background: rgba(255, 255, 255, 0.1);
+    cursor: pointer;
+}
+
+/* --- Pagination --- */
+.ff-pagination {
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+    padding: 0;
+    margin: 15px 0;
+    gap: 5px;
+}
+
+.ff-page-item {
+    display: inline-block;
+}
+
+.ff-page-link {
+    display: block;
+    padding: 8px 12px;
+    text-decoration: none;
+    color: inherit;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    background: rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    transition: all 0.2s;
+    min-width: 40px;
+    text-align: center;
+}
+
+.ff-page-link:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: var(--highlight-color, #fff);
+}
+
+.ff-page-item.active .ff-page-link {
+    background: rgba(255, 255, 255, 0.3);
+    border-color: var(--highlight-color, #fff);
+    font-weight: bold;
+}
+
+.ff-page-item.disabled .ff-page-link {
+    opacity: 0.5;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+/* --- Game Specific Components --- */
+
+/* Battle Menu (ATB) */
+.ff-battle-menu {
+    margin-top: 10px;
+}
+
+.ff-atb-gauge {
+    height: 10px;
+    background: #333;
+    border: 1px solid #777;
+    margin-bottom: 10px;
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.ff-atb-bar {
+    height: 100%;
+    background: linear-gradient(to right, #888, #fff);
+    width: 0%;
+    transition: width 0.5s linear;
+    animation: atb-fill 3s infinite linear;
+}
+
+@keyframes atb-fill {
+    0% {
+        width: 0%;
+    }
+
+    100% {
+        width: 100%;
+    }
+}
+
+/* Materia Slots (FF7) */
+.ff-materia-container {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.ff-materia-slots {
+    display: flex;
+    align-items: center;
+    background: #222;
+    padding: 5px;
+    border-radius: 20px;
+    box-shadow: inset 0 0 5px #000;
+    gap: 5px;
+}
+
+.ff-materia-slots.linked {
+    gap: 15px;
+    /* Space for link */
+    position: relative;
+}
+
+.ff-materia-slots.linked::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 20px;
+    height: 4px;
+    background: #555;
+    z-index: 0;
+}
+
+.ff-materia-slot {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: #111;
+    box-shadow: inset 0 0 3px #000;
+    border: 1px solid #444;
+    position: relative;
+    z-index: 1;
+}
+
+.ff-materia-slot.filled-green {
+    background: radial-gradient(circle at 30% 30%, #8f8, #060);
+    box-shadow: 0 0 5px #0f0;
+}
+
+.ff-materia-slot.filled-blue {
+    background: radial-gradient(circle at 30% 30%, #88f, #006);
+    box-shadow: 0 0 5px #00f;
+}
+
+.ff-materia-slot.filled-red {
+    background: radial-gradient(circle at 30% 30%, #f88, #600);
+    box-shadow: 0 0 5px #f00;
+}
+
+.ff-materia-slot.filled-yellow {
+    background: radial-gradient(circle at 30% 30%, #ff8, #660);
+    box-shadow: 0 0 5px #ff0;
+}
+
+.ff-materia-slot.filled-purple {
+    background: radial-gradient(circle at 30% 30%, #f8f, #606);
+    box-shadow: 0 0 5px #f0f;
+}
+
+/* Junction Display (FF8) */
+.ff-junction-display {
+    margin-top: 10px;
+    font-family: sans-serif;
+    /* Tech font usually */
+}
+
+.ff-junction-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.ff-junction-stat {
+    color: #aaa;
+}
+
+.ff-junction-spell {
+    color: #fff;
+    text-shadow: 0 0 2px #fff;
+}
+
+/* --- Form Components --- */
+
+/* Text Inputs & Textareas */
+.ff-input,
+.ff-select,
+.ff-textarea {
+    width: 100%;
+    padding: 10px;
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: #fff;
+    font-family: inherit;
+    border-radius: 4px;
+    box-sizing: border-box;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.ff-input:focus,
+.ff-select:focus,
+.ff-textarea:focus {
+    outline: none;
+    border-color: var(--highlight-color, #fff);
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
+    background: rgba(0, 0, 0, 0.5);
+}
+
+/* Custom Checkboxes */
+.ff-checkbox {
+    display: block;
+    position: relative;
+    padding-left: 30px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    user-select: none;
+}
+
+.ff-checkbox input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+.ff-checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 20px;
+    width: 20px;
+    background-color: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 3px;
+}
+
+.ff-checkbox:hover input~.ff-checkmark {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.ff-checkbox input:checked~.ff-checkmark {
+    background-color: var(--highlight-color, #fff);
+    border-color: var(--highlight-color, #fff);
+}
+
+.ff-checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+.ff-checkbox input:checked~.ff-checkmark:after {
+    display: block;
+}
+
+.ff-checkbox .ff-checkmark:after {
+    left: 6px;
+    top: 2px;
+    width: 5px;
+    height: 10px;
+    border: solid #000;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+
+/* Custom Radios */
+.ff-radio {
+    display: block;
+    position: relative;
+    padding-left: 30px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    user-select: none;
+}
+
+.ff-radio input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.ff-radio-mark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 20px;
+    width: 20px;
+    background-color: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+}
+
+.ff-radio:hover input~.ff-radio-mark {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.ff-radio input:checked~.ff-radio-mark {
+    background-color: transparent;
+    border-color: var(--highlight-color, #fff);
+}
+
+.ff-radio-mark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+.ff-radio input:checked~.ff-radio-mark:after {
+    display: block;
+}
+
+.ff-radio .ff-radio-mark:after {
+    top: 4px;
+    left: 4px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--highlight-color, #fff);
+    box-shadow: 0 0 5px var(--highlight-color, #fff);
+}
+
+/* Toggles */
+.ff-toggle {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 24px;
+}
+
+.ff-toggle input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.ff-slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    transition: .4s;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 24px;
+}
+
+.ff-slider:before {
+    position: absolute;
+    content: "";
+    height: 16px;
+    width: 16px;
+    left: 4px;
+    bottom: 3px;
+    background-color: #fff;
+    transition: .4s;
+    border-radius: 50%;
+}
+
+.ff-toggle input:checked+.ff-slider {
+    background-color: var(--highlight-color, #2196F3);
+    border-color: var(--highlight-color, #2196F3);
+}
+
+.ff-toggle input:checked+.ff-slider:before {
+    transform: translateX(26px);
+    background-color: #000;
+}
+
+/* Validation States */
+.ff-input.is-valid,
+.ff-select.is-valid,
+.ff-textarea.is-valid {
+    border-color: #0f0;
+    box-shadow: 0 0 5px rgba(0, 255, 0, 0.3);
+}
+
+.ff-input.is-invalid,
+.ff-select.is-invalid,
+.ff-textarea.is-invalid {
+    border-color: #f00;
+    box-shadow: 0 0 5px rgba(255, 0, 0, 0.3);
+}
+
+.ff-feedback-success {
+    color: #0f0;
+    font-size: 0.85em;
+    margin-top: 5px;
+    display: block;
+}
+
+.ff-feedback-error {
+    color: #f00;
+    font-size: 0.85em;
+    margin-top: 5px;
+    display: block;
+}

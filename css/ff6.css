@@ -1,0 +1,209 @@
+/* FF6 Theme Variables */
+.theme-ff6 {
+    --window-border-radius: 5px;
+    --window-bg-color: #21217c;
+
+    /* Gradients for the complex border */
+    --border-gradient-corners: #6b6e87, #71767e, #c2c1c5, #c9c9cb, #ccc9cc, #c8c4c0, #7c7874, #c0bcb3;
+    --border-gradient-sides: #6b6e87, #71767e, #c2c1c5, #c9c9cb, #ccc9cc, #c8c4c0, #7c7874, #c0bcb3;
+
+    /* Inner content background */
+    --content-bg-gradient: linear-gradient(to bottom, #6d6db3, #5554ad, #5352a8, #3f4791, #354783, #32348d, #32328a, #313188, #222279, #14156d, #02045a, #040233, #020134, #020134);
+
+    --highlight-color: #edd758;
+    --font-family: 'Final Fantasy VI', 'Georgia', serif;
+}
+
+.theme-ff6 {
+    font-family: var(--font-family);
+    font-size: 18px;
+    line-height: 1.6;
+    letter-spacing: -0.5px;
+    /* Tighten spacing for CRT effect */
+}
+
+.theme-ff6 .ff-window {
+    border-radius: var(--window-border-radius);
+    padding: calc(var(--window-border-radius) + 5px);
+    background:
+        /* Corners */
+        radial-gradient(farthest-side at bottom right, var(--border-gradient-corners)) top left / var(--window-border-radius) var(--window-border-radius),
+        radial-gradient(farthest-side at top right, var(--border-gradient-corners)) bottom left / var(--window-border-radius) var(--window-border-radius),
+        radial-gradient(farthest-side at bottom left, var(--border-gradient-corners)) top right / var(--window-border-radius) var(--window-border-radius),
+        radial-gradient(farthest-side at top left, var(--border-gradient-corners)) bottom right / var(--window-border-radius) var(--window-border-radius),
+        /* Borders */
+        linear-gradient(to top, var(--border-gradient-sides)) top / calc(100% - 2 * var(--window-border-radius)) var(--window-border-radius),
+        linear-gradient(to bottom, var(--border-gradient-sides)) bottom / calc(100% - 2 * var(--window-border-radius)) var(--window-border-radius),
+        linear-gradient(to right, var(--border-gradient-sides)) right / var(--window-border-radius) calc(100% - 2 * var(--window-border-radius)),
+        linear-gradient(to left, var(--border-gradient-sides)) left / var(--window-border-radius) calc(100% - 2 * var(--window-border-radius));
+    background-repeat: no-repeat;
+    box-shadow: 0 0 0 1px #000;
+    /* Outer black line */
+    position: relative;
+}
+
+.theme-ff6 .ff-window-content {
+    background: var(--content-bg-gradient);
+    padding: 15px;
+    border: 1px solid #555;
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.2);
+    /* Inner border effect */
+}
+
+/* --- FF6 Component Overrides --- */
+
+/* Sliders: Classic grey style */
+.theme-ff6 input[type=range].ff-range::-webkit-slider-runnable-track {
+    background: #444;
+    border: 1px solid #888;
+    height: 6px;
+}
+
+.theme-ff6 input[type=range].ff-range::-webkit-slider-thumb {
+    background: #edd758;
+    border: 1px solid #fff;
+    width: 12px;
+    height: 12px;
+    margin-top: -4px;
+}
+
+/* FF6 Theme Variables */
+.theme-ff6 {
+    --window-border-radius: 5px;
+    --window-bg-color: #21217c;
+
+    /* Gradients for the complex border */
+    --border-gradient-corners: #6b6e87, #71767e, #c2c1c5, #c9c9cb, #ccc9cc, #c8c4c0, #7c7874, #c0bcb3;
+    --border-gradient-sides: #6b6e87, #71767e, #c2c1c5, #c9c9cb, #ccc9cc, #c8c4c0, #7c7874, #c0bcb3;
+
+    /* Inner content background */
+    --content-bg-gradient: linear-gradient(to bottom, #6d6db3, #5554ad, #5352a8, #3f4791, #354783, #32348d, #32328a, #313188, #222279, #14156d, #02045a, #040233, #020134, #020134);
+
+    --highlight-color: #edd758;
+    --font-family: 'Final Fantasy VI', 'Georgia', serif;
+}
+
+.theme-ff6 {
+    font-family: var(--font-family);
+    font-size: 18px;
+    line-height: 1.6;
+    letter-spacing: -0.5px;
+    /* Tighten spacing for CRT effect */
+}
+
+.theme-ff6 .ff-window {
+    border-radius: var(--window-border-radius);
+    padding: calc(var(--window-border-radius) + 5px);
+    background:
+        /* Corners */
+        radial-gradient(farthest-side at bottom right, var(--border-gradient-corners)) top left / var(--window-border-radius) var(--window-border-radius),
+        radial-gradient(farthest-side at top right, var(--border-gradient-corners)) bottom left / var(--window-border-radius) var(--window-border-radius),
+        radial-gradient(farthest-side at bottom left, var(--border-gradient-corners)) top right / var(--window-border-radius) var(--window-border-radius),
+        radial-gradient(farthest-side at top left, var(--border-gradient-corners)) bottom right / var(--window-border-radius) var(--window-border-radius),
+        /* Borders */
+        linear-gradient(to top, var(--border-gradient-sides)) top / calc(100% - 2 * var(--window-border-radius)) var(--window-border-radius),
+        linear-gradient(to bottom, var(--border-gradient-sides)) bottom / calc(100% - 2 * var(--window-border-radius)) var(--window-border-radius),
+        linear-gradient(to right, var(--border-gradient-sides)) right / var(--window-border-radius) calc(100% - 2 * var(--window-border-radius)),
+        linear-gradient(to left, var(--border-gradient-sides)) left / var(--window-border-radius) calc(100% - 2 * var(--window-border-radius));
+    background-repeat: no-repeat;
+    box-shadow: 0 0 0 1px #000;
+    /* Outer black line */
+    position: relative;
+}
+
+.theme-ff6 .ff-window-content {
+    background: var(--content-bg-gradient);
+    padding: 15px;
+    border: 1px solid #555;
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.2);
+    /* Inner border effect */
+}
+
+/* --- FF6 Component Overrides --- */
+
+/* Sliders: Classic grey style */
+.theme-ff6 input[type=range].ff-range::-webkit-slider-runnable-track {
+    background: #444;
+    border: 1px solid #888;
+    height: 6px;
+}
+
+.theme-ff6 input[type=range].ff-range::-webkit-slider-thumb {
+    background: #edd758;
+    border: 1px solid #fff;
+    width: 12px;
+    height: 12px;
+    margin-top: -4px;
+}
+
+/* Navs */
+.theme-ff6 .ff-nav-link.active {
+    background: rgba(237, 215, 88, 0.2);
+    border-left: 3px solid #edd758;
+}
+
+/* Cards */
+.theme-ff6 .ff-card {
+    border: 1px solid #888;
+    background: rgba(68, 68, 68, 0.8);
+}
+
+/* Dropdowns */
+.theme-ff6 .ff-dropdown-menu {
+    background: #21217c;
+    background: linear-gradient(to bottom, #21217c, #14156d);
+    border: 1px solid #fff;
+    box-shadow: 0 0 0 1px #000;
+    border-radius: 4px;
+}
+
+.theme-ff6 .ff-dropdown-item:hover {
+    background: rgba(237, 215, 88, 0.2);
+}
+
+/* Tooltips */
+.theme-ff6 .ff-tooltip-text {
+    background: #21217c;
+    border: 1px solid #fff;
+    box-shadow: 0 0 0 1px #000;
+    border-radius: 4px;
+}
+
+.theme-ff6 .ff-tooltip-text::after {
+    border-color: #21217c transparent transparent transparent;
+}
+
+/* List Groups */
+.theme-ff6 .ff-list-group-item {
+    border-color: #888;
+}
+
+.theme-ff6 .ff-list-group-item.active {
+    background: rgba(237, 215, 88, 0.2);
+    border-color: #edd758;
+}
+
+/* Pagination */
+.theme-ff6 .ff-page-link {
+    background: #444;
+    border-color: #888;
+}
+
+.theme-ff6 .ff-page-link:hover,
+.theme-ff6 .ff-page-item.active .ff-page-link {
+    background: #21217c;
+    border-color: #edd758;
+    color: #edd758;
+}
+
+/* Modals */
+.theme-ff6 .ff-modal .ff-window {
+    box-shadow: 0 0 0 1px #000;
+}
+
+/* Alerts */
+.theme-ff6 .ff-alert {
+    border: 1px solid #fff;
+    background: rgba(33, 33, 124, 0.8);
+    box-shadow: 0 0 0 1px #000;
+}

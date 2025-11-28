@@ -1,0 +1,70 @@
+/* Demo & utility styles moved from inline <style> in index.html */
+
+body.demo-demo {
+  /* kept minimal; primary font and colors come from core.css */
+  padding: 20px;
+}
+
+.controls {
+  margin-bottom: 30px;
+  text-align: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+}
+
+.showcase-area {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+@media (max-width: 768px) {
+  .grid-2 {
+    grid-template-columns: 1fr;
+  }
+}
+
+.page-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.ff-window-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.mb-10 { margin-bottom: 10px; }
+.mb-15 { margin-bottom: 15px; }
+.mb-20 { margin-bottom: 20px; }
+.mt-20 { margin-top: 20px; }
+.actions-right { margin-top: 20px; text-align: right; }
+.label-block { display: block; margin-bottom: 5px; }
+
+/* Small utilities */
+.m-0 { margin: 0; }
+.mt-0 { margin-top: 0; }
+.mb-5 { margin-bottom: 5px; }
+.w-100 { width: 100%; }
+
+.d-flex-space { display: flex; justify-content: space-between; align-items: center; }
+.d-flex { display: flex; }
+.gap-10 { gap: 10px; }
+
+.attrs-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+
+/* Swatches used in demo */
+.window-swatch { width: 20px; height: 20px; border: 1px solid #fff; display: inline-block; }
+.swatch-red { background: #f00; }
+.swatch-green { background: #0f0; }
+.swatch-blue { background: #00f; }
+
