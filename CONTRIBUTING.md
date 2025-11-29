@@ -1,90 +1,78 @@
 # Contributing to Final Fantasy CSS
 
-Thanks for wanting to contribute! This project follows a documentation-first workflow, but the `README.md` is the canonical, reviewer-focused reference for the library and includes a concise components quick reference. Per-component markdown files in `docs/components/` have been consolidated into the README; those files remain as stubs for longer notes only. Use `examples/components/` for live previews.
+Thank you for your interest in contributing! This project aims to create authentic Final Fantasy-themed UI components for the web.
 
-Please follow these steps when contributing:
+## 🎯 What We Need
 
-1. Fork the repo and open a branch for your work.
+The current themes are **rough approximations** that need refinement. We're looking for contributors to help make these themes pixel-perfect matches to the original games.
 
-2. Update or add component documentation
-   - Add a markdown file to `docs/components/` (use `kebab-case` filenames, e.g. `ff-navbar.md`).
-   - Each doc should include at least:
-     - A title (`# Component Name`)
-     - A short description
-     - Markup example(s) in fenced code blocks
-     - Usage notes (classes, `data-*` attributes)
-     - Accessibility notes (keyboard, ARIA roles) where applicable
+### High Priority
 
-   Example component skeleton (paste into a new `docs/components/<name>.md`):
+1. **Theme Refinement** - The existing themes (FF1, FF4, FF6, FF7, FF8, FF9, FF13, FF15) need significant work:
+   - Colors, gradients, and borders should match the original games exactly
+   - Typography and spacing need adjustment
+   - Cursor animations and interactive states need polish
+   
+2. **Missing Game-Specific Components** - Each game has unique UI elements:
+   - Limit Break meters
+   - Summon selection screens
+   - Battle menus
+   - Party management interfaces
 
-   ```md
-   # FF Navbar
+3. **Animation and Transitions** - The original games had specific timing and animation styles that should be replicated
 
-   Small description of the navbar component.
+### Medium Priority
 
-   ## Markup
+- Cross-browser testing and fixes
+- Accessibility improvements (keyboard navigation, ARIA labels, screen reader support)
+- Documentation and examples
+- Performance optimizations
 
-   ```html
-   <nav class="ff-navbar"> ... </nav>
+## 🚀 Getting Started
+
+1. **Fork the repository**
+2. **Clone your fork**
+   ```bash
+   git clone https://github.com/YOUR_USERNAME/Final-Fantasy-CSS.git
+   cd Final-Fantasy-CSS
    ```
 
-   ## Usage
+3. **Make your changes**
+   - Theme files are in `css/` (e.g., `css/ff7.css`)
+   - Components are in `css/components/`
+   - Test your changes by opening `index.html` in a browser
 
-   - `ff-navbar` : base class
-   - `data-*` attributes: explain any actions
+4. **Test thoroughly**
+   - Check all themes switch properly
+   - Verify components work in different browsers
+   - Ensure your changes don't break existing functionality
 
-   ## Accessibility
+5. **Submit a Pull Request**
+   - Describe what you changed and why
+   - Include screenshots if you modified visual elements
+   - Reference any issues your PR addresses
 
-   - Notes about keyboard support and ARIA.
-   ```
+## 📝 Style Guide
 
-3. Add or update example preview (optional but encouraged)
-   - Create or update an HTML preview in `examples/components/` (filename should match the doc intent, e.g. `navbar.html`).
-   - Keep examples lightweight and self-contained — link to `../../css/final-fantasy.css` and `../../js/ff.js` as needed.
+- Use CSS custom properties (CSS variables) for theme values
+- Prefix all classes with `ff-` (e.g., `.ff-button`, `.ff-window`)
+- Theme-specific overrides should be scoped (e.g., `.theme-ff7 .ff-button`)
+- Comment your code, especially for complex visual effects
+- Follow the existing naming conventions
 
+## 🎨 Design Resources
 
-4. Run the build locally (optional)
+When refining themes, reference:
+- Original game screenshots and videos
+- Game manuals and art books
+- Fan wikis and sprite databases
 
-   If you want to regenerate pre-rendered docs or the distribution stylesheet, you can run the provided Node scripts locally. This repository does not require CI to run these steps — builds are manual and should be committed along with source changes when needed.
+## 💬 Questions?
 
-   Install dependencies (Node.js required):
+- Open an issue for discussion
+- Check existing issues to see if your question was answered
+- Be respectful and patient - we're all fans working together!
 
-   ```powershell
-   npm install
-   npm run build:docs
-   ```
+## 📜 License
 
-   Or run the full build (CSS + docs):
-
-   ```powershell
-   npm run build
-   ```
-
-   Generated static docs will land in `docs/site/generated/` and you can open `docs/site/generated/index.html` in a browser.
-
-Local dev server
-
-You can run a quick local server with live reload for `docs/site`:
-
-```powershell
-npm install
-npm run dev:docs
-```
-
-This runs `live-server` on port `5173` and opens the interactive docs viewer. It's useful for previewing edits to markdown and example HTML files before running the full `build:docs` step.
-
-5. Commit and open a Pull Request
-
-   - Follow conventional commits where practical; include a short description of what changed and why.
-   - If you added a new component, add its doc and example. Builds and generated docs are not run by CI for this repository; please run the build locally and include generated docs in your PR if you want reviewers to see rendered output.
-
-Notes
-- Fonts in `FF6/fonts/` may have licensing restrictions; double-check before attempting redistribution.
-
-- The CI builds and commits generated docs into the repository `docs/` folder on `master`. Configure GitHub Pages (Repository → Settings → Pages) to serve content from the `docs/` folder on the `master` branch.
-
-If you'd like, I can extend the workflow to post the generated docs link into PRs automatically (helpful for reviewers).
-
-If you'd like, add a short example of your intended change to the issue or PR so someone can quickly review.
-
-Thanks — we appreciate your help in making this project better!
+By contributing, you agree that your contributions will be licensed under the same license as the project.
