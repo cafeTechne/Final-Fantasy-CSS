@@ -3,11 +3,14 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  flex-wrap: wrap;
   gap: 12px;
   padding: 10px 14px;
   background: rgba(0, 0, 0, 0.25);
   border: 1px solid rgba(255, 255, 255, 0.04);
   border-radius: 6px;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 .ff-navbar-brand {
@@ -15,6 +18,9 @@
   font-size: 1rem;
   text-decoration: none;
   color: inherit;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .ff-navbar-nav {
@@ -24,6 +30,7 @@
   list-style: none;
   margin: 0;
   padding: 0;
+  flex-wrap: wrap;
 }
 
 .ff-navbar .ff-nav-link {
@@ -32,6 +39,7 @@
   color: inherit;
   text-decoration: none;
   transition: background 0.2s;
+  white-space: nowrap;
 }
 
 .ff-navbar .ff-nav-link:hover {
@@ -57,7 +65,6 @@
 @media (max-width: 720px) {
   .ff-navbar {
     padding: 8px;
-    flex-wrap: wrap;
   }
 
   .ff-navbar-nav {
@@ -76,5 +83,10 @@
 
   .ff-navbar-toggle {
     display: inline-block;
+  }
+
+  .ff-navbar .ff-nav-link {
+    width: 100%;
+    text-align: center;
   }
 }
