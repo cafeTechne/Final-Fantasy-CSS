@@ -1,9 +1,62 @@
-/*
-  ff-accordion.css
-  Placeholder for accordion / collapse component styles.
+/* --- Accordion --- */
+.ff-accordion {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
 
-  Plan:
-  - Provide collapsible panels, aria-expanded support, and smooth transitions
-*/
+.ff-accordion-item {
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+  overflow: hidden;
+}
 
-/* TODO: implement accordion styles */
+.ff-accordion-header {
+  width: 100%;
+  padding: 15px;
+  background: rgba(255, 255, 255, 0.05);
+  border: none;
+  border-bottom: 1px solid transparent;
+  color: inherit;
+  text-align: left;
+  font-family: inherit;
+  font-size: 1em;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background 0.2s;
+}
+
+.ff-accordion-header:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.ff-accordion-header::after {
+  content: "▼";
+  font-size: 0.8em;
+  transition: transform 0.3s;
+}
+
+.ff-accordion-item.active .ff-accordion-header {
+  border-bottom-color: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.ff-accordion-item.active .ff-accordion-header::after {
+  transform: rotate(180deg);
+}
+
+.ff-accordion-body {
+  padding: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 320ms cubic-bezier(.2,.9,.3,1), padding 320ms cubic-bezier(.2,.9,.3,1);
+}
+
+.ff-accordion-item.active .ff-accordion-body {
+  padding: 15px;
+  max-height: 600px;
+  /* Arbitrary large height for transition */
+}

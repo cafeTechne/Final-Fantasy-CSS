@@ -1,0 +1,43 @@
+/* --- Tabs (tablist + tabs + panels) --- */
+.ff-tabs {
+  width: 100%;
+}
+
+.ff-tablist {
+  display: flex;
+  gap: 8px;
+  list-style: none;
+  padding: 0;
+  margin: 0 0 12px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+
+.ff-tab {
+  padding: 8px 12px;
+  cursor: pointer;
+  border: 1px solid transparent;
+  border-bottom: 2px solid transparent;
+  background: transparent;
+}
+
+.ff-tab[aria-selected="true"], .ff-tab.active {
+  background: rgba(255,255,255,0.06);
+  border-color: rgba(255,255,255,0.06);
+  border-bottom-color: var(--highlight-color, #fff);
+  font-weight: bold;
+}
+
+.ff-tabpanel {
+  display: none;
+  padding: 12px 0;
+}
+
+.ff-tabpanel[hidden="false"], .ff-tabpanel.active {
+  display: block;
+}
+
+/* keyboard focus ring */
+.ff-tab:focus {
+  outline: 2px dashed rgba(255,255,255,0.15);
+  outline-offset: 3px;
+}

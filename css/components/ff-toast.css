@@ -1,9 +1,60 @@
-/*
-  ff-toast.css
-  Placeholder for toast / ephemeral notification styles.
+/* --- Toast --- */
+.ff-toast-container {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1070;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  pointer-events: none;
+}
 
-  Plan:
-  - Provide stacked toasts container, show/hide animations, durations
-*/
+.ff-toast {
+  width: 350px;
+  max-width: 100%;
+  background-color: rgba(0, 0, 0, 0.9);
+  background-clip: padding-box;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+  border-radius: 4px;
+  opacity: 0;
+  transform: translateX(20px) scale(.995);
+  transition: opacity 360ms cubic-bezier(.2,.9,.3,1), transform 360ms cubic-bezier(.2,.9,.3,1);
+  pointer-events: auto;
+}
 
-/* TODO: implement toast styles */
+.ff-toast.show {
+  opacity: 1;
+  transform: translateX(0) scale(1);
+}
+
+.ff-toast-header {
+  display: flex;
+  align-items: center;
+  padding: 8px 12px;
+  color: inherit;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  border-top-left-radius: calc(4px - 1px);
+  border-top-right-radius: calc(4px - 1px);
+}
+
+.ff-toast-body {
+  padding: 12px;
+}
+
+.ff-toast-close {
+  margin-left: auto;
+  background: transparent;
+  border: none;
+  color: inherit;
+  font-size: 1.2em;
+  cursor: pointer;
+  opacity: 0.7;
+  line-height: 1;
+}
+
+.ff-toast-close:hover {
+  opacity: 1;
+}

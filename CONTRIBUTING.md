@@ -42,7 +42,10 @@ Please follow these steps when contributing:
    - Create or update an HTML preview in `examples/components/` (filename should match the doc intent, e.g. `navbar.html`).
    - Keep examples lightweight and self-contained — link to `../../css/final-fantasy.css` and `../../js/ff.js` as needed.
 
-4. Run the build locally
+
+4. Run the build locally (optional)
+
+   If you want to regenerate pre-rendered docs or the distribution stylesheet, you can run the provided Node scripts locally. This repository does not require CI to run these steps — builds are manual and should be committed along with source changes when needed.
 
    Install dependencies (Node.js required):
 
@@ -59,8 +62,6 @@ Please follow these steps when contributing:
 
    Generated static docs will land in `docs/site/generated/` and you can open `docs/site/generated/index.html` in a browser.
 
-   For interactive editing preview open `docs/site/index.html` directly (it uses a client-side markdown renderer).
-
 Local dev server
 
 You can run a quick local server with live reload for `docs/site`:
@@ -75,7 +76,7 @@ This runs `live-server` on port `5173` and opens the interactive docs viewer. It
 5. Commit and open a Pull Request
 
    - Follow conventional commits where practical; include a short description of what changed and why.
-   - If you added a new component, add its doc and example; the CI will build and publish the generated docs.
+   - If you added a new component, add its doc and example. Builds and generated docs are not run by CI for this repository; please run the build locally and include generated docs in your PR if you want reviewers to see rendered output.
 
 Notes
 - Fonts in `FF6/fonts/` may have licensing restrictions; double-check before attempting redistribution.

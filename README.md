@@ -299,14 +299,9 @@ Below is a concise, canonical reference for the core components. This README is 
 
 ## License & Fonts
 
-Preview deploys
+Preview deploys / CI
 
-This repository can create preview deploys for pull requests using Netlify. To enable it, add the following repository secrets in GitHub (Settings → Secrets):
-
-- `NETLIFY_AUTH_TOKEN` — your Netlify personal access token with deploy permissions.
-- `NETLIFY_SITE_ID` — the Netlify site ID to use for preview deploys.
-
-When configured, pull requests will trigger a preview deploy; the workflow attaches Netlify's deploy output as an artifact which includes the preview URL.
+GitHub Actions workflows and Netlify preview deploys have been disabled for this repository to avoid automated runs and notification spam. Builds and deploys are intentionally manual for now — see the "Build & Local Dev" section for local build steps.
 
 ---
 If you'd like, I can now convert the CSS into `src/` Sass partials and switch the build to use `sass` (modular workflow). Or I can add a small docs site (VitePress) to host live examples.

@@ -2,6 +2,15 @@
 /* Structural styles for components. Theme files override colors/borders. */
 
 @import url("components/ff-navbar.css");
+@import url("components/ff-accordion.css");
+@import url("components/ff-avatar.css");
+@import url("components/ff-input-group.css");
+@import url("components/ff-popover.css");
+@import url("components/ff-spinner.css");
+@import url("components/ff-table.css");
+@import url("components/ff-toast.css");
+@import url("components/ff-chips.css");
+@import url("components/ff-tabs.css");
 
 /* --- Breadcrumbs --- */
 .ff-breadcrumb {
@@ -280,201 +289,6 @@
     transform: translateX(5px);
     border-left: 3px solid var(--highlight-color, #fff);
     padding-left: 12px;
-}
-
-/* --- Pagination --- */
-.ff-pagination {
-    display: flex;
-    flex-direction: row;
-    list-style: none;
-    padding: 0;
-    margin: 15px 0;
-    gap: 5px;
-}
-
-.ff-page-item {
-    display: inline-block;
-}
-
-.ff-page-link {
-    display: block;
-    padding: 8px 12px;
-    text-decoration: none;
-    color: inherit;
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    background: rgba(0, 0, 0, 0.2);
-    cursor: pointer;
-    transition: all 0.2s;
-    min-width: 40px;
-    text-align: center;
-}
-
-.ff-page-link:hover {
-    background: rgba(255, 255, 255, 0.2);
-    border-color: var(--highlight-color, #fff);
-}
-
-.ff-page-item.active .ff-page-link {
-    background: rgba(255, 255, 255, 0.3);
-    border-color: var(--highlight-color, #fff);
-    font-weight: bold;
-}
-
-.ff-page-item.disabled .ff-page-link {
-    opacity: 0.5;
-    cursor: not-allowed;
-    pointer-events: none;
-}
-
-/* --- Game Specific Components --- */
-
-/* Battle Menu (ATB) */
-.ff-battle-menu {
-    margin-top: 10px;
-}
-
-.ff-atb-gauge {
-    height: 10px;
-    background: #333;
-    border: 1px solid #777;
-    margin-bottom: 10px;
-    border-radius: 2px;
-    overflow: hidden;
-}
-
-.ff-atb-bar {
-    height: 100%;
-    background: linear-gradient(to right, #888, #fff);
-    width: 0%;
-    transition: width 0.5s linear;
-    animation: atb-fill 3s infinite linear;
-}
-
-@keyframes atb-fill {
-    0% {
-        width: 0%;
-    }
-
-    100% {
-        width: 100%;
-    }
-}
-
-/* Materia Slots (FF7) */
-.ff-materia-container {
-    display: flex;
-    gap: 10px;
-    margin-top: 10px;
-}
-
-.ff-materia-slots {
-    display: flex;
-    align-items: center;
-    background: #222;
-    padding: 5px;
-    border-radius: 20px;
-    box-shadow: inset 0 0 5px #000;
-    gap: 5px;
-}
-
-.ff-materia-slots.linked {
-    gap: 15px;
-    /* Space for link */
-    position: relative;
-}
-
-.ff-materia-slots.linked::after {
-    content: "";
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    width: 20px;
-    height: 4px;
-    background: #555;
-    z-index: 0;
-}
-
-.ff-materia-slot {
-    width: 24px;
-    height: 24px;
-    border-radius: 50%;
-    background: #111;
-    box-shadow: inset 0 0 3px #000;
-    border: 1px solid #444;
-    position: relative;
-    z-index: 1;
-}
-
-.ff-materia-slot.filled-green {
-    background: radial-gradient(circle at 30% 30%, #8f8, #060);
-    box-shadow: 0 0 5px #0f0;
-}
-
-.ff-materia-slot.filled-blue {
-    background: radial-gradient(circle at 30% 30%, #88f, #006);
-    box-shadow: 0 0 5px #00f;
-}
-
-.ff-materia-slot.filled-red {
-    background: radial-gradient(circle at 30% 30%, #f88, #600);
-    box-shadow: 0 0 5px #f00;
-}
-
-.ff-materia-slot.filled-yellow {
-    background: radial-gradient(circle at 30% 30%, #ff8, #660);
-    box-shadow: 0 0 5px #ff0;
-}
-
-.ff-materia-slot.filled-purple {
-    background: radial-gradient(circle at 30% 30%, #f8f, #606);
-    box-shadow: 0 0 5px #f0f;
-}
-
-/* Junction Display (FF8) */
-.ff-junction-display {
-    margin-top: 10px;
-    font-family: sans-serif;
-    /* Tech font usually */
-}
-
-.ff-junction-row {
-    display: flex;
-    justify-content: space-between;
-    padding: 5px 0;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.ff-list-group-item {
-    padding: 10px 15px;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    border-bottom: none;
-    background: rgba(0, 0, 0, 0.2);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.ff-list-group-item:first-child {
-    border-top-left-radius: 4px;
-    border-top-right-radius: 4px;
-}
-
-.ff-list-group-item:last-child {
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-    border-bottom-left-radius: 4px;
-    border-bottom-right-radius: 4px;
-}
-
-.ff-list-group-item.active {
-    background: rgba(255, 255, 255, 0.2);
-    border-color: var(--highlight-color, #fff);
-    font-weight: bold;
-}
-
-.ff-list-group-item:hover {
-    background: rgba(255, 255, 255, 0.1);
-    cursor: pointer;
 }
 
 /* --- Pagination --- */

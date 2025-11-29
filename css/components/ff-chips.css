@@ -1,0 +1,51 @@
+/* --- Chips / Tags / Pills --- */
+.ff-chips {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.ff-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.06);
+  color: inherit;
+  border: 1px solid rgba(255,255,255,0.06);
+  font-size: 0.9em;
+}
+
+.ff-chip .ff-chip-label {
+  display: inline-block;
+}
+
+.ff-chip .ff-chip-remove {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.03);
+  cursor: pointer;
+  font-size: 0.85em;
+  line-height: 1;
+}
+
+.ff-chip--accent {
+  background: linear-gradient(to bottom, rgba(120,176,255,0.14), rgba(120,176,255,0.06));
+  border-color: rgba(120,176,255,0.2);
+}
+
+.ff-chip--small {
+  padding: 4px 8px;
+  font-size: 0.8em;
+}
+
+.ff-chip--outline {
+  background: transparent;
+}

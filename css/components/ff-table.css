@@ -1,9 +1,47 @@
-/*
-  ff-table.css
-  Placeholder for table and data display styles.
+/* --- Table --- */
+.ff-table {
+  width: 100%;
+  margin-bottom: 1rem;
+  color: inherit;
+  border-collapse: collapse;
+}
 
-  Plan:
-  - Add base table styles, striped/hover variants, responsive wrappers
-*/
+.ff-table th,
+.ff-table td {
+  padding: 0.75rem;
+  vertical-align: top;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
 
-/* TODO: implement table styles */
+.ff-table thead th {
+  vertical-align: bottom;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+  text-align: left;
+  font-weight: bold;
+}
+
+.ff-table tbody+tbody {
+  border-top: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.ff-table-striped tbody tr:nth-of-type(odd) {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.ff-table-hover tbody tr:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.ff-table-bordered {
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.ff-table-bordered th,
+.ff-table-bordered td {
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.ff-table-sm th,
+.ff-table-sm td {
+  padding: 0.3rem;
+}

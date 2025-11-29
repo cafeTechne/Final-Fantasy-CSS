@@ -1,44 +1,80 @@
-/* FF Navbar component */
-.ff-navbar{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:12px;
-  padding:10px 14px;
-  background: rgba(0,0,0,0.25);
-  border: 1px solid rgba(255,255,255,0.04);
-  border-radius:6px;
+/* --- Navbar --- */
+.ff-navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 14px;
+  background: rgba(0, 0, 0, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  border-radius: 6px;
 }
-.ff-navbar-brand{
-  font-weight:700;
-  font-size:1rem;
+
+.ff-navbar-brand {
+  font-weight: 700;
+  font-size: 1rem;
+  text-decoration: none;
+  color: inherit;
 }
-.ff-navbar-nav{
-  display:flex;
-  gap:8px;
-  align-items:center;
+
+.ff-navbar-nav {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
-.ff-navbar .ff-nav-link{ padding:8px 12px; border-radius:4px }
-.ff-navbar-toggle{ display:none }
+
+.ff-navbar .ff-nav-link {
+  padding: 8px 12px;
+  border-radius: 4px;
+  color: inherit;
+  text-decoration: none;
+  transition: background 0.2s;
+}
+
+.ff-navbar .ff-nav-link:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.ff-navbar .ff-nav-link.active {
+  background: rgba(255, 255, 255, 0.15);
+  font-weight: bold;
+}
+
+.ff-navbar-toggle {
+  display: none;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: inherit;
+  padding: 5px 10px;
+  cursor: pointer;
+  border-radius: 4px;
+}
 
 /* Responsive: collapse nav into toggle */
-@media (max-width:720px){
-  .ff-navbar{ padding:8px; }
-  .ff-navbar-nav{ display:none; position:absolute; left:0; right:0; top:100%; background:rgba(0,0,0,0.9); padding:10px; flex-direction:column; gap:6px; border-radius:0 0 8px 8px }
-  .ff-navbar.expanded .ff-navbar-nav{ display:flex }
-  .ff-navbar-toggle{ display:inline-flex; background:transparent; border:1px solid rgba(255,255,255,0.06); padding:6px 8px; border-radius:6px }
+@media (max-width: 720px) {
+  .ff-navbar {
+    padding: 8px;
+    flex-wrap: wrap;
+  }
+
+  .ff-navbar-nav {
+    display: none;
+    width: 100%;
+    flex-direction: column;
+    gap: 6px;
+    padding-top: 10px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    margin-top: 10px;
+  }
+
+  .ff-navbar.expanded .ff-navbar-nav {
+    display: flex;
+  }
+
+  .ff-navbar-toggle {
+    display: inline-block;
+  }
 }
-
-/* Accessibility helpers */
-.ff-navbar-nav a{ color:inherit; text-decoration:none }
-.ff-navbar-nav a:focus{ outline:2px solid var(--highlight-color, #c09b6a); outline-offset:2px }
-/*
-  ff-navbar.css
-  Placeholder for site-level navigation (navbar) styles.
-
-  Plan:
-  - Add responsive layout, brand area, nav links, collapse behavior (CSS only where possible)
-  - Add ARIA examples in docs
-*/
-
-/* TODO: implement navbar styles */
