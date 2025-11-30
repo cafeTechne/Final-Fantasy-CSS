@@ -60,21 +60,44 @@ function setTheme(themeName, charName) {
 }
 
 // Modal Functions
+// Modal Functions (Native <dialog>)
 function showModal(modalId) {
     modalId = modalId || 'save-modal';
     const modal = document.getElementById(modalId);
-    if (modal) {
-        modal.classList.add('show');
+    if (modal && modal.showModal) {
+        modal.showModal();
+        modal.classList.add('show'); // Keep for any legacy CSS hooks if needed
     }
 }
 
 function hideModal(modalId) {
     modalId = modalId || 'save-modal';
     const modal = document.getElementById(modalId);
-    if (modal) {
-        modal.classList.remove('show');
+    if (modal && modal.close) {
+        // Add closing class for animation
+        modal.classList.add('closing');
+
+        // Wait for animation to finish before closing
+        modal.addEventListener('animationend', function () {
+            modal.classList.remove('closing');
+            modal.classList.remove('show');
+            modal.close();
+        }, { once: true });
     }
 }
+
+// Close dialog when clicking backdrop
+document.addEventListener('click', function (event) {
+    if (event.target.tagName === 'DIALOG') {
+        const rect = event.target.getBoundingClientRect();
+        const isInDialog = (rect.top <= event.clientY && event.clientY <= rect.top + rect.height &&
+            rect.left <= event.clientX && event.clientX <= rect.left + rect.width);
+
+        if (!isInDialog) {
+            hideModal(event.target.id);
+        }
+    }
+});
 
 // Dropdown Functions
 function toggleDropdown(dropdownId) {
@@ -86,21 +109,21 @@ function toggleDropdown(dropdownId) {
 }
 
 /* Minimal JS API wrappers and event emission for consistency */
-function openDropdownById(id) { const el = document.getElementById(id); if (el) { el.classList.add('show'); document.dispatchEvent(new CustomEvent('ff:dropdown:show',{detail:{dropdown:el}})); } }
-function closeDropdownById(id) { const el = document.getElementById(id); if (el) { el.classList.remove('show'); document.dispatchEvent(new CustomEvent('ff:dropdown:hide',{detail:{dropdown:el}})); } }
+function openDropdownById(id) { const el = document.getElementById(id); if (el) { el.classList.add('show'); document.dispatchEvent(new CustomEvent('ff:dropdown:show', { detail: { dropdown: el } })); } }
+function closeDropdownById(id) { const el = document.getElementById(id); if (el) { el.classList.remove('show'); document.dispatchEvent(new CustomEvent('ff:dropdown:hide', { detail: { dropdown: el } })); } }
 
 function openPopover(popoverEl, triggerEl) {
     if (!popoverEl) return;
     popoverEl.classList.add('show');
-    document.dispatchEvent(new CustomEvent('ff:popover:show',{detail:{popover:popoverEl, trigger:triggerEl||null}}));
+    document.dispatchEvent(new CustomEvent('ff:popover:show', { detail: { popover: popoverEl, trigger: triggerEl || null } }));
 }
 function closePopover(popoverEl) {
     if (!popoverEl) return;
     popoverEl.classList.remove('show');
-    document.dispatchEvent(new CustomEvent('ff:popover:hide',{detail:{popover:popoverEl}}));
+    document.dispatchEvent(new CustomEvent('ff:popover:hide', { detail: { popover: popoverEl } }));
 }
 
-function showToastAPI(message, opts) { opts = opts||{}; const t = opts.timeout||4000; showToast(message, t); }
+function showToastAPI(message, opts) { opts = opts || {}; const t = opts.timeout || 4000; showToast(message, t); }
 
 
 // Single delegated click handler for dropdowns, modals, and close buttons
@@ -134,6 +157,9 @@ document.addEventListener('click', function (event) {
                 break;
             case 'load-game':
                 console.log('Load game (demo)');
+                break;
+            case 'show-toast':
+                showToast('Saved settings to memory.');
                 break;
             default:
                 // unknown action
@@ -286,7 +312,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 })();
 
-// Accordion toggle behavior and Toast helper
+// Accordion toggle behavior
 (function () {
     // Accordion: toggle .active on the item when header clicked
     document.addEventListener('click', function (e) {
@@ -299,49 +325,45 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         }
     });
-
-    // Toast helper
-    function ensureToastContainer() {
-        let c = document.querySelector('.ff-toast-container');
-        if (!c) {
-            c = document.createElement('div');
-            c.className = 'ff-toast-container';
-            document.body.appendChild(c);
-        }
-        return c;
-    }
-
-    function showToast(message, timeout = 4000) {
-        const container = ensureToastContainer();
-        const toast = document.createElement('div');
-        toast.className = 'ff-toast';
-        toast.innerHTML = `<div class="ff-toast-header">Notice <button class="ff-toast-close">&times;</button></div><div class="ff-toast-body">${message}</div>`;
-        container.appendChild(toast);
-        // Force reflow then show
-        requestAnimationFrame(() => toast.classList.add('show'));
-
-        // Close button handler
-        toast.querySelector('.ff-toast-close').addEventListener('click', function () {
-            toast.classList.remove('show');
-            setTimeout(() => toast.remove(), 350);
-        });
-
-        // Auto remove
-        setTimeout(() => {
-            toast.classList.remove('show');
-            setTimeout(() => {
-                try { toast.remove(); } catch (e) { }
-            }, 350);
-        }, timeout);
-    }
-
-    // Demo binding
-    const demoBtn = document.getElementById('show-toast-btn');
-    if (demoBtn) demoBtn.addEventListener('click', function () { showToast('Saved settings to memory.'); });
 })();
 
+// Toast helper
+function ensureToastContainer() {
+    let c = document.querySelector('.ff-toast-container');
+    if (!c) {
+        c = document.createElement('div');
+        c.className = 'ff-toast-container';
+        document.body.appendChild(c);
+    }
+    return c;
+}
+
+function showToast(message, timeout = 4000) {
+    const container = ensureToastContainer();
+    const toast = document.createElement('div');
+    toast.className = 'ff-toast';
+    toast.innerHTML = `<div class="ff-toast-header">Notice <button class="ff-toast-close">&times;</button></div><div class="ff-toast-body">${message}</div>`;
+    container.appendChild(toast);
+    // Force reflow then show
+    requestAnimationFrame(() => toast.classList.add('show'));
+
+    // Close button handler
+    toast.querySelector('.ff-toast-close').addEventListener('click', function () {
+        toast.classList.remove('show');
+        setTimeout(() => toast.remove(), 350);
+    });
+
+    // Auto remove
+    setTimeout(() => {
+        toast.classList.remove('show');
+        setTimeout(() => {
+            try { toast.remove(); } catch (e) { }
+        }, 350);
+    }, timeout);
+}
+
 // Tabs: click + keyboard navigation, ARIA sync
-(function(){
+(function () {
     function activateTab(tab) {
         if (!tab) return;
         const tablist = tab.closest('[role="tablist"]');
@@ -349,8 +371,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // Deactivate all tabs in this tablist
         const tabs = Array.from(tablist.querySelectorAll('[role="tab"]'));
-        tabs.forEach(t=>{
-            t.setAttribute('aria-selected','false');
+        tabs.forEach(t => {
+            t.setAttribute('aria-selected', 'false');
             t.classList.remove('active');
             const pid = t.getAttribute('aria-controls');
             if (pid) {
@@ -360,7 +382,7 @@ document.addEventListener('DOMContentLoaded', function () {
         });
 
         // Activate the chosen tab
-        tab.setAttribute('aria-selected','true');
+        tab.setAttribute('aria-selected', 'true');
         tab.classList.add('active');
         const pid = tab.getAttribute('aria-controls');
         if (pid) {
@@ -368,15 +390,15 @@ document.addEventListener('DOMContentLoaded', function () {
             if (panel) { panel.hidden = false; panel.classList.add('active'); }
         }
         tab.focus();
-        document.dispatchEvent(new CustomEvent('ff:tabs:change',{detail:{tab:tab}}));
+        document.dispatchEvent(new CustomEvent('ff:tabs:change', { detail: { tab: tab } }));
     }
 
-    document.addEventListener('click', function(e){
+    document.addEventListener('click', function (e) {
         const tab = e.target.closest('[role="tab"]');
         if (tab) { activateTab(tab); }
     });
 
-    document.addEventListener('keydown', function(e){
+    document.addEventListener('keydown', function (e) {
         const key = e.key;
         const tab = e.target.closest('[role="tab"]');
         if (!tab) return;
@@ -386,27 +408,27 @@ document.addEventListener('DOMContentLoaded', function () {
         const idx = tabs.indexOf(tab);
         if (key === 'ArrowRight') {
             e.preventDefault();
-            const next = tabs[(idx+1)%tabs.length]; activateTab(next);
+            const next = tabs[(idx + 1) % tabs.length]; activateTab(next);
         } else if (key === 'ArrowLeft') {
             e.preventDefault();
-            const prev = tabs[(idx-1+tabs.length)%tabs.length]; activateTab(prev);
+            const prev = tabs[(idx - 1 + tabs.length) % tabs.length]; activateTab(prev);
         } else if (key === 'Home') {
             e.preventDefault(); activateTab(tabs[0]);
         } else if (key === 'End') {
-            e.preventDefault(); activateTab(tabs[tabs.length-1]);
+            e.preventDefault(); activateTab(tabs[tabs.length - 1]);
         }
     });
 })();
 
 // Chips: removable chips demo behavior
-(function(){
-    document.addEventListener('click', function(e){
+(function () {
+    document.addEventListener('click', function (e) {
         const btn = e.target.closest('.ff-chip-remove');
         if (!btn) return;
         const chip = btn.closest('.ff-chip');
         if (chip) {
             chip.remove();
-            document.dispatchEvent(new CustomEvent('ff:chip:remove',{detail:{chip:chip}}));
+            document.dispatchEvent(new CustomEvent('ff:chip:remove', { detail: { chip: chip } }));
         }
     });
 })();

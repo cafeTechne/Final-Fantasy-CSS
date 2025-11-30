@@ -1,0 +1,31 @@
+/* --- Navigation --- */
+.ff-nav {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0 0 20px 0;
+    gap: 5px;
+}
+
+.ff-nav-item {
+    display: inline-block;
+}
+
+.ff-nav-link {
+    display: block;
+    padding: 10px 15px;
+    text-decoration: none;
+    color: inherit;
+    border-bottom: 2px solid transparent;
+    transition: all 0.2s;
+    cursor: pointer;
+}
+
+.ff-nav-link:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.ff-nav-link.active {
+    border-bottom-color: var(--highlight-color, #fff);
+    background: rgba(255, 255, 255, 0.15);
+}

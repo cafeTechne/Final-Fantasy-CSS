@@ -1,16 +1,36 @@
-/* --- Table --- */
+/* --- Table - Mobile First --- */
+
+/* Responsive wrapper for horizontal scroll */
+.ff-table-responsive {
+  display: block;
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  /* Smooth scrolling on iOS */
+}
+
 .ff-table {
   width: 100%;
+  min-width: 500px;
+  /* Prevent excessive collapse */
   margin-bottom: 1rem;
   color: inherit;
   border-collapse: collapse;
 }
 
+/* Larger touch targets on mobile */
 .ff-table th,
 .ff-table td {
   padding: 0.75rem;
   vertical-align: top;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+@media (min-width: 768px) {
+  .ff-table {
+    min-width: auto;
+    /* Remove min-width on larger screens */
+  }
 }
 
 .ff-table thead th {
@@ -44,4 +64,42 @@
 .ff-table-sm th,
 .ff-table-sm td {
   padding: 0.3rem;
+}
+
+/* Optional: Stacked table for very small screens */
+@media (max-width: 576px) {
+  .ff-table-stacked {
+    min-width: auto;
+  }
+
+  .ff-table-stacked thead {
+    display: none;
+  }
+
+  .ff-table-stacked tr {
+    display: block;
+    margin-bottom: 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 4px;
+    padding: 0.5rem;
+  }
+
+  .ff-table-stacked td {
+    display: block;
+    text-align: right;
+    padding: 0.5rem;
+    border: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .ff-table-stacked td:last-child {
+    border-bottom: none;
+  }
+
+  .ff-table-stacked td::before {
+    content: attr(data-label);
+    float: left;
+    font-weight: bold;
+    color: rgba(255, 255, 255, 0.7);
+  }
 }

@@ -1,8 +1,58 @@
+/* Mobile-First Core Styles - v2.0 */
+
 :root {
-  /* Base Variables */
-  --base-font-size: 24px;
+  /* Responsive Typography - Mobile First */
+  --font-size-base: 16px;
+  /* Mobile base (was 24px) */
+  --font-size-sm: 14px;
+  --font-size-lg: 18px;
+  --font-size-xl: 20px;
+
+  /* Heading sizes - Mobile */
+  --h1-size: 1.75rem;
+  /* 28px */
+  --h2-size: 1.5rem;
+  /* 24px */
+  --h3-size: 1.25rem;
+  /* 20px */
+  --h4-size: 1.125rem;
+  /* 18px */
+  --h5-size: 1rem;
+  /* 16px */
+  --h6-size: 0.875rem;
+  /* 14px */
+
+  /* Colors */
   --text-color: #ecedee;
   --bg-color: #181820;
+  --highlight-color: #edd758;
+
+  /* Touch-friendly spacing */
+  --touch-target-min: 44px;
+  --spacing-touch: 8px;
+}
+
+/* Scale up typography on larger screens */
+@media (min-width: 768px) {
+  :root {
+    --font-size-base: 18px;
+    --h1-size: 2rem;
+    /* 36px */
+    --h2-size: 1.75rem;
+    /* 31.5px */
+    --h3-size: 1.5rem;
+    /* 27px */
+  }
+}
+
+@media (min-width: 992px) {
+  :root {
+    --font-size-base: 20px;
+    --h1-size: 2.25rem;
+    /* 45px */
+    --h2-size: 2rem;
+    /* 40px */
+  }
 }
 
 /* Font Face */
@@ -25,24 +75,66 @@ body {
   background-color: var(--bg-color);
   font-family: "Final Fantasy 3/6 Font Regular", monospace;
   color: var(--text-color);
-  font-size: var(--base-font-size);
+  font-size: var(--font-size-base);
   line-height: 1.5;
   height: 100%;
+  /* Prevent horizontal scroll */
+  overflow-x: hidden;
+  max-width: 100%;
 }
 
 * {
   box-sizing: border-box;
 }
 
+/* Responsive Typography */
+h1 {
+  font-size: var(--h1-size);
+  margin: 0.67em 0;
+}
+
+h2 {
+  font-size: var(--h2-size);
+  margin: 0.75em 0;
+}
+
+h3 {
+  font-size: var(--h3-size);
+  margin: 0.83em 0;
+}
+
+h4 {
+  font-size: var(--h4-size);
+  margin: 1em 0;
+}
+
+h5 {
+  font-size: var(--h5-size);
+  margin: 1.17em 0;
+}
+
+h6 {
+  font-size: var(--h6-size);
+  margin: 1.33em 0;
+}
+
+/* Ensure images/media are responsive */
+img,
+video,
+canvas,
+svg {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
 /* Utility Classes */
 .container {
+  /* Overridden by _grid.css but keeping for backwards compat */
   max-width: 1200px;
   margin: 0 auto;
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 20px;
+  padding: 15px;
+  width: 100%;
 }
 
 .hidden {
@@ -51,22 +143,57 @@ body {
 
 /* --- Components --- */
 
-/* Buttons */
+/* Buttons - Mobile First */
 .ff-btn {
+  /* Mobile: Large, touch-friendly, full-width */
+  display: block;
+  width: 100%;
+  min-height: var(--touch-target-min);
+  padding: 14px 20px;
+
   background: transparent;
   border: none;
   color: var(--text-color);
   font-family: inherit;
-  font-size: inherit;
+  font-size: 1rem;
   cursor: pointer;
-  padding: 5px 10px;
   position: relative;
   transition: transform 0.1s, opacity 0.2s;
+  text-align: center;
+
+  /* Prevent text selection on touch */
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+
+  /* Touch action */
+  touch-action: manipulation;
 }
 
-.ff-btn:hover {
-  transform: scale(1.05);
-  color: var(--highlight-color, #edd758);
+/* Tablet and up: inline buttons */
+@media (min-width: 576px) {
+  .ff-btn {
+    display: inline-block;
+    width: auto;
+    padding: 12px 18px;
+  }
+}
+
+/* Desktop: compact buttons */
+@media (min-width: 992px) {
+  .ff-btn {
+    padding: 8px 16px;
+    min-height: auto;
+  }
+}
+
+/* Disable hover effects on touch devices */
+@media (hover: hover) and (pointer: fine) {
+  .ff-btn:hover {
+    transform: scale(1.05);
+    color: var(--highlight-color, #edd758);
+  }
 }
 
 .ff-btn:active {
@@ -111,23 +238,31 @@ body {
 /* Badges */
 .ff-badge {
   display: inline-block;
-  padding: 2px 6px;
+  padding: 4px 8px;
   border-radius: 4px;
-  font-size: 0.8em;
+  font-size: 0.75em;
   background: rgba(255, 255, 255, 0.2);
   border: 1px solid rgba(255, 255, 255, 0.4);
   margin-left: 5px;
+  white-space: nowrap;
 }
 
-/* Progress Bars (HP/MP) */
+/* Progress Bars (HP/MP) - Fluid */
 .ff-progress {
   width: 100%;
-  height: 10px;
+  max-width: 100%;
+  height: 12px;
   background: #333;
   border: 1px solid #fff;
   border-radius: 2px;
   overflow: hidden;
   position: relative;
+}
+
+@media (min-width: 768px) {
+  .ff-progress {
+    height: 10px;
+  }
 }
 
 .ff-progress-bar {

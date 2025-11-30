@@ -1,0 +1,181 @@
+/* Form Inputs - Mobile First */
+
+/* Text inputs, selects, textareas */
+.ff-input,
+.ff-select,
+.ff-textarea {
+    width: 100%;
+    max-width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    /* Prevents iOS zoom */
+    font-family: inherit;
+    color: inherit;
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 4px;
+    min-height: 44px;
+    /* Touch target */
+}
+
+@media (min-width: 768px) {
+
+    .ff-input,
+    .ff-select {
+        max-width: 400px;
+        /* Constrain on desktop */
+    }
+
+    .ff-input,
+    .ff-select,
+    .ff-textarea {
+        font-size: 1rem;
+        /* Can be smaller on desktop */
+    }
+}
+
+.ff-input:focus,
+.ff-select:focus,
+.ff-textarea:focus {
+    outline: 2px solid var(--highlight-color, #fff);
+    outline-offset: 2px;
+    border-color: var(--highlight-color, #fff);
+}
+
+.ff-input:disabled,
+.ff-select:disabled,
+.ff-textarea:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* Checkboxes and Radios - Touch Friendly */
+.ff-form-check {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+    min-height: 44px;
+    /* Touch target */
+}
+
+.ff-form-check-input {
+    width: 20px;
+    height: 20px;
+    margin: 0;
+    cursor: pointer;
+    flex-shrink: 0;
+    /* Prevent squishing */
+}
+
+.ff-form-check-label {
+    cursor: pointer;
+    user-select: none;
+    line-height: 1.5;
+    display: flex;
+    align-items: center;
+}
+
+/* Custom checkbox styling */
+input[type="checkbox"].ff-form-check-input {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background: rgba(0, 0, 0, 0.3);
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    border-radius: 3px;
+    position: relative;
+}
+
+input[type="checkbox"].ff-form-check-input:checked {
+    background: var(--highlight-color, #fff);
+    border-color: var(--highlight-color, #fff);
+}
+
+input[type="checkbox"].ff-form-check-input:checked::after {
+    content: "✓";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #000;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+/* Custom radio styling */
+input[type="radio"].ff-form-check-input {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background: rgba(0, 0, 0, 0.3);
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+    position: relative;
+}
+
+input[type="radio"].ff-form-check-input:checked {
+    border-color: var(--highlight-color, #fff);
+}
+
+input[type="radio"].ff-form-check-input:checked::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 10px;
+    height: 10px;
+    background: var(--highlight-color, #fff);
+    border-radius: 50%;
+}
+
+/* Focus states for accessibility */
+input[type="checkbox"].ff-form-check-input:focus,
+input[type="radio"].ff-form-check-input:focus {
+    outline: 2px solid var(--highlight-color, #fff);
+    outline-offset: 2px;
+}
+
+/* Form groups */
+.ff-form-group {
+    margin-bottom: 20px;
+}
+
+.ff-form-label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+/* Helper text */
+.ff-form-text {
+    font-size: 0.875em;
+    opacity: 0.7;
+    margin-top: 4px;
+}
+
+/* Validation states */
+.ff-input.is-invalid,
+.ff-select.is-invalid,
+.ff-textarea.is-invalid {
+    border-color: #ff4444;
+}
+
+.ff-input.is-valid,
+.ff-select.is-valid,
+.ff-textarea.is-valid {
+    border-color: #44ff44;
+}
+
+.ff-invalid-feedback {
+    color: #ff4444;
+    font-size: 0.875em;
+    margin-top: 4px;
+}
+
+.ff-valid-feedback {
+    color: #44ff44;
+    font-size: 0.875em;
+    margin-top: 4px;
+}

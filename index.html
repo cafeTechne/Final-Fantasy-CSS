@@ -13,20 +13,7 @@
 <body>
 
     <div class="container">
-        <header class="page-header">
-            <h1>Final Fantasy CSS Library</h1>
-            <p>Select a theme to switch styles and characters</p>
-            <div class="controls">
-                <button class="ff-btn" data-action="set-theme" data-theme="theme-ff1">FF I</button>
-                <button class="ff-btn" data-action="set-theme" data-theme="theme-ff4">FF IV</button>
-                <button class="ff-btn" data-action="set-theme" data-theme="theme-ff6">FF VI</button>
-                <button class="ff-btn" data-action="set-theme" data-theme="theme-ff7">FF VII</button>
-                <button class="ff-btn" data-action="set-theme" data-theme="theme-ff8">FF VIII</button>
-                <button class="ff-btn" data-action="set-theme" data-theme="theme-ff9">FF IX</button>
-                <button class="ff-btn" data-action="set-theme" data-theme="theme-ff13">FF XIII</button>
-                <button class="ff-btn" data-action="set-theme" data-theme="theme-ff15">FF XV</button>
-            </div>
-        </header>
+        <header id="header"></header>
 
         <div id="app-root" class="theme-ff7 showcase-area">
 
@@ -127,321 +114,49 @@
 
             <div class="ff-window mt-20">
                 <div class="ff-window-content">
-
-
                     <div class="grid-2">
-                        <!-- Dropdowns & Tooltips -->
-                        <div>
-                            <h4>Dropdown Menu</h4>
-                            <div class="ff-dropdown" id="demo-dropdown">
-                                <button class="ff-btn ff-dropdown-toggle" data-action="toggle-dropdown"
-                                    data-target="demo-dropdown">
-                                    Actions ▼
-                                </button>
-                                <ul class="ff-dropdown-menu">
-                                    <li><a class="ff-dropdown-item" href="#">Attack</a></li>
-                                    <li><a class="ff-dropdown-item" href="#">Magic</a></li>
-                                    <li><a class="ff-dropdown-item" href="#">Item</a></li>
-                                    <li class="ff-dropdown-divider"></li>
-                                    <li><a class="ff-dropdown-item" href="#">Defend</a></li>
-                                </ul>
-                            </div>
-
-                            <h4 class="mt-20">Tooltips</h4>
-                            <div class="ff-tooltip">
-                                <button class="ff-btn">Hover Me</button>
-                                <span class="ff-tooltip-text">This is a tooltip!</span>
-                            </div>
-                        </div>
-
-                        <!-- List Group & Pagination -->
-                        <div>
-                            <h4>Party Members</h4>
-                            <ul class="ff-list-group">
-                                <li class="ff-list-group-item active">
-                                    <span id="char-name-2">Cloud</span>
-                                    <span class="ff-badge">HP 9999</span>
-                                </li>
-                                <li class="ff-list-group-item">
-                                    <span id="party-member-2">Tifa</span>
-                                    <span class="ff-badge">HP 8500</span>
-                                </li>
-                                <li class="ff-list-group-item">
-                                    <span id="party-member-3">Barret</span>
-                                    <span class="ff-badge">HP 9200</span>
-                                </li>
-                            </ul>
-
-                            <h4 class="mt-20">Pagination</h4>
-                            <ul class="ff-pagination">
-                                <li class="ff-page-item disabled">
-                                    <a class="ff-page-link" href="#">‹</a>
-                                </li>
-                                <li class="ff-page-item active">
-                                    <a class="ff-page-link" href="#">1</a>
-                                </li>
-                                <li class="ff-page-item">
-                                    <a class="ff-page-link" href="#">2</a>
-                                </li>
-                                <li class="ff-page-item">
-                                    <a class="ff-page-link" href="#">3</a>
-                                </li>
-                                <li class="ff-page-item">
-                                    <a class="ff-page-link" href="#">›</a>
-                                </li>
-                            </ul>
-                        </div>
+                        <section id="dropdown"></section>
+                        <section id="listPag"></section>
                     </div>
-
                 </div>
             </div>
+
             <div class="ff-window mt-20">
                 <div class="ff-window-content">
-                  
-
                     <div class="grid-2">
                         <div>
-                            <h4>Accordion</h4>
-                            <div class="ff-accordion" id="demo-accordion">
-                                <div class="ff-accordion-item active">
-                                    <button class="ff-accordion-header">Item One</button>
-                                    <div class="ff-accordion-body">Content for item one. Useful details and settings go here.</div>
-                                </div>
-                                <div class="ff-accordion-item">
-                                    <button class="ff-accordion-header">Item Two</button>
-                                    <div class="ff-accordion-body">Content for item two. More info.</div>
-                                </div>
-                            </div>
-
-                            <h4 class="mt-20">Avatar & Buttons</h4>
-                            <div class="d-flex gap-10" style="align-items:center">
-                                <div class="ff-avatar">C</div>
-                                <div class="ff-avatar sm">T</div>
-                                <button class="ff-btn">Primary</button>
-                                <button class="ff-btn">Secondary</button>
-                            </div>
-
-                            <h4 class="mt-20">Spinner</h4>
-                            <div class="d-flex gap-10" style="align-items:center">
-                                <span class="ff-spinner"></span>
-                                <span class="ff-spinner-sm ff-spinner"></span>
-                            </div>
+                            <section id="accordion"></section>
+                            <section id="avatarBtn"></section>
+                            <section id="spinner"></section>
                         </div>
-
                         <div>
-                            
-
-                            <h4 class="mt-20">Table</h4>
-                            <table class="ff-table ff-table-striped">
-                                <thead>
-                                    <tr><th>Name</th><th>Level</th><th>HP</th></tr>
-                                </thead>
-                                <tbody>
-                                    <tr><td>Cloud</td><td>99</td><td>9999</td></tr>
-                                    <tr><td>Tifa</td><td>99</td><td>8500</td></tr>
-                                    <tr><td>Barret</td><td>99</td><td>9200</td></tr>
-                                </tbody>
-                            </table>
-
-                            <h4 class="mt-20">Toast</h4>
-                            <div>
-                                <button class="ff-btn" id="show-toast-btn">Show Toast</button>
-                            </div>
-
-                            <h4 class="mt-20">Chips / Tags</h4>
-                            <div class="ff-chips" id="demo-chips">
-                                <div class="ff-chip">Materia <button class="ff-chip-remove" aria-label="remove">×</button></div>
-                                <div class="ff-chip ff-chip--accent">Blue <button class="ff-chip-remove" aria-label="remove">×</button></div>
-                                <div class="ff-chip ff-chip--small">Tiny <button class="ff-chip-remove" aria-label="remove">×</button></div>
-                            </div>
-
-                            <h4 class="mt-20">Tabs</h4>
-                            <div class="ff-tabs" id="demo-tabs">
-                                <div role="tablist" class="ff-tablist" aria-label="Demo Tabs">
-                                    <button role="tab" class="ff-tab" aria-selected="true" aria-controls="panel-1" id="tab-1">Overview</button>
-                                    <button role="tab" class="ff-tab" aria-selected="false" aria-controls="panel-2" id="tab-2">Stats</button>
-                                    <button role="tab" class="ff-tab" aria-selected="false" aria-controls="panel-3" id="tab-3">History</button>
-                                </div>
-                                <div id="panel-1" role="tabpanel" class="ff-tabpanel" aria-labelledby="tab-1">Overview content for the selected tab.</div>
-                                <div id="panel-2" role="tabpanel" class="ff-tabpanel" aria-labelledby="tab-2" hidden="true">Stats content (HP, MP, stats).</div>
-                                <div id="panel-3" role="tabpanel" class="ff-tabpanel" aria-labelledby="tab-3" hidden="true">History content and logs.</div>
-                            </div>
-
-                            <h4 class="mt-20">Popover Demo</h4>
-                            <div style="position:relative;">
-                                <button class="ff-btn">Show Popover</button>
-                                <div class="ff-popover">
-                                    <div class="ff-popover-header">Popover Title</div>
-                                    <div class="ff-popover-body">This is a popover content.</div>
-                                </div>
-                            </div>
+                            <section id="tableCtrl"></section>
                         </div>
                     </div>
-
                 </div>
             </div>
 
             <!-- Game Specific Components -->
             <div class="ff-window mt-20">
-                <div class="ff-window-content">
-                    <h3>Game Specific Components</h3>
-
-                    <div class="grid-2">
-                        <!-- Battle Menu (Generic/Themed) -->
-                        <div>
-                            <h4>Battle Menu (ATB)</h4>
-                            <div class="ff-battle-menu">
-                                <div class="ff-atb-gauge">
-                                    <div class="ff-atb-bar w-100"></div>
-                                </div>
-                                <ul class="ff-list-group">
-                                    <li class="ff-list-group-item active">Attack</li>
-                                    <li class="ff-list-group-item">Magic</li>
-                                    <li class="ff-list-group-item">Defend</li>
-                                    <li class="ff-list-group-item">Item</li>
-                                </ul>
-                            </div>
-                        </div>
-
-                        <!-- FF7 Materia & FF8 Junction -->
-                        <div>
-                            <div id="materia-section">
-                                <h4>Materia Slots (FF7 Only)</h4>
-                                <div class="ff-materia-container">
-                                    <div class="ff-materia-slots linked">
-                                        <div class="ff-materia-slot filled-green"></div>
-                                        <div class="ff-materia-slot filled-blue"></div>
-                                    </div>
-                                    <div class="ff-materia-slots">
-                                        <div class="ff-materia-slot filled-red"></div>
-                                        <div class="ff-materia-slot"></div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div id="junction-section">
-                                <h4 class="mt-20">Junction (FF8 Only)</h4>
-                                <div class="ff-junction-display">
-                                    <div class="ff-junction-row">
-                                        <span class="ff-junction-stat">HP</span>
-                                        <span class="ff-junction-spell">Curaga</span>
-                                    </div>
-                                    <div class="ff-junction-row">
-                                        <span class="ff-junction-stat">STR</span>
-                                        <span class="ff-junction-spell">Firaga</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <section id="gameComp"></section>
             </div>
 
             <!-- Form Components -->
             <div class="ff-window mt-20">
-                <div class="ff-window-content">
-                    <h3>Form Components</h3>
-
-                    <div class="grid-2">
-                        <!-- Basic Inputs -->
-                        <div>
-                            <div class="mb-15">
-                                <label class="label-block">Text Input</label>
-                                <input type="text" class="ff-input" placeholder="Enter text...">
-                            </div>
-
-                            <div class="mb-15">
-                                <label class="label-block">Select Dropdown</label>
-                                <select class="ff-select">
-                                    <option>Option 1</option>
-                                    <option>Option 2</option>
-                                    <option>Option 3</option>
-                                </select>
-                            </div>
-
-                            <div class="mb-15">
-                                <label class="label-block">Textarea</label>
-                                <textarea class="ff-textarea" rows="3" placeholder="Enter comments..."></textarea>
-                            </div>
-                        </div>
-
-                        <!-- Checks & Radios -->
-                        <div>
-                            <h4 class="mt-0">Checkboxes & Radios</h4>
-                            <div class="mb-10">
-                                <label class="ff-checkbox">
-                                    <input type="checkbox">
-                                    <span class="ff-checkmark"></span>
-                                    Enable Sound
-                                </label>
-                            </div>
-                            <div class="mb-20">
-                                <label class="ff-checkbox">
-                                    <input type="checkbox" checked>
-                                    <span class="ff-checkmark"></span>
-                                    Show Subtitles
-                                </label>
-                            </div>
-
-                            <div class="mb-10">
-                                <label class="ff-radio">
-                                    <input type="radio" name="difficulty" checked>
-                                    <span class="ff-radio-mark"></span>
-                                    Normal
-                                </label>
-                            </div>
-                            <div class="mb-15">
-                                <label class="ff-radio">
-                                    <input type="radio" name="difficulty">
-                                    <span class="ff-radio-mark"></span>
-                                    Hard
-                                </label>
-                            </div>
-
-                            <h4 class="mt-20">Toggles</h4>
-                            <label class="ff-toggle">
-                                <input type="checkbox">
-                                <span class="ff-slider"></span>
-                            </label>
-                        </div>
-                    </div>
-
-                    <!-- Validation States -->
-                    <h4 class="mt-20">Validation States</h4>
-                    <div class="grid-2">
-                        <div>
-                            <input type="text" class="ff-input is-valid" value="Valid Input">
-                            <span class="ff-feedback-success">Looks good!</span>
-                        </div>
-                        <div>
-                            <input type="text" class="ff-input is-invalid" value="Invalid Input">
-                            <span class="ff-feedback-error">Please correct this.</span>
-                        </div>
-                    </div>
-
-                </div>
+                <section id="forms"></section>
             </div>
+        </div>
 
+        <!-- Modal Demo -->
+        <dialog id="save-modal" class="ff-window ff-modal"></dialog>
+
+        <div class="ff-alert ff-alert-info">
+            <span>ℹ️ Auto-Save Enabled</span>
+            <button class="ff-close-btn">&times;</button>
         </div>
     </div>
 
-    <!-- Modal Demo -->
-    <div id="save-modal" class="ff-modal-backdrop">
-        <div class="ff-window ff-modal">
-            <div class="ff-window-content">
-                <div class="ff-modal-header">
-                    <h3>Save Game?</h3>
-                    <button class="ff-close-btn" data-action="hide-modal" data-modal="save-modal">&times;</button>
-                </div>
-                <p>Overwrite Save Slot 1?</p>
-                <div class="actions-right">
-                    <button class="ff-btn" data-action="hide-modal" data-modal="save-modal">Cancel</button>
-                    <button class="ff-btn" data-action="hide-modal" data-modal="save-modal">Confirm</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
+    <script src="partials/load.js"></script>
     <script src="js/ff.js"></script>
 </body>
 

@@ -1,0 +1,66 @@
+<!-- Table, Toast, Chips, Tabs, Popover partial -->
+<div>
+    <h4 class="mt-20">Table</h4>
+    <table class="ff-table ff-table-striped">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Level</th>
+                <th>HP</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Cloud</td>
+                <td>99</td>
+                <td>9999</td>
+            </tr>
+            <tr>
+                <td>Tifa</td>
+                <td>99</td>
+                <td>8500</td>
+            </tr>
+            <tr>
+                <td>Barret</td>
+                <td>99</td>
+                <td>9200</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h4 class="mt-20">Toast</h4>
+    <div>
+        <button class="ff-btn" id="show-toast-btn" data-action="show-toast">Show Toast</button>
+    </div>
+
+    <h4 class="mt-20">Chips / Tags</h4>
+    <div class="ff-chips" id="demo-chips">
+        <div class="ff-chip">Materia <button class="ff-chip-remove" aria-label="remove">×</button></div>
+        <div class="ff-chip ff-chip--accent">Blue <button class="ff-chip-remove" aria-label="remove">×</button></div>
+        <div class="ff-chip ff-chip--small">Tiny <button class="ff-chip-remove" aria-label="remove">×</button></div>
+    </div>
+
+    <h4 class="mt-20">Tabs</h4>
+    <div class="ff-tabs" id="demo-tabs">
+        <div role="tablist" class="ff-tablist" aria-label="Demo Tabs">
+            <button role="tab" class="ff-tab" aria-selected="true" aria-controls="panel-1" id="tab-1">Overview</button>
+            <button role="tab" class="ff-tab" aria-selected="false" aria-controls="panel-2" id="tab-2">Stats</button>
+            <button role="tab" class="ff-tab" aria-selected="false" aria-controls="panel-3" id="tab-3">History</button>
+        </div>
+        <div id="panel-1" role="tabpanel" class="ff-tabpanel" aria-labelledby="tab-1">Overview content for the selected
+            tab.</div>
+        <div id="panel-2" role="tabpanel" class="ff-tabpanel" aria-labelledby="tab-2" hidden="true">Stats content (HP,
+            MP, stats).</div>
+        <div id="panel-3" role="tabpanel" class="ff-tabpanel" aria-labelledby="tab-3" hidden="true">History content and
+            logs.</div>
+    </div>
+
+    <h4 class="mt-20">Popover Demo</h4>
+    <div style="position:relative;">
+        <button class="ff-btn">Show Popover</button>
+        <div class="ff-popover">
+            <div class="ff-popover-header">Popover Title</div>
+            <div class="ff-popover-body">This is a popover content.</div>
+        </div>
+    </div>
+</div>

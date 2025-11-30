@@ -1,0 +1,82 @@
+<!-- Form Components partial -->
+<div class="ff-window-content">
+    <h3>Form Components</h3>
+
+    <div class="grid-2">
+        <!-- Basic Inputs -->
+        <div>
+            <div class="mb-15">
+                <label class="label-block">Text Input</label>
+                <input type="text" class="ff-input" placeholder="Enter text...">
+            </div>
+
+            <div class="mb-15">
+                <label class="label-block">Select Dropdown</label>
+                <select class="ff-select">
+                    <option>Option 1</option>
+                    <option>Option 2</option>
+                    <option>Option 3</option>
+                </select>
+            </div>
+
+            <div class="mb-15">
+                <label class="label-block">Textarea</label>
+                <textarea class="ff-textarea" rows="3" placeholder="Enter comments..."></textarea>
+            </div>
+        </div>
+
+        <!-- Checks & Radios -->
+        <div>
+            <h4 class="mt-0">Checkboxes & Radios</h4>
+            <div class="mb-10">
+                <label class="ff-checkbox">
+                    <input type="checkbox">
+                    <span class="ff-checkmark"></span>
+                    Enable Sound
+                </label>
+            </div>
+            <div class="mb-20">
+                <label class="ff-checkbox">
+                    <input type="checkbox" checked>
+                    <span class="ff-checkmark"></span>
+                    Show Subtitles
+                </label>
+            </div>
+
+            <div class="mb-10">
+                <label class="ff-radio">
+                    <input type="radio" name="difficulty" checked>
+                    <span class="ff-radio-mark"></span>
+                    Normal
+                </label>
+            </div>
+            <div class="mb-15">
+                <label class="ff-radio">
+                    <input type="radio" name="difficulty">
+                    <span class="ff-radio-mark"></span>
+                    Hard
+                </label>
+            </div>
+
+            <h4 class="mt-20">Toggles</h4>
+            <label class="ff-toggle">
+                <input type="checkbox">
+                <span class="ff-slider"></span>
+            </label>
+        </div>
+    </div>
+
+    <!-- Validation States -->
+    <h4 class="mt-20">Validation States</h4>
+    <div class="grid-2">
+        <div>
+            <input type="text" class="ff-input is-valid" value="Valid Input">
+            <span class="ff-feedback-success">Looks good!</span>
+        </div>
+        <div>
+            <input type="text" class="ff-input is-invalid" value="Invalid Input">
+            <span class="ff-feedback-error">Please correct this.</span>
+        </div>
+    </div>
+
+</div>

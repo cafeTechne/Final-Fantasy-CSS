@@ -1,0 +1,25 @@
+/* --- Alerts --- */
+.ff-alert {
+    padding: 10px 15px;
+    margin-bottom: 15px;
+    border: 1px solid transparent;
+    background: rgba(255, 255, 255, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.ff-alert-info {
+    border-color: #00d0ff;
+    background: rgba(0, 208, 255, 0.1);
+}
+
+.ff-alert-warning {
+    border-color: #ffd700;
+    background: rgba(255, 215, 0, 0.1);
+}
+
+.ff-alert-danger {
+    border-color: #ff4444;
+    background: rgba(255, 68, 68, 0.1);
+}

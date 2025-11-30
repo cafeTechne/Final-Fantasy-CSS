@@ -1,0 +1,33 @@
+/* Breakpoint System - Mobile First */
+/* Following Bootstrap 5 conventions with IE11 support */
+
+:root {
+    /* Breakpoint values */
+    --breakpoint-sm: 576px;
+    --breakpoint-md: 768px;
+    --breakpoint-lg: 992px;
+    --breakpoint-xl: 1200px;
+
+    /* Container max-widths */
+    --container-sm: 540px;
+    --container-md: 720px;
+    --container-lg: 960px;
+    --container-xl: 1140px;
+
+    /* Spacing scale (mobile-first) */
+    --spacing-xs: 4px;
+    --spacing-sm: 8px;
+    --spacing-md: 16px;
+    --spacing-lg: 24px;
+    --spacing-xl: 32px;
+}
+
+/* Media Query Mixins (as comments for reference) */
+/*
+  Mobile First Approach:
+  - Base styles = mobile (0px+)
+  - @media (min-width: 576px) = sm and up
+  - @media (min-width: 768px) = md and up
+  - @media (min-width: 992px) = lg and up
+  - @media (min-width: 1200px) = xl and up
+*/

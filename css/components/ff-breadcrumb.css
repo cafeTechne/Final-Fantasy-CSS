@@ -1,0 +1,14 @@
+/* --- Breadcrumbs --- */
+.ff-breadcrumb {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0 0 15px 0;
+    font-size: 0.9em;
+}
+
+.ff-breadcrumb-item+.ff-breadcrumb-item::before {
+    content: ">";
+    padding: 0 8px;
+    opacity: 0.5;
+}

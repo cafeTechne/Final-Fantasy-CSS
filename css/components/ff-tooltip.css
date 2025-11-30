@@ -1,0 +1,39 @@
+/* --- Tooltips --- */
+.ff-tooltip {
+    position: relative;
+    display: inline-block;
+}
+
+.ff-tooltip-text {
+    visibility: hidden;
+    position: absolute;
+    z-index: 1001;
+    bottom: 125%;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 5px 10px;
+    background: rgba(0, 0, 0, 0.95);
+    color: #fff;
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    white-space: nowrap;
+    font-size: 0.85em;
+    opacity: 0;
+    transition: opacity 0.2s;
+}
+
+.ff-tooltip-text::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: rgba(0, 0, 0, 0.95) transparent transparent transparent;
+}
+
+.ff-tooltip:hover .ff-tooltip-text {
+    visibility: visible;
+    opacity: 1;
+}

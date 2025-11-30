@@ -1,11 +1,25 @@
 /* 
-  Final Fantasy CSS Library
-  A collection of retro game inspired UI components.
+  Final Fantasy CSS Library v2.0
+  A mobile-first collection of retro game inspired UI components.
+  
+  Breaking changes from v1.x:
+  - Base font size reduced from 24px to 16px (mobile)
+  - Buttons are full-width on mobile by default
+  - New responsive grid system
+  - Touch-friendly sizing (44px minimum)
 */
 
+/* Foundation - Mobile First */
+@import url("_breakpoints.css");
 @import url("fonts.css");
 @import url("core.css");
+@import url("_utilities.css");
+@import url("_grid.css");
+
+/* Components */
 @import url("components.css");
+
+/* Themes (user can import selectively) */
 @import url("ff1.css");
 @import url("ff4.css");
 @import url("ff6.css");

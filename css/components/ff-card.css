@@ -1,0 +1,23 @@
+/* --- Cards --- */
+.ff-card {
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(0, 0, 0, 0.2);
+    padding: 15px;
+    margin-bottom: 15px;
+    position: relative;
+}
+
+.ff-card-header {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+    font-weight: bold;
+    font-size: 1.1em;
+}
+
+/* Responsive Padding */
+@media (max-width: 576px) {
+    .ff-card {
+        padding: 10px;
+    }
+}

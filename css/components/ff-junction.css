@@ -1,0 +1,22 @@
+/* --- Junction Display (FF8) --- */
+.ff-junction-display {
+    margin-top: 10px;
+    font-family: sans-serif;
+    /* Tech font usually */
+}
+
+.ff-junction-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.ff-junction-stat {
+    color: #aaa;
+}
+
+.ff-junction-spell {
+    color: #fff;
+    text-shadow: 0 0 2px #fff;
+}

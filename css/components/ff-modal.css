@@ -1,0 +1,132 @@
+/* --- Modals - Native <dialog> --- */
+
+dialog.ff-modal {
+    padding: 0;
+    border: none;
+    background: transparent;
+    max-width: 500px;
+    width: 95%;
+    margin: auto;
+    color: inherit;
+    /* Native dialog centering */
+    position: fixed;
+    inset: 0;
+}
+
+/* Backdrop styling */
+dialog.ff-modal::backdrop {
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(2px);
+}
+
+/* Animation for open state */
+dialog.ff-modal[open] {
+    animation: modalFadeIn 0.3s ease-out forwards;
+}
+
+dialog.ff-modal[open]::backdrop {
+    animation: backdropFadeIn 0.3s ease-out forwards;
+}
+
+/* Closing animation class (applied via JS before close) */
+dialog.ff-modal.closing {
+    animation: modalFadeOut 0.2s ease-in forwards;
+}
+
+dialog.ff-modal.closing::backdrop {
+    animation: backdropFadeOut 0.2s ease-in forwards;
+}
+
+@keyframes modalFadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes backdropFadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes modalFadeOut {
+    from {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    to {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+}
+
+@keyframes backdropFadeOut {
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+    }
+}
+
+/* Mobile Fullscreen */
+@media (max-width: 576px) {
+    dialog.ff-modal-fullscreen-sm {
+        width: 100%;
+        height: 100%;
+        max-width: none;
+        max-height: none;
+        margin: 0;
+    }
+
+    dialog.ff-modal-fullscreen-sm .ff-window-content {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+
+    dialog.ff-modal-fullscreen-sm .ff-modal-body {
+        flex: 1;
+        overflow-y: auto;
+    }
+}
+
+/* Header & Close Button */
+.ff-modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    padding-bottom: 10px;
+}
+
+.ff-close-btn {
+    background: none;
+    border: none;
+    color: inherit;
+    font-size: 1.5rem;
+    cursor: pointer;
+    line-height: 1;
+    opacity: 0.7;
+    transition: opacity 0.2s;
+    min-width: 44px;
+    min-height: 44px;
+    padding: 8px;
+}
+
+.ff-close-btn:hover {
+    opacity: 1;
+}
