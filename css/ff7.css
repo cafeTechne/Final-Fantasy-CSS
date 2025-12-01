@@ -20,22 +20,11 @@
     --font-family: "Press Start 2P", "Pixel Operator", monospace;
 }
 
-/* Local FF7 font (Reactor7) - place downloaded files into `FF7/fonts/`.
-   License: this FontStruct font is shared under Creative Commons (BY-NC-SA).
-   If you want webfont formats, drop `reactor7.woff2` and/or `reactor7.woff` into the folder. */
-@font-face {
-    font-family: 'Reactor7';
-    src: url('../FF7/fonts/reactor7.woff2') format('woff2'),
-         url('../FF7/fonts/reactor7.woff') format('woff'),
-         url('../FF7/fonts/reactor7.otf') format('opentype');
-    font-weight: normal;
-    font-style: normal;
-    font-display: swap;
-}
+
 
 /* Prefer Reactor7 for this theme when available */
 .theme-ff7 {
-    --font-family: 'Reactor7', "Press Start 2P", "Pixel Operator", monospace;
+    --font-family: "Press Start 2P", "Pixel Operator", monospace;
 }
 
 /* --- Window Component --- */
@@ -45,9 +34,12 @@
     background: transparent;
     /* Tighter bevel: thin outer dark, thin inner light, subtle inner recess */
     border: 1px solid var(--ff7-border-outer);
-    box-shadow: inset 0 1px 0 rgba(255,255,255,0.06), /* inner light line */
-                inset 0 -1px 0 rgba(0,0,0,0.35), /* inner dark line */
-                2px 2px 0 rgba(0,0,16,0.6); /* small drop */
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06),
+        /* inner light line */
+        inset 0 -1px 0 rgba(0, 0, 0, 0.35),
+        /* inner dark line */
+        2px 2px 0 rgba(0, 0, 16, 0.6);
+    /* small drop */
     margin: 4px;
 }
 
@@ -166,7 +158,8 @@
     appearance: none;
     width: 100%;
     background: transparent;
-    height: 18px; /* allow room for thumb visual across browsers */
+    height: 18px;
+    /* allow room for thumb visual across browsers */
 }
 
 .theme-ff7 input[type=range].ff-range::-webkit-slider-runnable-track {
@@ -174,46 +167,52 @@
     height: 8px;
     cursor: pointer;
     background: linear-gradient(to bottom, #5a5a5a, #4a4a4a);
-    border: 1px solid rgba(0,0,0,0.6);
-    border-bottom: 1px solid rgba(255,255,255,0.04);
-    box-shadow: inset 0 1px 0 rgba(255,255,255,0.08), inset 0 -1px 0 rgba(0,0,0,0.4);
+    border: 1px solid rgba(0, 0, 0, 0.6);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08), inset 0 -1px 0 rgba(0, 0, 0, 0.4);
 }
 
 .theme-ff7 input[type=range].ff-range::-webkit-slider-thumb {
     -webkit-appearance: none;
     appearance: none;
     height: 12px;
-    width: 12px; /* square-ish knob */
+    width: 12px;
+    /* square-ish knob */
     background: linear-gradient(to bottom, #FFFFFF, #D8D8D8);
-    border: 1px solid #888; /* darker edge for pixel bevel */
-    box-shadow: inset 0 1px 0 rgba(255,255,255,0.7), 0 1px 0 rgba(0,0,0,0.5);
+    border: 1px solid #888;
+    /* darker edge for pixel bevel */
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.7), 0 1px 0 rgba(0, 0, 0, 0.5);
     cursor: pointer;
-    margin-top: -2px; /* center over 8px track */
+    margin-top: -2px;
+    /* center over 8px track */
 }
 
 /* Firefox */
 .theme-ff7 input[type=range].ff-range::-moz-range-track {
     height: 8px;
     background: linear-gradient(to bottom, #5a5a5a, #4a4a4a);
-    border: 1px solid rgba(0,0,0,0.6);
-    box-shadow: inset 0 1px 0 rgba(255,255,255,0.08), inset 0 -1px 0 rgba(0,0,0,0.4);
+    border: 1px solid rgba(0, 0, 0, 0.6);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08), inset 0 -1px 0 rgba(0, 0, 0, 0.4);
 }
+
 .theme-ff7 input[type=range].ff-range::-moz-range-thumb {
     height: 12px;
     width: 12px;
     background: linear-gradient(to bottom, #FFFFFF, #D8D8D8);
     border: 1px solid #888;
-    box-shadow: inset 0 1px 0 rgba(255,255,255,0.7), 0 1px 0 rgba(0,0,0,0.5);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.7), 0 1px 0 rgba(0, 0, 0, 0.5);
 }
 
 /* IE/Edge (legacy) */
 .theme-ff7 input[type=range].ff-range::-ms-fill-lower,
 .theme-ff7 input[type=range].ff-range::-ms-fill-upper {
     background: linear-gradient(to bottom, #5a5a5a, #4a4a4a);
-    border: 1px solid rgba(0,0,0,0.6);
+    border: 1px solid rgba(0, 0, 0, 0.6);
 }
 
-.theme-ff7 input[type=range].ff-range:focus { outline: none; }
+.theme-ff7 input[type=range].ff-range:focus {
+    outline: none;
+}
 
 /* --- Inputs & Forms --- */
 .theme-ff7 .ff-input,
@@ -292,9 +291,10 @@
     left: 0 !important;
     top: 0 !important;
     margin: 0 !important;
-    opacity: 0; /* start hidden */
+    opacity: 0;
+    /* start hidden */
     transform: translateY(-6px) scale(0.995);
-    transition: opacity 220ms cubic-bezier(.2,.9,.3,1), transform 220ms cubic-bezier(.2,.9,.3,1);
+    transition: opacity 220ms cubic-bezier(.2, .9, .3, 1), transform 220ms cubic-bezier(.2, .9, .3, 1);
     pointer-events: none;
 }
 
@@ -329,6 +329,8 @@
 .theme-ff7 .ff-tab {
     color: var(--ff7-text-active);
 }
-.theme-ff7 .ff-tab[aria-selected="true"], .theme-ff7 .ff-tab.active {
+
+.theme-ff7 .ff-tab[aria-selected="true"],
+.theme-ff7 .ff-tab.active {
     color: var(--ff7-text-main);
 }

@@ -6,13 +6,16 @@ def build_css():
     # Order matters!
     files = [
         # Foundation
-        'css/_breakpoints.css',
         'css/fonts.css',
+        'css/_breakpoints.css',
         'css/core.css',
         'css/_utilities.css',
         'css/_grid.css',
         
         # Components
+        'css/components/ff-button.css',
+        'css/components/ff-badge.css',
+        'css/components/ff-progress.css',
         'css/components/ff-navbar.css',
         'css/components/ff-nav.css',
         'css/components/ff-breadcrumb.css',
@@ -37,8 +40,15 @@ def build_css():
         'css/components/ff-materia.css',
         'css/components/ff-junction.css',
         
-        # Themes (Optional - usually users import these separately, but we can bundle base ones)
-        # 'css/ff7.css', 
+        # Themes
+        'css/ff1.css',
+        'css/ff4.css',
+        'css/ff6.css',
+        'css/ff7.css',
+        'css/ff8.css',
+        'css/ff9.css',
+        'css/ff13.css',
+        'css/ff15.css',
     ]
     
     output_dir = 'dist'

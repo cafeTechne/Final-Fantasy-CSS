@@ -2,9 +2,17 @@
 .ff-card {
     border: 1px solid rgba(255, 255, 255, 0.2);
     background: rgba(0, 0, 0, 0.2);
-    padding: 15px;
+    padding: 10px;
+    /* Mobile default */
     margin-bottom: 15px;
     position: relative;
+}
+
+/* Desktop: more padding */
+@media (min-width: 577px) {
+    .ff-card {
+        padding: 15px;
+    }
 }
 
 .ff-card-header {
@@ -13,11 +21,4 @@
     margin-bottom: 10px;
     font-weight: bold;
     font-size: 1.1em;
-}
-
-/* Responsive Padding */
-@media (max-width: 576px) {
-    .ff-card {
-        padding: 10px;
-    }
 }

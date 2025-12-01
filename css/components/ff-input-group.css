@@ -1,88 +1,57 @@
-/* --- Input Group --- */
+/* --- Input Groups --- */
 .ff-input-group {
+  /* Mobile: Stack vertically by default */
   display: flex;
-  align-items: stretch;
+  flex-direction: column;
   width: 100%;
-  margin-bottom: 15px;
-}
-
-.ff-input-group .ff-input {
-  flex: 1;
-  border-radius: 0;
-  margin-bottom: 0;
-}
-
-.ff-input-group .ff-input:first-child {
-  border-top-left-radius: 4px;
-  border-bottom-left-radius: 4px;
-}
-
-.ff-input-group .ff-input:last-child {
-  border-top-right-radius: 4px;
-  border-bottom-right-radius: 4px;
+  margin-bottom: 10px;
 }
 
 .ff-input-group-text {
-  display: flex;
-  align-items: center;
-  padding: 5px 12px;
+  padding: 10px;
   background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-left: none;
+  border: 1px solid rgba(255, 255, 255, 0.3);
   color: inherit;
-  font-size: 0.9em;
+  white-space: nowrap;
+  text-align: center;
 }
 
-.ff-input-group-text:first-child {
-  border-right: none;
-  border-left: 1px solid rgba(255, 255, 255, 0.2);
-  border-top-left-radius: 4px;
-  border-bottom-left-radius: 4px;
+.ff-input-group input,
+.ff-input-group select,
+.ff-input-group textarea {
+  flex: 1;
+  min-width: 0;
 }
 
-.ff-input-group-text:last-child {
-  border-top-right-radius: 4px;
-  border-bottom-right-radius: 4px;
-}
+/* Desktop: Horizontal layout */
+@media (min-width: 577px) {
+  .ff-input-group {
+    flex-direction: row;
+  }
 
-.ff-input-group .ff-btn {
-  border-radius: 0;
-  margin: 0;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-left: none;
-}
-
-.ff-input-group .ff-btn:last-child {
-  border-top-right-radius: 4px;
-  border-bottom-right-radius: 4px;
-}
-
-/* Responsive Stacking */
-@media (max-width: 576px) {
   .ff-input-group.ff-responsive {
     flex-direction: column;
   }
+}
 
-  .ff-input-group.ff-responsive>* {
-    width: 100%;
-    border-radius: 4px !important;
-    margin-bottom: -1px;
-    border-right: 1px solid rgba(255, 255, 255, 0.2) !important;
-    border-left: 1px solid rgba(255, 255, 255, 0.2) !important;
-  }
+/* Input prepend/append */
+.ff-input-group-prepend,
+.ff-input-group-append {
+  display: flex;
+}
 
-  .ff-input-group.ff-responsive>*:not(:last-child) {
-    border-bottom-left-radius: 0 !important;
-    border-bottom-right-radius: 0 !important;
-  }
+.ff-input-group-prepend+input,
+.ff-input-group-prepend+select {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
 
-  .ff-input-group.ff-responsive>*:not(:first-child) {
-    border-top-left-radius: 0 !important;
-    border-top-right-radius: 0 !important;
-    border-top: none;
-  }
+.ff-input-group-append {
+  margin-left: -1px;
+}
 
-  .ff-input-group.ff-responsive .ff-input-group-text {
-    justify-content: center;
-  }
+input+.ff-input-group-append,
+select+.ff-input-group-append {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
 }

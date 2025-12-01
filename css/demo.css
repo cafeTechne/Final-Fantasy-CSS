@@ -73,7 +73,7 @@ body.demo-demo {
   }
 
   .controls .ff-btn {
-    width: 100%;
+
     max-width: 200px;
   }
 
@@ -95,7 +95,8 @@ body.demo-demo {
   }
 
   .actions-right .ff-btn {
-    width: 100%;
+
+    max-width: 200px;
   }
 }
 

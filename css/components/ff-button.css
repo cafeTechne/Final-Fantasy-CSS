@@ -1,0 +1,91 @@
+/* Buttons - Mobile First */
+.ff-btn {
+    /* Mobile: Large, touch-friendly, full-width */
+    display: block;
+    width: 100%;
+    min-height: var(--touch-target-min);
+    padding: 14px 20px;
+
+    background: transparent;
+    border: none;
+    color: var(--text-color);
+    font-family: inherit;
+    font-size: 1rem;
+    cursor: pointer;
+    position: relative;
+    transition: transform 0.1s, opacity 0.2s;
+    text-align: center;
+
+    /* Prevent text selection on touch */
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+
+    /* Touch action */
+    touch-action: manipulation;
+}
+
+/* Tablet and up: inline buttons */
+@media (min-width: 576px) {
+    .ff-btn {
+        display: inline-block;
+        width: auto;
+        padding: 12px 18px;
+    }
+}
+
+/* Desktop: compact buttons */
+@media (min-width: 992px) {
+    .ff-btn {
+        padding: 8px 16px;
+        min-height: auto;
+    }
+}
+
+/* Disable hover effects on touch devices */
+@media (hover: hover) and (pointer: fine) {
+    .ff-btn:hover {
+        transform: scale(1.05);
+        color: var(--highlight-color, #edd758);
+    }
+}
+
+.ff-btn:active {
+    transform: scale(0.95);
+}
+
+.ff-btn:disabled,
+.ff-btn.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    pointer-events: none;
+    transform: none;
+}
+
+.ff-btn.loading {
+    position: relative;
+    color: transparent;
+    pointer-events: none;
+}
+
+.ff-btn.loading::after {
+    content: "";
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    top: 50%;
+    left: 50%;
+    margin-left: -8px;
+    margin-top: -8px;
+    border: 2px solid var(--text-color);
+    border-radius: 50%;
+    border-top-color: transparent;
+    animation: ff-spin 0.6s linear infinite;
+}
+
+@keyframes ff-spin {
+    to {
+        transform: rotate(360deg);
+    }
+}

@@ -2,6 +2,8 @@
   Final Fantasy CSS - Typography
   Custom fonts for authentic game aesthetics
 */
+/* Google Fonts - Import for other themes */
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Roboto:wght@300;400;500;700&family=Cinzel:wght@400;700&family=Rajdhani:wght@300;400;600&display=swap');
 
 /* FF6 Font - Already included in project */
 @font-face {
@@ -12,9 +14,6 @@
   font-style: normal;
   font-display: swap;
 }
-
-/* Google Fonts - Import for other themes */
-@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Roboto:wght@300;400;500;700&family=Cinzel:wght@400;700&family=Rajdhani:wght@300;400;600&display=swap');
 
 /* 
   Font Stack Reference:

@@ -4,13 +4,25 @@ dialog.ff-modal {
     padding: 0;
     border: none;
     background: transparent;
-    max-width: 500px;
-    width: 95%;
-    margin: auto;
+    /* Mobile: Fullscreen by default */
+    width: 100%;
+    height: 100%;
+    max-width: none;
+    max-height: none;
+    margin: 0;
     color: inherit;
-    /* Native dialog centering */
     position: fixed;
     inset: 0;
+}
+
+/* Desktop: Sized modals */
+@media (min-width: 577px) {
+    dialog.ff-modal {
+        max-width: 500px;
+        width: 95%;
+        height: auto;
+        margin: auto;
+    }
 }
 
 /* Backdrop styling */
@@ -81,26 +93,16 @@ dialog.ff-modal.closing::backdrop {
     }
 }
 
-/* Mobile Fullscreen */
-@media (max-width: 576px) {
-    dialog.ff-modal-fullscreen-sm {
-        width: 100%;
-        height: 100%;
-        max-width: none;
-        max-height: none;
-        margin: 0;
-    }
+/* Fullscreen variant for mobile */
+dialog.ff-modal-fullscreen-sm .ff-window-content {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
 
-    dialog.ff-modal-fullscreen-sm .ff-window-content {
-        height: 100%;
-        display: flex;
-        flex-direction: column;
-    }
-
-    dialog.ff-modal-fullscreen-sm .ff-modal-body {
-        flex: 1;
-        overflow-y: auto;
-    }
+dialog.ff-modal-fullscreen-sm .ff-modal-body {
+    flex: 1;
+    overflow-y: auto;
 }
 
 /* Header & Close Button */

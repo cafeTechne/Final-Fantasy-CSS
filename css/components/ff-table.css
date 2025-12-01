@@ -1,105 +1,125 @@
-/* --- Table - Mobile First --- */
+/* --- Tables - True Mobile-First --- */
 
-/* Responsive wrapper for horizontal scroll */
-.ff-table-responsive {
-  display: block;
+/* Mobile default: Overflow wrapper active */
+.ff-table-wrapper {
   width: 100%;
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
-  /* Smooth scrolling on iOS */
+  margin-bottom: 15px;
+  display: block;
+}
+
+/* Desktop: Remove overflow */
+@media (min-width: 577px) {
+  .ff-table-wrapper {
+    overflow-x: visible;
+  }
 }
 
 .ff-table {
   width: 100%;
-  min-width: 500px;
-  /* Prevent excessive collapse */
-  margin-bottom: 1rem;
-  color: inherit;
+  max-width: 100%;
   border-collapse: collapse;
+  margin-bottom: 15px;
+  background: rgba(0, 0, 0, 0.2);
 }
 
-/* Larger touch targets on mobile */
 .ff-table th,
 .ff-table td {
-  padding: 0.75rem;
-  vertical-align: top;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-@media (min-width: 768px) {
-  .ff-table {
-    min-width: auto;
-    /* Remove min-width on larger screens */
-  }
-}
-
-.ff-table thead th {
-  vertical-align: bottom;
-  border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+  padding: 10px 12px;
   text-align: left;
-  font-weight: bold;
-}
-
-.ff-table tbody+tbody {
-  border-top: 2px solid rgba(255, 255, 255, 0.2);
-}
-
-.ff-table-striped tbody tr:nth-of-type(odd) {
-  background-color: rgba(255, 255, 255, 0.05);
-}
-
-.ff-table-hover tbody tr:hover {
-  background-color: rgba(255, 255, 255, 0.1);
-}
-
-.ff-table-bordered {
   border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.ff-table th {
+  background: rgba(255, 255, 255, 0.1);
+  font-weight: bold;
+  font-size: 0.9em;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.ff-table tbody tr:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.ff-table tbody tr:nth-child(even) {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.ff-table tbody tr:nth-child(even):hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+/* Striped variant */
+.ff-table-striped tbody tr:nth-child(odd) {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+/* Bordered variant */
+.ff-table-bordered {
+  border: 2px solid rgba(255, 255, 255, 0.3);
 }
 
 .ff-table-bordered th,
 .ff-table-bordered td {
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
-.ff-table-sm th,
-.ff-table-sm td {
-  padding: 0.3rem;
-}
-
-/* Optional: Stacked table for very small screens */
+/* Card-based layout for small screens */
 @media (max-width: 576px) {
-  .ff-table-stacked {
-    min-width: auto;
+  .ff-table-cards {
+    border: 0;
   }
 
-  .ff-table-stacked thead {
+  .ff-table-cards thead {
     display: none;
   }
 
-  .ff-table-stacked tr {
+  .ff-table-cards tr {
     display: block;
     margin-bottom: 1rem;
     border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: 4px;
-    padding: 0.5rem;
+    background: rgba(0, 0, 0, 0.3);
   }
 
-  .ff-table-stacked td {
-    display: block;
-    text-align: right;
-    padding: 0.5rem;
+  .ff-table-cards td {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem;
     border: none;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   }
 
-  .ff-table-stacked td:last-child {
+  .ff-table-cards td:last-child {
     border-bottom: none;
   }
 
-  .ff-table-stacked td::before {
+  .ff-table-cards td::before {
     content: attr(data-label);
-    float: left;
     font-weight: bold;
-    color: rgba(255, 255, 255, 0.7);
+    margin-right: 1rem;
+    flex-shrink: 0;
+    color: var(--highlight-color, #edd758);
+  }
+
+  .ff-table-cards tbody tr:nth-child(even) {
+    background: rgba(0, 0, 0, 0.3);
+  }
+}
+
+/* Small text on very small screens */
+@media (max-width: 480px) {
+
+  .ff-table th,
+  .ff-table td {
+    padding: 8px;
+    font-size: 0.9em;
+  }
+
+  .ff-table th {
+    font-size: 0.85em;
   }
 }

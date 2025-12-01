@@ -1,5 +1,35 @@
 /* Final Fantasy CSS Library v2.0 - Bundled */
 
+/* --- fonts.css --- */
+/* 
+  Final Fantasy CSS - Typography
+  Custom fonts for authentic game aesthetics
+*/
+/* Google Fonts - Import for other themes */
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Roboto:wght@300;400;500;700&family=Cinzel:wght@400;700&family=Rajdhani:wght@300;400;600&display=swap');
+
+/* FF6 Font - Already included in project */
+@font-face {
+  font-family: 'Final Fantasy VI';
+  src: url('../FF6/fonts/final_fantasy_36_font.woff') format('woff'),
+    url('../FF6/fonts/final_fantasy_36_font.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* 
+  Font Stack Reference:
+  - FF1: Courier New (8-bit NES style, readable)
+  - FF4: 'Final Fantasy VI' (reuse, similar era)
+  - FF6: 'Final Fantasy VI' (original)
+  - FF7: System sans-serif (modern, clean)
+  - FF8: 'Rajdhani' (tech, futuristic)
+  - FF9: 'Cinzel' (fantasy, medieval)
+  - FF13: 'Roboto' (modern, clean, readable)
+  - FF15: 'Rajdhani' (modern, sleek)
+*/
+
 /* --- _breakpoints.css --- */
 /* Breakpoint System - Mobile First */
 /* Following Bootstrap 5 conventions with IE11 support */
@@ -33,37 +63,6 @@
   - @media (min-width: 768px) = md and up
   - @media (min-width: 992px) = lg and up
   - @media (min-width: 1200px) = xl and up
-*/
-
-/* --- fonts.css --- */
-/* 
-  Final Fantasy CSS - Typography
-  Custom fonts for authentic game aesthetics
-*/
-
-/* FF6 Font - Already included in project */
-@font-face {
-  font-family: 'Final Fantasy VI';
-  src: url('../FF6/fonts/final_fantasy_36_font.woff') format('woff'),
-    url('../FF6/fonts/final_fantasy_36_font.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-}
-
-/* Google Fonts - Import for other themes */
-@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Roboto:wght@300;400;500;700&family=Cinzel:wght@400;700&family=Rajdhani:wght@300;400;600&display=swap');
-
-/* 
-  Font Stack Reference:
-  - FF1: Courier New (8-bit NES style, readable)
-  - FF4: 'Final Fantasy VI' (reuse, similar era)
-  - FF6: 'Final Fantasy VI' (original)
-  - FF7: System sans-serif (modern, clean)
-  - FF8: 'Rajdhani' (tech, futuristic)
-  - FF9: 'Cinzel' (fantasy, medieval)
-  - FF13: 'Roboto' (modern, clean, readable)
-  - FF15: 'Rajdhani' (modern, sleek)
 */
 
 /* --- core.css --- */
@@ -203,7 +202,7 @@ svg {
   max-width: 1200px;
   margin: 0 auto;
   padding: 15px;
-  width: 100%;
+  width: 90%;
 }
 
 .hidden {
@@ -1395,20 +1394,159 @@ svg {
     }
 }
 
+/* --- ff-button.css --- */
+/* Buttons - Mobile First */
+.ff-btn {
+    /* Mobile: Large, touch-friendly, full-width */
+    display: block;
+    width: 100%;
+    min-height: var(--touch-target-min);
+    padding: 14px 20px;
+
+    background: transparent;
+    border: none;
+    color: var(--text-color);
+    font-family: inherit;
+    font-size: 1rem;
+    cursor: pointer;
+    position: relative;
+    transition: transform 0.1s, opacity 0.2s;
+    text-align: center;
+
+    /* Prevent text selection on touch */
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+
+    /* Touch action */
+    touch-action: manipulation;
+}
+
+/* Tablet and up: inline buttons */
+@media (min-width: 576px) {
+    .ff-btn {
+        display: inline-block;
+        width: auto;
+        padding: 12px 18px;
+    }
+}
+
+/* Desktop: compact buttons */
+@media (min-width: 992px) {
+    .ff-btn {
+        padding: 8px 16px;
+        min-height: auto;
+    }
+}
+
+/* Disable hover effects on touch devices */
+@media (hover: hover) and (pointer: fine) {
+    .ff-btn:hover {
+        transform: scale(1.05);
+        color: var(--highlight-color, #edd758);
+    }
+}
+
+.ff-btn:active {
+    transform: scale(0.95);
+}
+
+.ff-btn:disabled,
+.ff-btn.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    pointer-events: none;
+    transform: none;
+}
+
+.ff-btn.loading {
+    position: relative;
+    color: transparent;
+    pointer-events: none;
+}
+
+.ff-btn.loading::after {
+    content: "";
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    top: 50%;
+    left: 50%;
+    margin-left: -8px;
+    margin-top: -8px;
+    border: 2px solid var(--text-color);
+    border-radius: 50%;
+    border-top-color: transparent;
+    animation: ff-spin 0.6s linear infinite;
+}
+
+@keyframes ff-spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* --- ff-badge.css --- */
+/* Badges */
+.ff-badge {
+    display: inline-block;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.75em;
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    margin-left: 5px;
+    white-space: nowrap;
+}
+
+/* --- ff-progress.css --- */
+/* Progress Bars (HP/MP) - Fluid */
+.ff-progress {
+    width: 100%;
+    max-width: 100%;
+    height: 12px;
+    background: #333;
+    border: 1px solid #fff;
+    border-radius: 2px;
+    overflow: hidden;
+    position: relative;
+}
+
+@media (min-width: 768px) {
+    .ff-progress {
+        height: 10px;
+    }
+}
+
+.ff-progress-bar {
+    height: 100%;
+    width: 0%;
+    transition: width 0.3s ease;
+}
+
+.ff-progress.hp .ff-progress-bar {
+    background: linear-gradient(to right, #ff9999, #ff0000);
+}
+
+.ff-progress.mp .ff-progress-bar {
+    background: linear-gradient(to right, #99ff99, #00ff00);
+}
+
 /* --- ff-navbar.css --- */
-/* --- Navbar --- */
+/* --- Navbar - True Mobile-First --- */
 .ff-navbar {
   display: flex;
   align-items: center;
   justify-content: space-between;
   flex-wrap: wrap;
-  gap: 12px;
   padding: 10px 14px;
   background: rgba(0, 0, 0, 0.25);
   border: 1px solid rgba(255, 255, 255, 0.04);
   border-radius: 6px;
   max-width: 100%;
   box-sizing: border-box;
+  position: relative;
 }
 
 .ff-navbar-brand {
@@ -1421,23 +1559,47 @@ svg {
   text-overflow: ellipsis;
 }
 
+/* Mobile default: Hidden nav, visible toggle */
 .ff-navbar-nav {
-  display: flex;
-  gap: 8px;
-  align-items: center;
+  display: none;
+  width: 100%;
+  flex-direction: column;
+  gap: 0;
   list-style: none;
   margin: 0;
-  padding: 0;
-  flex-wrap: wrap;
+  padding: 10px 0 0 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  margin-top: 10px;
+}
+
+.ff-navbar-toggle {
+  display: block;
+  background: none;
+  border: none;
+  color: inherit;
+  font-size: 1.5rem;
+  line-height: 1;
+  cursor: pointer;
+  padding: 8px;
+  min-width: 44px;
+  min-height: 44px;
+}
+
+/* Show nav when expanded (via JS toggle) */
+.ff-navbar.expanded .ff-navbar-nav {
+  display: flex;
 }
 
 .ff-navbar .ff-nav-link {
-  padding: 8px 12px;
-  border-radius: 4px;
+  padding: 12px;
+  border-radius: 0;
   color: inherit;
   text-decoration: none;
   transition: background 0.2s;
   white-space: nowrap;
+  width: 100%;
+  text-align: center;
+  min-height: 44px;
 }
 
 .ff-navbar .ff-nav-link:hover {
@@ -1446,46 +1608,30 @@ svg {
 
 .ff-navbar .ff-nav-link.active {
   background: rgba(255, 255, 255, 0.15);
-  font-weight: bold;
 }
 
-.ff-navbar-toggle {
-  display: none;
-  background: transparent;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  color: inherit;
-  padding: 5px 10px;
-  cursor: pointer;
-  border-radius: 4px;
-}
-
-/* Responsive: collapse nav into toggle */
-@media (max-width: 720px) {
-  .ff-navbar {
-    padding: 8px;
-  }
-
+/* Desktop: Expand navbar, hide toggle */
+@media (min-width: 721px) {
   .ff-navbar-nav {
-    display: none;
-    width: 100%;
-    flex-direction: column;
-    gap: 6px;
-    padding-top: 10px;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-    margin-top: 10px;
-  }
-
-  .ff-navbar.expanded .ff-navbar-nav {
-    display: flex;
+    display: flex !important;
+    flex-direction: row;
+    width: auto;
+    gap: 8px;
+    border-top: none;
+    padding: 0;
+    margin-top: 0;
   }
 
   .ff-navbar-toggle {
-    display: inline-block;
+    display: none;
   }
 
   .ff-navbar .ff-nav-link {
-    width: 100%;
-    text-align: center;
+    width: auto;
+    text-align: left;
+    padding: 8px 12px;
+    border-radius: 4px;
+    min-height: auto;
   }
 }
 
@@ -1541,14 +1687,23 @@ svg {
 /* --- ff-pagination.css --- */
 /* --- Pagination --- */
 .ff-pagination {
+    /* Mobile: Centered with wrapping */
     display: flex;
     flex-direction: row;
+    justify-content: center;
     list-style: none;
     padding: 0;
     margin: 15px 0;
-    gap: 5px;
+    gap: 3px;
     flex-wrap: wrap;
-    /* Allow wrapping on small screens */
+}
+
+/* Desktop: Normal spacing */
+@media (min-width: 577px) {
+    .ff-pagination {
+        justify-content: flex-start;
+        gap: 5px;
+    }
 }
 
 .ff-page-item {
@@ -1557,15 +1712,24 @@ svg {
 
 .ff-page-link {
     display: block;
-    padding: 8px 12px;
+    /* Mobile: Smaller padding and touch targets */
+    padding: 8px 10px;
+    min-width: 36px;
     text-decoration: none;
     color: inherit;
     border: 1px solid rgba(255, 255, 255, 0.3);
     background: rgba(0, 0, 0, 0.2);
     cursor: pointer;
     transition: all 0.2s;
-    min-width: 40px;
     text-align: center;
+}
+
+/* Desktop: Larger padding */
+@media (min-width: 577px) {
+    .ff-page-link {
+        padding: 8px 12px;
+        min-width: 40px;
+    }
 }
 
 .ff-page-link:hover {
@@ -1585,29 +1749,22 @@ svg {
     pointer-events: none;
 }
 
-/* Mobile Adjustments */
-@media (max-width: 576px) {
-    .ff-pagination {
-        justify-content: center;
-        /* Center on mobile */
-        gap: 3px;
-    }
-
-    .ff-page-link {
-        padding: 8px 10px;
-        /* Slightly smaller padding */
-        min-width: 36px;
-    }
-}
-
 /* --- ff-card.css --- */
 /* --- Cards --- */
 .ff-card {
     border: 1px solid rgba(255, 255, 255, 0.2);
     background: rgba(0, 0, 0, 0.2);
-    padding: 15px;
+    padding: 10px;
+    /* Mobile default */
     margin-bottom: 15px;
     position: relative;
+}
+
+/* Desktop: more padding */
+@media (min-width: 577px) {
+    .ff-card {
+        padding: 15px;
+    }
 }
 
 .ff-card-header {
@@ -1616,13 +1773,6 @@ svg {
     margin-bottom: 10px;
     font-weight: bold;
     font-size: 1.1em;
-}
-
-/* Responsive Padding */
-@media (max-width: 576px) {
-    .ff-card {
-        padding: 10px;
-    }
 }
 
 /* --- ff-accordion.css --- */
@@ -1742,13 +1892,25 @@ dialog.ff-modal {
     padding: 0;
     border: none;
     background: transparent;
-    max-width: 500px;
-    width: 95%;
-    margin: auto;
+    /* Mobile: Fullscreen by default */
+    width: 100%;
+    height: 100%;
+    max-width: none;
+    max-height: none;
+    margin: 0;
     color: inherit;
-    /* Native dialog centering */
     position: fixed;
     inset: 0;
+}
+
+/* Desktop: Sized modals */
+@media (min-width: 577px) {
+    dialog.ff-modal {
+        max-width: 500px;
+        width: 95%;
+        height: auto;
+        margin: auto;
+    }
 }
 
 /* Backdrop styling */
@@ -1819,26 +1981,16 @@ dialog.ff-modal.closing::backdrop {
     }
 }
 
-/* Mobile Fullscreen */
-@media (max-width: 576px) {
-    dialog.ff-modal-fullscreen-sm {
-        width: 100%;
-        height: 100%;
-        max-width: none;
-        max-height: none;
-        margin: 0;
-    }
+/* Fullscreen variant for mobile */
+dialog.ff-modal-fullscreen-sm .ff-window-content {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
 
-    dialog.ff-modal-fullscreen-sm .ff-window-content {
-        height: 100%;
-        display: flex;
-        flex-direction: column;
-    }
-
-    dialog.ff-modal-fullscreen-sm .ff-modal-body {
-        flex: 1;
-        overflow-y: auto;
-    }
+dialog.ff-modal-fullscreen-sm .ff-modal-body {
+    flex: 1;
+    overflow-y: auto;
 }
 
 /* Header & Close Button */
@@ -2151,109 +2303,129 @@ dialog.ff-modal.closing::backdrop {
 }
 
 /* --- ff-table.css --- */
-/* --- Table - Mobile First --- */
+/* --- Tables - True Mobile-First --- */
 
-/* Responsive wrapper for horizontal scroll */
-.ff-table-responsive {
-  display: block;
+/* Mobile default: Overflow wrapper active */
+.ff-table-wrapper {
   width: 100%;
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
-  /* Smooth scrolling on iOS */
+  margin-bottom: 15px;
+  display: block;
+}
+
+/* Desktop: Remove overflow */
+@media (min-width: 577px) {
+  .ff-table-wrapper {
+    overflow-x: visible;
+  }
 }
 
 .ff-table {
   width: 100%;
-  min-width: 500px;
-  /* Prevent excessive collapse */
-  margin-bottom: 1rem;
-  color: inherit;
+  max-width: 100%;
   border-collapse: collapse;
+  margin-bottom: 15px;
+  background: rgba(0, 0, 0, 0.2);
 }
 
-/* Larger touch targets on mobile */
 .ff-table th,
 .ff-table td {
-  padding: 0.75rem;
-  vertical-align: top;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-@media (min-width: 768px) {
-  .ff-table {
-    min-width: auto;
-    /* Remove min-width on larger screens */
-  }
-}
-
-.ff-table thead th {
-  vertical-align: bottom;
-  border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+  padding: 10px 12px;
   text-align: left;
-  font-weight: bold;
-}
-
-.ff-table tbody+tbody {
-  border-top: 2px solid rgba(255, 255, 255, 0.2);
-}
-
-.ff-table-striped tbody tr:nth-of-type(odd) {
-  background-color: rgba(255, 255, 255, 0.05);
-}
-
-.ff-table-hover tbody tr:hover {
-  background-color: rgba(255, 255, 255, 0.1);
-}
-
-.ff-table-bordered {
   border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.ff-table th {
+  background: rgba(255, 255, 255, 0.1);
+  font-weight: bold;
+  font-size: 0.9em;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.ff-table tbody tr:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.ff-table tbody tr:nth-child(even) {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.ff-table tbody tr:nth-child(even):hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+/* Striped variant */
+.ff-table-striped tbody tr:nth-child(odd) {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+/* Bordered variant */
+.ff-table-bordered {
+  border: 2px solid rgba(255, 255, 255, 0.3);
 }
 
 .ff-table-bordered th,
 .ff-table-bordered td {
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
-.ff-table-sm th,
-.ff-table-sm td {
-  padding: 0.3rem;
-}
-
-/* Optional: Stacked table for very small screens */
+/* Card-based layout for small screens */
 @media (max-width: 576px) {
-  .ff-table-stacked {
-    min-width: auto;
+  .ff-table-cards {
+    border: 0;
   }
 
-  .ff-table-stacked thead {
+  .ff-table-cards thead {
     display: none;
   }
 
-  .ff-table-stacked tr {
+  .ff-table-cards tr {
     display: block;
     margin-bottom: 1rem;
     border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: 4px;
-    padding: 0.5rem;
+    background: rgba(0, 0, 0, 0.3);
   }
 
-  .ff-table-stacked td {
-    display: block;
-    text-align: right;
-    padding: 0.5rem;
+  .ff-table-cards td {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem;
     border: none;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   }
 
-  .ff-table-stacked td:last-child {
+  .ff-table-cards td:last-child {
     border-bottom: none;
   }
 
-  .ff-table-stacked td::before {
+  .ff-table-cards td::before {
     content: attr(data-label);
-    float: left;
     font-weight: bold;
-    color: rgba(255, 255, 255, 0.7);
+    margin-right: 1rem;
+    flex-shrink: 0;
+    color: var(--highlight-color, #edd758);
+  }
+
+  .ff-table-cards tbody tr:nth-child(even) {
+    background: rgba(0, 0, 0, 0.3);
+  }
+}
+
+/* Small text on very small screens */
+@media (max-width: 480px) {
+
+  .ff-table th,
+  .ff-table td {
+    padding: 8px;
+    font-size: 0.9em;
+  }
+
+  .ff-table th {
+    font-size: 0.85em;
   }
 }
 
@@ -2604,93 +2776,62 @@ input[type="radio"].ff-form-check-input:focus {
 }
 
 /* --- ff-input-group.css --- */
-/* --- Input Group --- */
+/* --- Input Groups --- */
 .ff-input-group {
+  /* Mobile: Stack vertically by default */
   display: flex;
-  align-items: stretch;
+  flex-direction: column;
   width: 100%;
-  margin-bottom: 15px;
-}
-
-.ff-input-group .ff-input {
-  flex: 1;
-  border-radius: 0;
-  margin-bottom: 0;
-}
-
-.ff-input-group .ff-input:first-child {
-  border-top-left-radius: 4px;
-  border-bottom-left-radius: 4px;
-}
-
-.ff-input-group .ff-input:last-child {
-  border-top-right-radius: 4px;
-  border-bottom-right-radius: 4px;
+  margin-bottom: 10px;
 }
 
 .ff-input-group-text {
-  display: flex;
-  align-items: center;
-  padding: 5px 12px;
+  padding: 10px;
   background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-left: none;
+  border: 1px solid rgba(255, 255, 255, 0.3);
   color: inherit;
-  font-size: 0.9em;
+  white-space: nowrap;
+  text-align: center;
 }
 
-.ff-input-group-text:first-child {
-  border-right: none;
-  border-left: 1px solid rgba(255, 255, 255, 0.2);
-  border-top-left-radius: 4px;
-  border-bottom-left-radius: 4px;
+.ff-input-group input,
+.ff-input-group select,
+.ff-input-group textarea {
+  flex: 1;
+  min-width: 0;
 }
 
-.ff-input-group-text:last-child {
-  border-top-right-radius: 4px;
-  border-bottom-right-radius: 4px;
-}
+/* Desktop: Horizontal layout */
+@media (min-width: 577px) {
+  .ff-input-group {
+    flex-direction: row;
+  }
 
-.ff-input-group .ff-btn {
-  border-radius: 0;
-  margin: 0;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-left: none;
-}
-
-.ff-input-group .ff-btn:last-child {
-  border-top-right-radius: 4px;
-  border-bottom-right-radius: 4px;
-}
-
-/* Responsive Stacking */
-@media (max-width: 576px) {
   .ff-input-group.ff-responsive {
     flex-direction: column;
   }
+}
 
-  .ff-input-group.ff-responsive>* {
-    width: 100%;
-    border-radius: 4px !important;
-    margin-bottom: -1px;
-    border-right: 1px solid rgba(255, 255, 255, 0.2) !important;
-    border-left: 1px solid rgba(255, 255, 255, 0.2) !important;
-  }
+/* Input prepend/append */
+.ff-input-group-prepend,
+.ff-input-group-append {
+  display: flex;
+}
 
-  .ff-input-group.ff-responsive>*:not(:last-child) {
-    border-bottom-left-radius: 0 !important;
-    border-bottom-right-radius: 0 !important;
-  }
+.ff-input-group-prepend+input,
+.ff-input-group-prepend+select {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
 
-  .ff-input-group.ff-responsive>*:not(:first-child) {
-    border-top-left-radius: 0 !important;
-    border-top-right-radius: 0 !important;
-    border-top: none;
-  }
+.ff-input-group-append {
+  margin-left: -1px;
+}
 
-  .ff-input-group.ff-responsive .ff-input-group-text {
-    justify-content: center;
-  }
+input+.ff-input-group-append,
+select+.ff-input-group-append {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
 }
 
 /* --- ff-dropdown.css --- */
@@ -2928,5 +3069,1808 @@ input[type="radio"].ff-form-check-input:focus {
 .ff-junction-spell {
     color: #fff;
     text-shadow: 0 0 2px #fff;
+}
+
+/* --- ff1.css --- */
+/* FF1 Theme Variables (NES Style) */
+.theme-ff1 {
+    --window-border-radius: 4px;
+    --window-bg-color: #000000;
+
+    /* Solid Blue Background (No gradient for authentic NES feel) */
+    --content-bg-gradient: #0000bc;
+
+    --border-color-outer: #ffffff;
+    --border-color-inner: #ffffff;
+
+    --highlight-color: #fcfc30;
+    /* Classic NES yellow cursor */
+    --font-family: 'Courier New', 'Consolas', monospace;
+    --text-shadow-color: #000;
+}
+
+.theme-ff1 {
+    font-family: var(--font-family);
+    font-size: 16px;
+    line-height: 1.5;
+    font-weight: bold;
+}
+
+.theme-ff1 .ff-window {
+    border-radius: var(--window-border-radius);
+    padding: 4px;
+    background: #000;
+    border: 4px solid #fff;
+    /* Thick white border */
+    box-shadow: none;
+    image-rendering: pixelated;
+}
+
+.theme-ff1 .ff-window-content {
+    background: var(--content-bg-gradient);
+    padding: 15px;
+    border: none;
+}
+
+/* --- FF1 Component Overrides --- */
+
+/* Sliders: Simple 8-bit style */
+.theme-ff1 input[type=range].ff-range::-webkit-slider-runnable-track {
+    background: #0000bc;
+    border: 2px solid #fff;
+    height: 8px;
+}
+
+.theme-ff1 input[type=range].ff-range::-webkit-slider-thumb {
+    background: #fcfc30;
+    border: 2px solid #fff;
+    border-radius: 0;
+    width: 16px;
+    height: 16px;
+    margin-top: -6px;
+}
+
+/* Navs */
+/* FF1 Theme Variables (NES Style) */
+.theme-ff1 {
+    --window-border-radius: 4px;
+    --window-bg-color: #000000;
+
+    /* Solid Blue Background (No gradient for authentic NES feel) */
+    --content-bg-gradient: #0000bc;
+
+    --border-color-outer: #ffffff;
+    --border-color-inner: #ffffff;
+
+    --highlight-color: #fcfc30;
+    /* Classic NES yellow cursor */
+    --font-family: 'Courier New', 'Consolas', monospace;
+    --text-shadow-color: #000;
+}
+
+.theme-ff1 {
+    font-family: var(--font-family);
+    font-size: 16px;
+    line-height: 1.5;
+    font-weight: bold;
+}
+
+.theme-ff1 .ff-window {
+    border-radius: var(--window-border-radius);
+    padding: 4px;
+    background: #000;
+    border: 4px solid #fff;
+    /* Thick white border */
+    box-shadow: none;
+    image-rendering: pixelated;
+}
+
+.theme-ff1 .ff-window-content {
+    background: var(--content-bg-gradient);
+    padding: 15px;
+    border: none;
+}
+
+/* --- FF1 Component Overrides --- */
+
+/* Sliders: Simple 8-bit style */
+.theme-ff1 input[type=range].ff-range::-webkit-slider-runnable-track {
+    background: #0000bc;
+    border: 2px solid #fff;
+    height: 8px;
+}
+
+.theme-ff1 input[type=range].ff-range::-webkit-slider-thumb {
+    background: #fcfc30;
+    border: 2px solid #fff;
+    border-radius: 0;
+    width: 16px;
+    height: 16px;
+    margin-top: -6px;
+}
+
+/* Navs */
+.theme-ff1 .ff-nav-link.active {
+    background: #fcfc30;
+    color: #000;
+    border: 2px solid #fff;
+}
+
+/* Cards */
+.theme-ff1 .ff-card {
+    border: 3px solid #fff;
+    background: #0000bc;
+}
+
+/* Dropdowns */
+.theme-ff1 .ff-dropdown-menu {
+    background: #0000bc;
+    border: 3px solid #fff;
+    box-shadow: none;
+    border-radius: 0;
+}
+
+.theme-ff1 .ff-dropdown-item:hover {
+    background: #fcfc30;
+    color: #000;
+}
+
+/* Tooltips */
+.theme-ff1 .ff-tooltip-text {
+    background: #0000bc;
+    border: 2px solid #fff;
+    border-radius: 0;
+}
+
+.theme-ff1 .ff-tooltip-text::after {
+    border-color: #0000bc transparent transparent transparent;
+}
+
+/* List Groups */
+.theme-ff1 .ff-list-group-item {
+    border: 2px solid #fff;
+    margin-bottom: -2px;
+    /* Overlap borders */
+    border-radius: 0 !important;
+}
+
+.theme-ff1 .ff-list-group-item.active {
+    background: #fcfc30;
+    color: #000;
+    border-color: #fff;
+}
+
+/* Pagination */
+.theme-ff1 .ff-page-link {
+    background: #0000bc;
+    border: 2px solid #fff;
+    color: #fff;
+    border-radius: 0;
+}
+
+.theme-ff1 .ff-page-link:hover,
+.theme-ff1 .ff-page-item.active .ff-page-link {
+    background: #fcfc30;
+    color: #000;
+    border-color: #fff;
+}
+
+/* Modals */
+.theme-ff1 .ff-modal .ff-window {
+    border: 4px solid #fff;
+    box-shadow: none;
+}
+
+/* Alerts */
+.theme-ff1 .ff-alert {
+    border: 2px solid #fff;
+    background: #0000bc;
+}
+
+/* --- ff4.css --- */
+/* FF4 Theme Variables (SNES Style) */
+.theme-ff4 {
+    --window-border-radius: 8px;
+    --window-bg-color: #000000;
+
+    /* Deep Blue Gradient */
+    --content-bg-gradient: linear-gradient(to bottom, #000080 0%, #000040 100%);
+
+    --border-color-outer: #e0e0e0;
+    --border-color-inner: #a0a0a0;
+
+    --highlight-color: #ffffff;
+    --font-family: 'Final Fantasy VI', 'Georgia', serif;
+}
+
+.theme-ff4 {
+    font-family: var(--font-family);
+    font-size: 18px;
+    line-height: 1.6;
+    letter-spacing: -0.5px;
+    /* Tighten spacing for CRT effect */
+}
+
+.theme-ff4 .ff-window {
+    border-radius: var(--window-border-radius);
+    padding: 4px;
+    background: #fff;
+    border: 3px solid #a0a0a0;
+    /* Checkered/Marble border simulation */
+    box-shadow:
+        0 0 0 2px #505050,
+        inset 0 0 0 2px #505050;
+}
+
+.theme-ff4 .ff-window-content {
+    background: var(--content-bg-gradient);
+    padding: 15px;
+    border: 1px solid #fff;
+    border-radius: 4px;
+}
+
+/* --- FF4 Component Overrides --- */
+
+/* Sliders: SNES style */
+.theme-ff4 input[type=range].ff-range::-webkit-slider-runnable-track {
+    background: #000040;
+    border: 1px solid #a0a0a0;
+    height: 6px;
+}
+
+.theme-ff4 input[type=range].ff-range::-webkit-slider-thumb {
+    background: #fff;
+    border: 1px solid #505050;
+    width: 14px;
+    height: 14px;
+    margin-top: -5px;
+}
+
+/* FF4 Theme Variables (SNES Style) */
+.theme-ff4 {
+    --window-border-radius: 8px;
+    --window-bg-color: #000000;
+
+    /* Deep Blue Gradient */
+    --content-bg-gradient: linear-gradient(to bottom, #000080 0%, #000040 100%);
+
+    --border-color-outer: #e0e0e0;
+    --border-color-inner: #a0a0a0;
+
+    --highlight-color: #ffffff;
+    --font-family: 'Final Fantasy VI', 'Georgia', serif;
+}
+
+.theme-ff4 {
+    font-family: var(--font-family);
+    font-size: 18px;
+    line-height: 1.6;
+    letter-spacing: -0.5px;
+    /* Tighten spacing for CRT effect */
+}
+
+.theme-ff4 .ff-window {
+    border-radius: var(--window-border-radius);
+    padding: 4px;
+    background: #fff;
+    border: 3px solid #a0a0a0;
+    /* Checkered/Marble border simulation */
+    box-shadow:
+        0 0 0 2px #505050,
+        inset 0 0 0 2px #505050;
+}
+
+.theme-ff4 .ff-window-content {
+    background: var(--content-bg-gradient);
+    padding: 15px;
+    border: 1px solid #fff;
+    border-radius: 4px;
+}
+
+/* --- FF4 Component Overrides --- */
+
+/* Sliders: SNES style */
+.theme-ff4 input[type=range].ff-range::-webkit-slider-runnable-track {
+    background: #000040;
+    border: 1px solid #a0a0a0;
+    height: 6px;
+}
+
+.theme-ff4 input[type=range].ff-range::-webkit-slider-thumb {
+    background: #fff;
+    border: 1px solid #505050;
+    width: 14px;
+    height: 14px;
+    margin-top: -5px;
+}
+
+/* Navs */
+.theme-ff4 .ff-nav-link.active {
+    background: rgba(255, 255, 255, 0.2);
+    border-bottom: 2px solid #fff;
+}
+
+/* Cards */
+.theme-ff4 .ff-card {
+    border: 2px solid #a0a0a0;
+    background: rgba(0, 0, 64, 0.8);
+}
+
+.theme-ff4 .ff-nav-link.active {
+    background: rgba(255, 255, 255, 0.2);
+    border-bottom: 2px solid #fff;
+}
+
+/* Dropdowns */
+.theme-ff4 .ff-dropdown-menu {
+    background: #000040;
+    background: linear-gradient(to bottom, #000080 0%, #000040 100%);
+    border: 2px solid #a0a0a0;
+    box-shadow: 0 0 0 1px #505050, inset 0 0 0 1px #505050;
+    border-radius: 4px;
+}
+
+.theme-ff4 .ff-dropdown-item:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+/* Tooltips */
+.theme-ff4 .ff-tooltip-text {
+    background: #000040;
+    border: 2px solid #a0a0a0;
+    border-radius: 4px;
+}
+
+.theme-ff4 .ff-tooltip-text::after {
+    border-color: #000040 transparent transparent transparent;
+}
+
+/* List Groups */
+.theme-ff4 .ff-list-group-item {
+    border-color: #a0a0a0;
+}
+
+.theme-ff4 .ff-list-group-item.active {
+    background: linear-gradient(to right, rgba(255, 255, 255, 0.2), transparent);
+    border-color: #fff;
+}
+
+/* Pagination */
+.theme-ff4 .ff-page-link {
+    background: #000040;
+    border-color: #a0a0a0;
+    border-radius: 4px;
+}
+
+.theme-ff4 .ff-page-link:hover,
+.theme-ff4 .ff-page-item.active .ff-page-link {
+    background: #000080;
+    border-color: #fff;
+}
+
+/* Modals */
+.theme-ff4 .ff-modal .ff-window {
+    box-shadow: 0 0 0 2px #505050;
+}
+
+/* Alerts */
+.theme-ff4 .ff-alert {
+    border: 2px solid #a0a0a0;
+    background: rgba(0, 0, 64, 0.8);
+}
+
+/* --- ff6.css --- */
+/* FF6 Theme Variables */
+.theme-ff6 {
+    --window-border-radius: 5px;
+    --window-bg-color: #21217c;
+
+    /* Gradients for the complex border */
+    --border-gradient-corners: #6b6e87, #71767e, #c2c1c5, #c9c9cb, #ccc9cc, #c8c4c0, #7c7874, #c0bcb3;
+    --border-gradient-sides: #6b6e87, #71767e, #c2c1c5, #c9c9cb, #ccc9cc, #c8c4c0, #7c7874, #c0bcb3;
+
+    /* Inner content background */
+    --content-bg-gradient: linear-gradient(to bottom, #6d6db3, #5554ad, #5352a8, #3f4791, #354783, #32348d, #32328a, #313188, #222279, #14156d, #02045a, #040233, #020134, #020134);
+
+    --highlight-color: #edd758;
+    --font-family: 'Final Fantasy VI', 'Georgia', serif;
+}
+
+.theme-ff6 {
+    font-family: var(--font-family);
+    font-size: 18px;
+    line-height: 1.6;
+    letter-spacing: -0.5px;
+    /* Tighten spacing for CRT effect */
+}
+
+.theme-ff6 .ff-window {
+    border-radius: var(--window-border-radius);
+    padding: calc(var(--window-border-radius) + 5px);
+    background:
+        /* Corners */
+        radial-gradient(farthest-side at bottom right, var(--border-gradient-corners)) top left / var(--window-border-radius) var(--window-border-radius),
+        radial-gradient(farthest-side at top right, var(--border-gradient-corners)) bottom left / var(--window-border-radius) var(--window-border-radius),
+        radial-gradient(farthest-side at bottom left, var(--border-gradient-corners)) top right / var(--window-border-radius) var(--window-border-radius),
+        radial-gradient(farthest-side at top left, var(--border-gradient-corners)) bottom right / var(--window-border-radius) var(--window-border-radius),
+        /* Borders */
+        linear-gradient(to top, var(--border-gradient-sides)) top / calc(100% - 2 * var(--window-border-radius)) var(--window-border-radius),
+        linear-gradient(to bottom, var(--border-gradient-sides)) bottom / calc(100% - 2 * var(--window-border-radius)) var(--window-border-radius),
+        linear-gradient(to right, var(--border-gradient-sides)) right / var(--window-border-radius) calc(100% - 2 * var(--window-border-radius)),
+        linear-gradient(to left, var(--border-gradient-sides)) left / var(--window-border-radius) calc(100% - 2 * var(--window-border-radius));
+    background-repeat: no-repeat;
+    box-shadow: 0 0 0 1px #000;
+    /* Outer black line */
+    position: relative;
+}
+
+.theme-ff6 .ff-window-content {
+    background: var(--content-bg-gradient);
+    padding: 15px;
+    border: 1px solid #555;
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.2);
+    /* Inner border effect */
+}
+
+/* --- FF6 Component Overrides --- */
+
+/* Sliders: Classic grey style */
+.theme-ff6 input[type=range].ff-range::-webkit-slider-runnable-track {
+    background: #444;
+    border: 1px solid #888;
+    height: 6px;
+}
+
+.theme-ff6 input[type=range].ff-range::-webkit-slider-thumb {
+    background: #edd758;
+    border: 1px solid #fff;
+    width: 12px;
+    height: 12px;
+    margin-top: -4px;
+}
+
+/* FF6 Theme Variables */
+.theme-ff6 {
+    --window-border-radius: 5px;
+    --window-bg-color: #21217c;
+
+    /* Gradients for the complex border */
+    --border-gradient-corners: #6b6e87, #71767e, #c2c1c5, #c9c9cb, #ccc9cc, #c8c4c0, #7c7874, #c0bcb3;
+    --border-gradient-sides: #6b6e87, #71767e, #c2c1c5, #c9c9cb, #ccc9cc, #c8c4c0, #7c7874, #c0bcb3;
+
+    /* Inner content background */
+    --content-bg-gradient: linear-gradient(to bottom, #6d6db3, #5554ad, #5352a8, #3f4791, #354783, #32348d, #32328a, #313188, #222279, #14156d, #02045a, #040233, #020134, #020134);
+
+    --highlight-color: #edd758;
+    --font-family: 'Final Fantasy VI', 'Georgia', serif;
+}
+
+.theme-ff6 {
+    font-family: var(--font-family);
+    font-size: 18px;
+    line-height: 1.6;
+    letter-spacing: -0.5px;
+    /* Tighten spacing for CRT effect */
+}
+
+.theme-ff6 .ff-window {
+    border-radius: var(--window-border-radius);
+    padding: calc(var(--window-border-radius) + 5px);
+    background:
+        /* Corners */
+        radial-gradient(farthest-side at bottom right, var(--border-gradient-corners)) top left / var(--window-border-radius) var(--window-border-radius),
+        radial-gradient(farthest-side at top right, var(--border-gradient-corners)) bottom left / var(--window-border-radius) var(--window-border-radius),
+        radial-gradient(farthest-side at bottom left, var(--border-gradient-corners)) top right / var(--window-border-radius) var(--window-border-radius),
+        radial-gradient(farthest-side at top left, var(--border-gradient-corners)) bottom right / var(--window-border-radius) var(--window-border-radius),
+        /* Borders */
+        linear-gradient(to top, var(--border-gradient-sides)) top / calc(100% - 2 * var(--window-border-radius)) var(--window-border-radius),
+        linear-gradient(to bottom, var(--border-gradient-sides)) bottom / calc(100% - 2 * var(--window-border-radius)) var(--window-border-radius),
+        linear-gradient(to right, var(--border-gradient-sides)) right / var(--window-border-radius) calc(100% - 2 * var(--window-border-radius)),
+        linear-gradient(to left, var(--border-gradient-sides)) left / var(--window-border-radius) calc(100% - 2 * var(--window-border-radius));
+    background-repeat: no-repeat;
+    box-shadow: 0 0 0 1px #000;
+    /* Outer black line */
+    position: relative;
+}
+
+.theme-ff6 .ff-window-content {
+    background: var(--content-bg-gradient);
+    padding: 15px;
+    border: 1px solid #555;
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.2);
+    /* Inner border effect */
+}
+
+/* --- FF6 Component Overrides --- */
+
+/* Sliders: Classic grey style */
+.theme-ff6 input[type=range].ff-range::-webkit-slider-runnable-track {
+    background: #444;
+    border: 1px solid #888;
+    height: 6px;
+}
+
+.theme-ff6 input[type=range].ff-range::-webkit-slider-thumb {
+    background: #edd758;
+    border: 1px solid #fff;
+    width: 12px;
+    height: 12px;
+    margin-top: -4px;
+}
+
+/* Navs */
+.theme-ff6 .ff-nav-link.active {
+    background: rgba(237, 215, 88, 0.2);
+    border-left: 3px solid #edd758;
+}
+
+/* Cards */
+.theme-ff6 .ff-card {
+    border: 1px solid #888;
+    background: rgba(68, 68, 68, 0.8);
+}
+
+/* Dropdowns */
+.theme-ff6 .ff-dropdown-menu {
+    background: #21217c;
+    background: linear-gradient(to bottom, #21217c, #14156d);
+    border: 1px solid #fff;
+    box-shadow: 0 0 0 1px #000;
+    border-radius: 4px;
+}
+
+.theme-ff6 .ff-dropdown-item:hover {
+    background: rgba(237, 215, 88, 0.2);
+}
+
+/* Tooltips */
+.theme-ff6 .ff-tooltip-text {
+    background: #21217c;
+    border: 1px solid #fff;
+    box-shadow: 0 0 0 1px #000;
+    border-radius: 4px;
+}
+
+.theme-ff6 .ff-tooltip-text::after {
+    border-color: #21217c transparent transparent transparent;
+}
+
+/* List Groups */
+.theme-ff6 .ff-list-group-item {
+    border-color: #888;
+}
+
+.theme-ff6 .ff-list-group-item.active {
+    background: rgba(237, 215, 88, 0.2);
+    border-color: #edd758;
+}
+
+/* Pagination */
+.theme-ff6 .ff-page-link {
+    background: #444;
+    border-color: #888;
+}
+
+.theme-ff6 .ff-page-link:hover,
+.theme-ff6 .ff-page-item.active .ff-page-link {
+    background: #21217c;
+    border-color: #edd758;
+    color: #edd758;
+}
+
+/* Modals */
+.theme-ff6 .ff-modal .ff-window {
+    box-shadow: 0 0 0 1px #000;
+}
+
+/* Alerts */
+.theme-ff6 .ff-alert {
+    border: 1px solid #fff;
+    background: rgba(33, 33, 124, 0.8);
+    box-shadow: 0 0 0 1px #000;
+}
+
+/* --- ff7.css --- */
+/* FF7 Theme Variables & Tokens */
+.theme-ff7 {
+    /* Colors */
+    --ff7-win-top: #001850;
+    --ff7-win-bot: #003080;
+    --ff7-border-outer: #1A1A1A;
+    --ff7-border-inner: #303030;
+    --ff7-border-highlight: #E0E0E0;
+    --ff7-text-main: #FFFFFF;
+    --ff7-text-secondary: #C0C0C0;
+    --ff7-text-active: #78B0FF;
+    --ff7-warning-red: #FF3030;
+    --ff7-slider-track: #707070;
+    --ff7-slider-knob: #D0D0D0;
+
+    /* Global Overrides */
+    --window-border-radius: 3px;
+    --content-bg-gradient: linear-gradient(to bottom, var(--ff7-win-top) 0%, var(--ff7-win-bot) 100%);
+    --highlight-color: var(--ff7-text-active);
+    --font-family: "Press Start 2P", "Pixel Operator", monospace;
+}
+
+
+
+/* Prefer Reactor7 for this theme when available */
+.theme-ff7 {
+    --font-family: "Press Start 2P", "Pixel Operator", monospace;
+}
+
+/* --- Window Component --- */
+.theme-ff7 .ff-window {
+    border-radius: var(--window-border-radius);
+    padding: 2px;
+    background: transparent;
+    /* Tighter bevel: thin outer dark, thin inner light, subtle inner recess */
+    border: 1px solid var(--ff7-border-outer);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06),
+        /* inner light line */
+        inset 0 -1px 0 rgba(0, 0, 0, 0.35),
+        /* inner dark line */
+        2px 2px 0 rgba(0, 0, 16, 0.6);
+    /* small drop */
+    margin: 4px;
+}
+
+.theme-ff7 .ff-window-content {
+    background: var(--content-bg-gradient);
+    border-radius: 1px;
+    padding: 12px;
+    color: var(--ff7-text-main);
+    font-family: var(--font-family);
+    letter-spacing: 0.5px;
+    text-shadow: none;
+    /* No shadow per spec */
+    image-rendering: pixelated;
+}
+
+/* --- Typography --- */
+.theme-ff7 h1,
+.theme-ff7 h2,
+.theme-ff7 h3,
+.theme-ff7 h4,
+.theme-ff7 .ff-card-header,
+.theme-ff7 label {
+    color: var(--ff7-text-active);
+    /* Cyan/Blue for headers */
+    text-transform: uppercase;
+    text-shadow: 1px 1px 0 #000;
+    /* Slight shadow for headers only for readability */
+    /* font-size intentionally inherited to preserve visual hierarchy */
+    letter-spacing: 1px;
+}
+
+.theme-ff7 p,
+.theme-ff7 span,
+.theme-ff7 div {
+    color: var(--ff7-text-main);
+}
+
+.theme-ff7 .text-secondary {
+    color: var(--ff7-text-secondary);
+}
+
+/* --- Cursor & List Items --- */
+.theme-ff7 .ff-nav-link,
+.theme-ff7 .ff-list-group-item,
+.theme-ff7 .ff-dropdown-item,
+.theme-ff7 .ff-page-link,
+.theme-ff7 .ff-btn {
+    position: relative;
+    transition: none;
+    border: 1px solid transparent;
+    color: var(--ff7-text-secondary);
+    cursor: default;
+    /* Reset cursor to prevent persistence */
+}
+
+/* Active/Hover State */
+.theme-ff7 .ff-nav-link:hover,
+.theme-ff7 .ff-nav-link.active,
+.theme-ff7 .ff-list-group-item:hover,
+.theme-ff7 .ff-list-group-item.active,
+.theme-ff7 .ff-dropdown-item:hover,
+.theme-ff7 .ff-page-link:hover,
+.theme-ff7 .ff-page-link.active,
+.theme-ff7 .ff-btn:not(:disabled):hover {
+    background: linear-gradient(to right, #004080, #0050A0);
+    color: var(--ff7-text-main);
+    border-radius: 2px;
+    padding-left: 45px !important;
+    /* Increased spacing to prevent text occlusion */
+    text-shadow: none;
+    cursor: default;
+}
+
+/* The Finger Cursor: only show for hovered item or an explicitly focused item */
+.theme-ff7 .ff-nav-link::before,
+.theme-ff7 .ff-list-group-item::before,
+.theme-ff7 .ff-dropdown-item::before,
+.theme-ff7 .ff-page-link::before,
+.theme-ff7 .ff-btn::before {
+    /* Default: hidden unless hovered or focused via JS */
+    content: none;
+    display: none;
+}
+
+.theme-ff7 .ff-nav-link:hover::before,
+.theme-ff7 .ff-list-group-item:hover::before,
+.theme-ff7 .ff-dropdown-item:hover::before,
+.theme-ff7 .ff-page-link:hover::before,
+.theme-ff7 .ff-btn:not(:disabled):hover::before,
+.theme-ff7 .ff-cursor-focused::before {
+    content: "☛";
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.4em;
+    color: #FFFFFF;
+    text-shadow: 2px 2px 0 #000;
+    animation: ff7-cursor-bob 0.8s infinite alternate;
+    display: block;
+}
+
+@keyframes ff7-cursor-bob {
+    0% {
+        transform: translateY(-50%) translateX(0);
+    }
+
+    100% {
+        transform: translateY(-50%) translateX(4px);
+    }
+}
+
+/* --- Sliders (Authentic Config Style) --- */
+.theme-ff7 input[type=range].ff-range {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    background: transparent;
+    height: 18px;
+    /* allow room for thumb visual across browsers */
+}
+
+.theme-ff7 input[type=range].ff-range::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 8px;
+    cursor: pointer;
+    background: linear-gradient(to bottom, #5a5a5a, #4a4a4a);
+    border: 1px solid rgba(0, 0, 0, 0.6);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08), inset 0 -1px 0 rgba(0, 0, 0, 0.4);
+}
+
+.theme-ff7 input[type=range].ff-range::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    height: 12px;
+    width: 12px;
+    /* square-ish knob */
+    background: linear-gradient(to bottom, #FFFFFF, #D8D8D8);
+    border: 1px solid #888;
+    /* darker edge for pixel bevel */
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.7), 0 1px 0 rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+    margin-top: -2px;
+    /* center over 8px track */
+}
+
+/* Firefox */
+.theme-ff7 input[type=range].ff-range::-moz-range-track {
+    height: 8px;
+    background: linear-gradient(to bottom, #5a5a5a, #4a4a4a);
+    border: 1px solid rgba(0, 0, 0, 0.6);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08), inset 0 -1px 0 rgba(0, 0, 0, 0.4);
+}
+
+.theme-ff7 input[type=range].ff-range::-moz-range-thumb {
+    height: 12px;
+    width: 12px;
+    background: linear-gradient(to bottom, #FFFFFF, #D8D8D8);
+    border: 1px solid #888;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.7), 0 1px 0 rgba(0, 0, 0, 0.5);
+}
+
+/* IE/Edge (legacy) */
+.theme-ff7 input[type=range].ff-range::-ms-fill-lower,
+.theme-ff7 input[type=range].ff-range::-ms-fill-upper {
+    background: linear-gradient(to bottom, #5a5a5a, #4a4a4a);
+    border: 1px solid rgba(0, 0, 0, 0.6);
+}
+
+.theme-ff7 input[type=range].ff-range:focus {
+    outline: none;
+}
+
+/* --- Inputs & Forms --- */
+.theme-ff7 .ff-input,
+.theme-ff7 .ff-select,
+.theme-ff7 .ff-textarea {
+    background: rgba(0, 0, 0, 0.4);
+    border: 1px solid #555;
+    color: var(--ff7-text-main);
+    font-family: var(--font-family);
+    box-shadow: inset 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.theme-ff7 .ff-input:focus,
+.theme-ff7 .ff-select:focus,
+.theme-ff7 .ff-textarea:focus {
+    border-color: var(--ff7-text-active);
+    background: rgba(0, 0, 0, 0.6);
+}
+
+/* --- Warning Dialog --- */
+.theme-ff7 .ff-alert {
+    background: linear-gradient(to bottom, #800000, #400000);
+    /* Red gradient for alerts */
+    border: 1px solid #FF0000;
+    box-shadow: 0 0 0 1px #FFF, 0 0 0 2px #500000;
+    color: #FFF;
+}
+
+/* --- Mini Panels (Time, Gil) --- */
+.theme-ff7 .ff-card {
+    border: 1px solid #444;
+    box-shadow: inset 1px 1px 0 #000, 1px 1px 0 #FFF;
+    /* Mini bevel */
+    background: rgba(0, 0, 0, 0.2);
+    padding: 8px;
+}
+
+.theme-ff7 .ff-card-header {
+    border-bottom: none;
+    margin-bottom: 5px;
+    color: var(--ff7-text-active);
+}
+
+/* --- Navbar Override --- */
+.theme-ff7 .ff-navbar {
+    background: linear-gradient(to bottom, #002040, #001020);
+    border-bottom: 1px solid #555;
+}
+
+/* Fix: align in-theme nav flush with window content (neutralize content padding) */
+.theme-ff7 .ff-nav {
+    margin-left: -12px;
+    padding-left: 0;
+}
+
+/* --- Table Override --- */
+.theme-ff7 .ff-table th {
+    color: var(--ff7-text-active);
+    border-bottom: 1px solid #555;
+}
+
+.theme-ff7 .ff-table td {
+    color: var(--ff7-text-main);
+}
+
+.theme-ff7 .ff-table-striped tbody tr:nth-of-type(odd) {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+/* --- Popover Styling (FF7 theme) --- */
+.theme-ff7 .ff-popover {
+    /* Use opacity/transform transitions for smooth popover animation.
+       Positioning is applied by JS inline styles so we avoid hard-coding left/top here. */
+    position: absolute !important;
+    z-index: 2000 !important;
+    left: 0 !important;
+    top: 0 !important;
+    margin: 0 !important;
+    opacity: 0;
+    /* start hidden */
+    transform: translateY(-6px) scale(0.995);
+    transition: opacity 220ms cubic-bezier(.2, .9, .3, 1), transform 220ms cubic-bezier(.2, .9, .3, 1);
+    pointer-events: none;
+}
+
+.theme-ff7 .ff-popover.show {
+    opacity: 1 !important;
+    transform: translateY(0) scale(1) !important;
+    pointer-events: auto !important;
+}
+
+/* --- Materia Slots (Preserved) --- */
+.theme-ff7 .ff-materia-slots {
+    background: #2a2a2a;
+    box-shadow: inset 1px 1px 2px rgba(0, 0, 0, 0.8), 1px 1px 0 rgba(255, 255, 255, 0.1);
+    border: 1px solid #111;
+    border-radius: 20px;
+}
+
+.theme-ff7 .ff-materia-slot {
+    background: #111;
+    border: 1px solid #444;
+    box-shadow: inset 1px 1px 3px #000;
+}
+
+.theme-ff7 .ff-materia-slots.linked::after {
+    background: #555;
+    height: 4px;
+    border: 1px solid #333;
+    box-shadow: inset 0 1px 1px #000;
+}
+
+/* Tabs color overrides for better legibility on FF7 background */
+.theme-ff7 .ff-tab {
+    color: var(--ff7-text-active);
+}
+
+.theme-ff7 .ff-tab[aria-selected="true"],
+.theme-ff7 .ff-tab.active {
+    color: var(--ff7-text-main);
+}
+
+/* --- ff8.css --- */
+/* FF8 Theme Variables */
+.theme-ff8 {
+    --window-border-radius: 0px;
+    /* Sharp corners */
+    --window-bg-color: #2a2a2a;
+
+    /* FF8 Grey/Gunmetal Gradient */
+    --content-bg-gradient: linear-gradient(to bottom, #2a2a2a 0%, #1a1a1a 100%);
+
+    --border-color-outer: #777;
+    --border-color-inner: #333;
+
+    --highlight-color: #00ff00;
+    /* Green highlight */
+    --font-family: 'Share Tech Mono', monospace;
+}
+
+.theme-ff8 {
+    font-family: var(--font-family);
+}
+
+.theme-ff8 .ff-window {
+    border-radius: var(--window-border-radius);
+    padding: 2px;
+    background: #555;
+    border: 1px solid #777;
+    box-shadow:
+        0 0 0 1px #111,
+        inset 0 0 0 1px #777;
+    position: relative;
+}
+
+/* Scanline effect overlay */
+.theme-ff8 .ff-window::after {
+    content: " ";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.1) 50%);
+    background-size: 100% 4px;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.theme-ff8 .ff-window-content {
+    background: var(--content-bg-gradient);
+    padding: 15px;
+    border: 1px solid #333;
+    position: relative;
+    z-index: 2;
+}
+
+/* --- FF8 Component Overrides --- */
+
+/* Sliders: Tech/Industrial look */
+.theme-ff8 input[type=range].ff-range::-webkit-slider-runnable-track {
+    background: #333;
+    border: 1px solid #777;
+    height: 6px;
+}
+
+.theme-ff8 input[type=range].ff-range::-webkit-slider-thumb {
+    background: #00ff00;
+    border: 2px solid #fff;
+    border-radius: 0;
+    /* Square thumb */
+    width: 12px;
+    height: 20px;
+    margin-top: -8px;
+    box-shadow: 0 0 5px #00ff00;
+}
+
+/* Navs */
+.theme-ff8 .ff-nav-link.active {
+    background: rgba(0, 255, 0, 0.2);
+    border-bottom: 2px solid #00ff00;
+    color: #fff;
+}
+
+/* Cards */
+.theme-ff8 .ff-card {
+    border: 1px solid #555;
+    background: rgba(0, 0, 0, 0.5);
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.8);
+}
+
+/* Dropdowns */
+.theme-ff8 .ff-dropdown-menu {
+    background: #2a2a2a;
+    border: 1px solid #777;
+    box-shadow: 0 0 0 1px #111, inset 0 0 0 1px #777;
+}
+
+.theme-ff8 .ff-dropdown-item:hover {
+    background: rgba(0, 255, 0, 0.2);
+    color: #fff;
+}
+
+/* Tooltips */
+.theme-ff8 .ff-tooltip-text {
+    background: #2a2a2a;
+    border: 1px solid #777;
+    box-shadow: 0 0 5px #00ff00;
+}
+
+.theme-ff8 .ff-tooltip-text::after {
+    border-color: #2a2a2a transparent transparent transparent;
+}
+
+/* List Groups */
+.theme-ff8 .ff-list-group-item {
+    border-color: #555;
+    background: rgba(0, 0, 0, 0.6);
+}
+
+.theme-ff8 .ff-list-group-item.active {
+    background: rgba(0, 255, 0, 0.15);
+    border-color: #00ff00;
+    box-shadow: inset 0 0 5px rgba(0, 255, 0, 0.3);
+}
+
+/* Pagination */
+.theme-ff8 .ff-page-link {
+    background: #333;
+    border-color: #555;
+    border-radius: 0;
+    /* Square buttons */
+}
+
+.theme-ff8 .ff-page-link:hover,
+.theme-ff8 .ff-page-item.active .ff-page-link {
+    background: #444;
+    border-color: #00ff00;
+    color: #00ff00;
+    box-shadow: 0 0 5px rgba(0, 255, 0, 0.5);
+}
+
+/* Modals */
+.theme-ff8 .ff-modal .ff-window {
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+}
+
+/* Alerts */
+.theme-ff8 .ff-alert {
+    border-left: 4px solid;
+    background: rgba(0, 0, 0, 0.7);
+}
+
+/* --- FF8 Game Specific --- */
+
+/* Junction Display */
+.theme-ff8 .ff-junction-display {
+    font-family: 'Share Tech Mono', monospace;
+    color: #ccc;
+}
+
+.theme-ff8 .ff-junction-row {
+    border-bottom: 1px solid #444;
+}
+
+.theme-ff8 .ff-junction-stat {
+    color: #888;
+    text-transform: uppercase;
+}
+
+.theme-ff8 .ff-junction-spell {
+    color: #fff;
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+}
+
+/* Battle Menu */
+.theme-ff8 .ff-atb-bar {
+    background: linear-gradient(to right, #555, #aaa, #fff);
+}
+
+.theme-ff8 .ff-battle-menu .ff-list-group-item.active {
+    background: rgba(0, 255, 0, 0.2);
+    border-left: 4px solid #00ff00;
+}
+
+/* --- ff9.css --- */
+/* FF9 Theme Variables */
+.theme-ff9 {
+    --window-border-radius: 4px;
+    --window-bg-color: #3a3a4a;
+
+    /* Stone/Slate Gradient - More texture/noise feel */
+    --content-bg-gradient: linear-gradient(to bottom, #505060, #303040);
+
+    --border-color-gold: #d4af37;
+    /* Richer gold */
+    --border-color-shadow: #1a1a2a;
+
+    --highlight-color: #ffd700;
+    --font-family: 'Cinzel', serif;
+}
+
+.theme-ff9 {
+    font-family: var(--font-family);
+}
+
+.theme-ff9 .ff-window {
+    border-radius: var(--window-border-radius);
+    padding: 5px;
+    background: #2a2a3a;
+    border: 3px solid #6a6a7a;
+    /* Complex double border for that "framed" look */
+    box-shadow:
+        0 0 0 2px #1a1a2a,
+        inset 0 0 0 1px #1a1a2a;
+    position: relative;
+}
+
+.theme-ff9 .ff-window-content {
+    background: var(--content-bg-gradient);
+    padding: 15px;
+    border: 1px solid #5a5a6a;
+    background-image: radial-gradient(circle at 50% 50%, transparent 0%, rgba(0, 0, 0, 0.2) 100%);
+    /* Texture overlay simulation */
+}
+
+/* Corner decorations (pseudo-elements) */
+.theme-ff9 .ff-window::before,
+.theme-ff9 .ff-window::after {
+    content: "";
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background: var(--border-color-gold);
+    border-radius: 50%;
+    z-index: 3;
+}
+
+.theme-ff9 .ff-window::before {
+    top: -4px;
+    left: -4px;
+    box-shadow: calc(100% + 8px) 0 0 0 var(--border-color-gold);
+    /* Top right */
+}
+
+.theme-ff9 .ff-window::after {
+    bottom: -4px;
+    right: -4px;
+    box-shadow: calc(-100% - 8px) 0 0 0 var(--border-color-gold);
+    /* Bottom left */
+}
+
+/* --- FF9 Component Overrides --- */
+
+/* Sliders: Ornate fantasy style */
+.theme-ff9 input[type=range].ff-range::-webkit-slider-runnable-track {
+    background: #303040;
+    border: 2px solid #6a6a7a;
+    height: 6px;
+}
+
+.theme-ff9 input[type=range].ff-range::-webkit-slider-thumb {
+    background: #d4af37;
+    border: 2px solid #fff;
+    width: 14px;
+    height: 14px;
+    margin-top: -6px;
+    box-shadow: 0 0 5px rgba(212, 175, 55, 0.5);
+}
+
+/* Navs */
+/* FF9 Theme Variables */
+.theme-ff9 {
+    --window-border-radius: 4px;
+    --window-bg-color: #3a3a4a;
+
+    /* Stone/Slate Gradient - More texture/noise feel */
+    --content-bg-gradient: linear-gradient(to bottom, #505060, #303040);
+
+    --border-color-gold: #d4af37;
+    /* Richer gold */
+    --border-color-shadow: #1a1a2a;
+
+    --highlight-color: #ffd700;
+    --font-family: 'Cinzel', serif;
+}
+
+.theme-ff9 {
+    font-family: var(--font-family);
+}
+
+.theme-ff9 .ff-window {
+    border-radius: var(--window-border-radius);
+    padding: 5px;
+    background: #2a2a3a;
+    border: 3px solid #6a6a7a;
+    /* Complex double border for that "framed" look */
+    box-shadow:
+        0 0 0 2px #1a1a2a,
+        inset 0 0 0 1px #1a1a2a;
+    position: relative;
+}
+
+.theme-ff9 .ff-window-content {
+    background: var(--content-bg-gradient);
+    padding: 15px;
+    border: 1px solid #5a5a6a;
+    background-image: radial-gradient(circle at 50% 50%, transparent 0%, rgba(0, 0, 0, 0.2) 100%);
+    /* Texture overlay simulation */
+}
+
+/* Corner decorations (pseudo-elements) */
+.theme-ff9 .ff-window::before,
+.theme-ff9 .ff-window::after {
+    content: "";
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background: var(--border-color-gold);
+    border-radius: 50%;
+    z-index: 3;
+}
+
+.theme-ff9 .ff-window::before {
+    top: -4px;
+    left: -4px;
+    box-shadow: calc(100% + 8px) 0 0 0 var(--border-color-gold);
+    /* Top right */
+}
+
+.theme-ff9 .ff-window::after {
+    bottom: -4px;
+    right: -4px;
+    box-shadow: calc(-100% - 8px) 0 0 0 var(--border-color-gold);
+    /* Bottom left */
+}
+
+/* --- FF9 Component Overrides --- */
+
+/* Sliders: Ornate fantasy style */
+.theme-ff9 input[type=range].ff-range::-webkit-slider-runnable-track {
+    background: #303040;
+    border: 2px solid #6a6a7a;
+    height: 6px;
+}
+
+.theme-ff9 input[type=range].ff-range::-webkit-slider-thumb {
+    background: #d4af37;
+    border: 2px solid #fff;
+    width: 14px;
+    height: 14px;
+    margin-top: -6px;
+    box-shadow: 0 0 5px rgba(212, 175, 55, 0.5);
+}
+
+/* Navs */
+.theme-ff9 .ff-nav-link.active {
+    background: rgba(212, 175, 55, 0.2);
+    border-bottom: 2px solid #d4af37;
+    color: #ffd700;
+}
+
+/* Cards */
+.theme-ff9 .ff-card {
+    border: 2px solid #6a6a7a;
+    background: linear-gradient(to bottom, #505060, #303040);
+}
+
+/* Dropdowns */
+.theme-ff9 .ff-dropdown-menu {
+    background: #303040;
+    border: 2px solid #6a6a7a;
+    box-shadow: 0 0 0 1px #1a1a2a, inset 0 0 0 1px #1a1a2a;
+    border-radius: 4px;
+}
+
+.theme-ff9 .ff-dropdown-item:hover {
+    background: rgba(212, 175, 55, 0.2);
+    color: #ffd700;
+}
+
+/* Tooltips */
+.theme-ff9 .ff-tooltip-text {
+    background: #303040;
+    border: 2px solid #6a6a7a;
+    box-shadow: 0 0 0 1px #1a1a2a;
+    border-radius: 4px;
+}
+
+.theme-ff9 .ff-tooltip-text::after {
+    border-color: #303040 transparent transparent transparent;
+}
+
+/* List Groups */
+.theme-ff9 .ff-list-group-item {
+    border-color: #6a6a7a;
+    background: rgba(48, 48, 64, 0.8);
+}
+
+.theme-ff9 .ff-list-group-item.active {
+    background: rgba(212, 175, 55, 0.15);
+    border-color: #d4af37;
+    color: #ffd700;
+}
+
+/* Pagination */
+.theme-ff9 .ff-page-link {
+    background: #303040;
+    border-color: #6a6a7a;
+}
+
+.theme-ff9 .ff-page-link:hover,
+.theme-ff9 .ff-page-item.active .ff-page-link {
+    background: #404050;
+    border-color: #d4af37;
+    color: #ffd700;
+    box-shadow: 0 0 5px rgba(212, 175, 55, 0.3);
+}
+
+/* Modals */
+.theme-ff9 .ff-modal .ff-window {
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+/* Alerts */
+.theme-ff9 .ff-alert {
+    border: 1px solid #6a6a7a;
+    background: rgba(48, 48, 64, 0.9);
+    border-left: 4px solid #d4af37;
+}
+
+/* --- ff13.css --- */
+/* FF13 Theme Variables (Crystal/Future) */
+.theme-ff13 {
+    --window-border-radius: 20px 0 20px 0;
+    /* Asymmetric curves */
+    --window-bg-color: rgba(255, 255, 255, 0.8);
+
+    /* Light/Glassy Gradient */
+    --content-bg-gradient: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(230, 240, 255, 0.8) 100%);
+
+    --border-color-outer: #a0c0e0;
+    --highlight-color: #00aaff;
+    --text-color: #1a1a1a;
+    /* Even darker for better readability */
+    --font-family: 'Roboto', 'Segoe UI', sans-serif;
+}
+
+.theme-ff13 {
+    color: var(--text-color);
+    font-family: var(--font-family);
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.6;
+    letter-spacing: 0.3px;
+}
+
+.theme-ff13 .ff-window {
+    border-radius: var(--window-border-radius);
+    padding: 1px;
+    /* Thin borders */
+    background: linear-gradient(45deg, #fff, #c0e0ff);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+}
+
+.theme-ff13 .ff-window-content {
+    background: var(--content-bg-gradient);
+    padding: 20px;
+    border-radius: var(--window-border-radius);
+    border: 1px solid rgba(255, 255, 255, 0.9);
+}
+
+.theme-ff13 .ff-btn {
+    color: #005588;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: bold;
+}
+
+.theme-ff13 .ff-btn:hover {
+    background: rgba(0, 170, 255, 0.3);
+    border-radius: 15px;
+    color: #003366;
+}
+
+/* --- FF13 Component Overrides --- */
+
+/* Sliders: Crystal/elegant style */
+.theme-ff13 input[type=range].ff-range::-webkit-slider-runnable-track {
+    background: rgba(255, 255, 255, 0.3);
+    border: 1px solid rgba(160, 192, 224, 0.5);
+    height: 4px;
+}
+
+.theme-ff13 input[type=range].ff-range::-webkit-slider-thumb {
+    background: linear-gradient(135deg, #fff, #c0e0ff);
+    border: 1px solid #00aaff;
+    width: 16px;
+    height: 16px;
+    margin-top: -6px;
+    box-shadow: 0 2px 8px rgba(0, 170, 255, 0.3);
+}
+
+/* Navs */
+.theme-ff13 .ff-nav-link {
+    text-transform: uppercase;
+    font-size: 0.85em;
+    letter-spacing: 1px;
+}
+
+/* FF13 Theme Variables (Crystal/Future) */
+.theme-ff13 {
+    --window-border-radius: 20px 0 20px 0;
+    /* Asymmetric curves */
+    --window-bg-color: rgba(255, 255, 255, 0.8);
+
+    /* Light/Glassy Gradient */
+    --content-bg-gradient: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(230, 240, 255, 0.8) 100%);
+
+    --border-color-outer: #a0c0e0;
+    --highlight-color: #00aaff;
+    --text-color: #1a1a1a;
+    /* Even darker for better readability */
+    --font-family: 'Roboto', 'Segoe UI', sans-serif;
+}
+
+.theme-ff13 {
+    color: var(--text-color);
+    font-family: var(--font-family);
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.6;
+    letter-spacing: 0.3px;
+}
+
+.theme-ff13 .ff-window {
+    border-radius: var(--window-border-radius);
+    padding: 1px;
+    /* Thin borders */
+    background: linear-gradient(45deg, #fff, #c0e0ff);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+}
+
+.theme-ff13 .ff-window-content {
+    background: var(--content-bg-gradient);
+    padding: 20px;
+    border-radius: var(--window-border-radius);
+    border: 1px solid rgba(255, 255, 255, 0.9);
+}
+
+.theme-ff13 .ff-btn {
+    color: #005588;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: bold;
+}
+
+.theme-ff13 .ff-btn:hover {
+    background: rgba(0, 170, 255, 0.3);
+    border-radius: 15px;
+    color: #003366;
+}
+
+/* --- FF13 Component Overrides --- */
+
+/* Sliders: Crystal/elegant style */
+.theme-ff13 input[type=range].ff-range::-webkit-slider-runnable-track {
+    background: rgba(255, 255, 255, 0.3);
+    border: 1px solid rgba(160, 192, 224, 0.5);
+    height: 4px;
+}
+
+.theme-ff13 input[type=range].ff-range::-webkit-slider-thumb {
+    background: linear-gradient(135deg, #fff, #c0e0ff);
+    border: 1px solid #00aaff;
+    width: 16px;
+    height: 16px;
+    margin-top: -6px;
+    box-shadow: 0 2px 8px rgba(0, 170, 255, 0.3);
+}
+
+/* Navs */
+.theme-ff13 .ff-nav-link {
+    text-transform: uppercase;
+    font-size: 0.85em;
+    letter-spacing: 1px;
+}
+
+.theme-ff13 .ff-nav-link.active {
+    background: rgba(0, 170, 255, 0.2);
+    border-bottom: 2px solid #00aaff;
+    color: #005588;
+}
+
+/* Cards */
+.theme-ff13 .ff-card {
+    border: 1px solid rgba(160, 192, 224, 0.4);
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.8), rgba(230, 240, 255, 0.7));
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Dropdowns */
+.theme-ff13 .ff-dropdown-menu {
+    background: rgba(255, 255, 255, 0.95);
+    border: 1px solid #a0c0e0;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    color: #222;
+}
+
+.theme-ff13 .ff-dropdown-item:hover {
+    background: rgba(0, 170, 255, 0.1);
+    color: #005588;
+}
+
+/* Tooltips */
+.theme-ff13 .ff-tooltip-text {
+    background: rgba(255, 255, 255, 0.95);
+    border: 1px solid #a0c0e0;
+    color: #222;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.theme-ff13 .ff-tooltip-text::after {
+    border-color: rgba(255, 255, 255, 0.95) transparent transparent transparent;
+}
+
+/* List Groups */
+.theme-ff13 .ff-list-group-item {
+    border-color: rgba(160, 192, 224, 0.4);
+    background: rgba(255, 255, 255, 0.5);
+}
+
+.theme-ff13 .ff-list-group-item:first-child {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.theme-ff13 .ff-list-group-item:last-child {
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.theme-ff13 .ff-list-group-item.active {
+    background: linear-gradient(to right, rgba(0, 170, 255, 0.2), transparent);
+    border-color: #00aaff;
+    color: #005588;
+}
+
+/* Pagination */
+.theme-ff13 .ff-page-link {
+    background: rgba(255, 255, 255, 0.6);
+    border-color: #a0c0e0;
+    border-radius: 50%;
+    /* Circular buttons */
+    width: 36px;
+    height: 36px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 2px;
+}
+
+.theme-ff13 .ff-page-link:hover,
+.theme-ff13 .ff-page-item.active .ff-page-link {
+    background: #00aaff;
+    color: #fff;
+    border-color: #00aaff;
+    box-shadow: 0 2px 8px rgba(0, 170, 255, 0.4);
+}
+
+/* Modals */
+.theme-ff13 .ff-modal .ff-window {
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* Alerts */
+.theme-ff13 .ff-alert {
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    color: #333;
+}
+
+/* --- ff15.css --- */
+/* FF15 Theme Variables (Modern/Regalia) */
+.theme-ff15 {
+    --window-border-radius: 0px;
+    --window-bg-color: rgba(0, 0, 0, 0.85);
+
+    /* Dark semi-transparent background */
+    --content-bg-gradient: rgba(10, 10, 15, 0.85);
+
+    --border-color-outer: #444;
+    --highlight-color: #00d0ff;
+    /* Neon blue highlight */
+    --font-family: 'Rajdhani', sans-serif;
+}
+
+.theme-ff15 {
+    font-family: var(--font-family);
+    font-weight: 300;
+}
+
+.theme-ff15 .ff-window {
+    border-radius: var(--window-border-radius);
+    padding: 0;
+    background: transparent;
+    border: none;
+    border-left: 4px solid rgba(255, 255, 255, 0.2);
+    /* Left border accent */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(10px);
+}
+
+.theme-ff15 .ff-window-content {
+    background: var(--content-bg-gradient);
+    padding: 20px 30px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.theme-ff15 .ff-btn {
+    text-transform: uppercase;
+    font-weight: 300;
+    letter-spacing: 2px;
+    transition: all 0.2s;
+}
+
+.theme-ff15 .ff-btn:hover {
+    background: linear-gradient(to right, rgba(0, 208, 255, 0.2), transparent);
+    padding-left: 20px;
+    /* Slide effect */
+    color: #fff;
+    text-shadow: 0 0 10px #00d0ff;
+}
+
+/* --- FF15 Component Overrides --- */
+
+/* Sliders: Sleek/Modern */
+.theme-ff15 input[type=range].ff-range::-webkit-slider-runnable-track {
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    height: 2px;
+}
+
+.theme-ff15 input[type=range].ff-range::-webkit-slider-thumb {
+    background: transparent;
+    /* Transparent background */
+    border: 2px solid #00d0ff;
+    /* Glowing border */
+    box-shadow: 0 0 10px #00d0ff, 0 0 20px #00d0ff, inset 0 0 5px rgba(0, 208, 255, 0.3);
+    width: 15px;
+    height: 15px;
+    margin-top: -6px;
+    border-radius: 50%;
+    /* Make it circular */
+}
+
+/* Navs */
+.theme-ff15 .ff-nav-link {
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 0.8em;
+}
+
+.theme-ff15 .ff-nav-link.active {
+    color: #00d0ff;
+    border-bottom: 1px solid #00d0ff;
+    background: transparent;
+    text-shadow: 0 0 10px #00d0ff;
+}
+
+/* Cards */
+.theme-ff15 .ff-card {
+    background: rgba(0, 0, 0, 0.6);
+    border: none;
+    border-left: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Dropdowns */
+.theme-ff15 .ff-dropdown-menu {
+    background: rgba(10, 10, 15, 0.95);
+    border: none;
+    border-left: 2px solid #00d0ff;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.8);
+    border-radius: 0;
+}
+
+.theme-ff15 .ff-dropdown-item:hover {
+    background: linear-gradient(to right, rgba(0, 208, 255, 0.2), transparent);
+    color: #fff;
+    padding-left: 20px;
+    /* Slide effect */
+    text-shadow: 0 0 10px #00d0ff;
+}
+
+/* Tooltips */
+.theme-ff15 .ff-tooltip-text {
+    background: rgba(10, 10, 15, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-left: 2px solid #00d0ff;
+    border-radius: 0;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
+}
+
+.theme-ff15 .ff-tooltip-text::after {
+    border-color: rgba(10, 10, 15, 0.95) transparent transparent transparent;
+}
+
+/* List Groups */
+.theme-ff15 .ff-list-group-item {
+    border: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    background: transparent;
+    transition: all 0.2s;
+}
+
+.theme-ff15 .ff-list-group-item:hover {
+    background: rgba(255, 255, 255, 0.05);
+    padding-left: 20px;
+}
+
+.theme-ff15 .ff-list-group-item.active {
+    background: linear-gradient(to right, rgba(0, 208, 255, 0.2), transparent);
+    border-left: 2px solid #00d0ff;
+    color: #00d0ff;
+    text-shadow: 0 0 10px #00d0ff;
+}
+
+/* Pagination */
+.theme-ff15 .ff-page-link {
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 0;
+}
+
+.theme-ff15 .ff-page-link:hover,
+.theme-ff15 .ff-page-item.active .ff-page-link {
+    background: rgba(0, 208, 255, 0.2);
+    border-color: #00d0ff;
+    color: #00d0ff;
+    box-shadow: 0 0 10px rgba(0, 208, 255, 0.3);
+}
+
+/* Modals */
+.theme-ff15 .ff-modal .ff-window {
+    border-left: 4px solid #00d0ff;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
+}
+
+/* Alerts */
+.theme-ff15 .ff-alert {
+    background: rgba(10, 10, 15, 0.9);
+    border: none;
+    border-left: 4px solid;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
 }
 

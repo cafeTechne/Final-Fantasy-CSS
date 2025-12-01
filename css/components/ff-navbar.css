@@ -1,16 +1,16 @@
-/* --- Navbar --- */
+/* --- Navbar - True Mobile-First --- */
 .ff-navbar {
   display: flex;
   align-items: center;
   justify-content: space-between;
   flex-wrap: wrap;
-  gap: 12px;
   padding: 10px 14px;
   background: rgba(0, 0, 0, 0.25);
   border: 1px solid rgba(255, 255, 255, 0.04);
   border-radius: 6px;
   max-width: 100%;
   box-sizing: border-box;
+  position: relative;
 }
 
 .ff-navbar-brand {
@@ -23,23 +23,47 @@
   text-overflow: ellipsis;
 }
 
+/* Mobile default: Hidden nav, visible toggle */
 .ff-navbar-nav {
-  display: flex;
-  gap: 8px;
-  align-items: center;
+  display: none;
+  width: 100%;
+  flex-direction: column;
+  gap: 0;
   list-style: none;
   margin: 0;
-  padding: 0;
-  flex-wrap: wrap;
+  padding: 10px 0 0 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  margin-top: 10px;
+}
+
+.ff-navbar-toggle {
+  display: block;
+  background: none;
+  border: none;
+  color: inherit;
+  font-size: 1.5rem;
+  line-height: 1;
+  cursor: pointer;
+  padding: 8px;
+  min-width: 44px;
+  min-height: 44px;
+}
+
+/* Show nav when expanded (via JS toggle) */
+.ff-navbar.expanded .ff-navbar-nav {
+  display: flex;
 }
 
 .ff-navbar .ff-nav-link {
-  padding: 8px 12px;
-  border-radius: 4px;
+  padding: 12px;
+  border-radius: 0;
   color: inherit;
   text-decoration: none;
   transition: background 0.2s;
   white-space: nowrap;
+  width: 100%;
+  text-align: center;
+  min-height: 44px;
 }
 
 .ff-navbar .ff-nav-link:hover {
@@ -48,45 +72,29 @@
 
 .ff-navbar .ff-nav-link.active {
   background: rgba(255, 255, 255, 0.15);
-  font-weight: bold;
 }
 
-.ff-navbar-toggle {
-  display: none;
-  background: transparent;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  color: inherit;
-  padding: 5px 10px;
-  cursor: pointer;
-  border-radius: 4px;
-}
-
-/* Responsive: collapse nav into toggle */
-@media (max-width: 720px) {
-  .ff-navbar {
-    padding: 8px;
-  }
-
+/* Desktop: Expand navbar, hide toggle */
+@media (min-width: 721px) {
   .ff-navbar-nav {
-    display: none;
-    width: 100%;
-    flex-direction: column;
-    gap: 6px;
-    padding-top: 10px;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-    margin-top: 10px;
-  }
-
-  .ff-navbar.expanded .ff-navbar-nav {
-    display: flex;
+    display: flex !important;
+    flex-direction: row;
+    width: auto;
+    gap: 8px;
+    border-top: none;
+    padding: 0;
+    margin-top: 0;
   }
 
   .ff-navbar-toggle {
-    display: inline-block;
+    display: none;
   }
 
   .ff-navbar .ff-nav-link {
-    width: 100%;
-    text-align: center;
+    width: auto;
+    text-align: left;
+    padding: 8px 12px;
+    border-radius: 4px;
+    min-height: auto;
   }
 }
