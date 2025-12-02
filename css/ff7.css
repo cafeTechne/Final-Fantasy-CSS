@@ -334,3 +334,10 @@
 .theme-ff7 .ff-tab.active {
     color: var(--ff7-text-main);
 }
+
+.theme-ff7,
+.showcase-area,
+.container {
+    z-index: auto !important;
+    transform: none !important;
+}

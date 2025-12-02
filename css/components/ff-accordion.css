@@ -14,29 +14,39 @@
 
 .ff-accordion-header {
   width: 100%;
-  padding: 15px;
+  padding: 16px 20px;
+  /* Larger touch target (approx 50px+ height) */
   background: rgba(255, 255, 255, 0.05);
   border: none;
   border-bottom: 1px solid transparent;
   color: inherit;
   text-align: left;
   font-family: inherit;
-  font-size: 1em;
+  font-size: 1.05rem;
+  /* Slightly larger text */
   cursor: pointer;
   display: flex;
   justify-content: space-between;
   align-items: center;
   transition: background 0.2s;
+  min-height: 48px;
+  /* Enforce touch target size */
 }
 
 .ff-accordion-header:hover {
   background: rgba(255, 255, 255, 0.1);
 }
 
+.ff-accordion-header:focus {
+  outline: 2px dashed rgba(255, 255, 255, 0.5);
+  outline-offset: -4px;
+}
+
 .ff-accordion-header::after {
   content: "▼";
   font-size: 0.8em;
   transition: transform 0.3s;
+  opacity: 0.7;
 }
 
 .ff-accordion-item.active .ff-accordion-header {
@@ -52,11 +62,13 @@
   padding: 0;
   max-height: 0;
   overflow: hidden;
-  transition: max-height 320ms cubic-bezier(.2,.9,.3,1), padding 320ms cubic-bezier(.2,.9,.3,1);
+  transition: max-height 320ms cubic-bezier(.2, .9, .3, 1), padding 320ms cubic-bezier(.2, .9, .3, 1);
+  background: rgba(0, 0, 0, 0.1);
+  /* Slight contrast for body */
 }
 
 .ff-accordion-item.active .ff-accordion-body {
-  padding: 15px;
-  max-height: 600px;
-  /* Arbitrary large height for transition */
+  padding: 20px;
+  max-height: 1000px;
+  /* Increased max-height to be safe */
 }

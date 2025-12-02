@@ -3,26 +3,54 @@
   width: 100%;
 }
 
+/* 
+   Mobile First Tab List 
+   Horizontal scrolling container
+*/
 .ff-tablist {
   display: flex;
+  flex-wrap: nowrap;
+  /* Prevent wrapping */
+  overflow-x: auto;
+  /* Enable horizontal scroll */
+  -webkit-overflow-scrolling: touch;
+  /* Smooth scroll on iOS */
   gap: 8px;
   list-style: none;
-  padding: 0;
+  padding: 0 4px 8px 4px;
+  /* Padding for scrollbar space/touch */
   margin: 0 0 12px 0;
-  border-bottom: 1px solid rgba(255,255,255,0.06);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+
+  /* Hide scrollbar for cleaner look (optional, but good for "app" feel) */
+  scrollbar-width: none;
+  /* Firefox */
+}
+
+.ff-tablist::-webkit-scrollbar {
+  display: none;
+  /* Chrome/Safari */
 }
 
 .ff-tab {
-  padding: 8px 12px;
+  flex: 0 0 auto;
+  /* Don't shrink */
+  padding: 10px 16px;
+  /* Larger touch target */
   cursor: pointer;
   border: 1px solid transparent;
   border-bottom: 2px solid transparent;
   background: transparent;
+  white-space: nowrap;
+  font-size: 1rem;
+  color: inherit;
+  transition: background 0.2s, border-color 0.2s;
 }
 
-.ff-tab[aria-selected="true"], .ff-tab.active {
-  background: rgba(255,255,255,0.06);
-  border-color: rgba(255,255,255,0.06);
+.ff-tab[aria-selected="true"],
+.ff-tab.active {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.06);
   border-bottom-color: var(--highlight-color, #fff);
   font-weight: bold;
 }
@@ -30,14 +58,36 @@
 .ff-tabpanel {
   display: none;
   padding: 12px 0;
+  animation: fadeIn 0.3s ease;
 }
 
-.ff-tabpanel[hidden="false"], .ff-tabpanel.active {
+.ff-tabpanel[hidden="false"],
+.ff-tabpanel.active {
   display: block;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* keyboard focus ring */
 .ff-tab:focus {
-  outline: 2px dashed rgba(255,255,255,0.15);
-  outline-offset: 3px;
+  outline: 2px dashed rgba(255, 255, 255, 0.15);
+  outline-offset: -2px;
+}
+
+/* Desktop enhancements */
+@media (min-width: 768px) {
+  .ff-tab {
+    padding: 8px 16px;
+    /* Slightly more compact on desktop */
+  }
 }

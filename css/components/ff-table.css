@@ -1,113 +1,144 @@
 /* --- Tables - True Mobile-First --- */
 
-/* Mobile default: Overflow wrapper active */
-.ff-table-wrapper {
-  width: 100%;
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-  margin-bottom: 15px;
-  display: block;
-}
-
-/* Desktop: Remove overflow */
-@media (min-width: 577px) {
-  .ff-table-wrapper {
-    overflow-x: visible;
-  }
-}
-
+/*
+   Mobile Default: Card View
+   We hide the thead and render rows as block-level cards.
+*/
 .ff-table {
   width: 100%;
-  max-width: 100%;
   border-collapse: collapse;
   margin-bottom: 15px;
-  background: rgba(0, 0, 0, 0.2);
+  display: block;
+  /* Table becomes block for cards */
+  border: 0;
 }
 
-.ff-table th,
-.ff-table td {
-  padding: 10px 12px;
-  text-align: left;
+.ff-table thead {
+  display: none;
+  /* Hide headers on mobile */
+}
+
+.ff-table tbody {
+  display: block;
+  width: 100%;
+}
+
+.ff-table tr {
+  display: block;
+  margin-bottom: 1rem;
   border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+  background: rgba(0, 0, 0, 0.3);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
-.ff-table th {
-  background: rgba(255, 255, 255, 0.1);
+.ff-table td {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 15px;
+  border: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  text-align: right;
+  min-height: 44px;
+  /* Touch target size */
+}
+
+.ff-table td:last-child {
+  border-bottom: none;
+}
+
+/*
+   Data Label Injection
+   Use data-label attribute on td to show column name on mobile
+*/
+.ff-table td::before {
+  content: attr(data-label);
   font-weight: bold;
-  font-size: 0.9em;
   text-transform: uppercase;
-  letter-spacing: 0.5px;
+  font-size: 0.85em;
+  margin-right: 1rem;
+  text-align: left;
+  color: var(--highlight-color, #edd758);
+  flex-shrink: 0;
 }
 
-.ff-table tbody tr:hover {
+/* Striped variant for cards */
+.ff-table-striped tr:nth-child(even) {
   background: rgba(255, 255, 255, 0.05);
 }
 
-.ff-table tbody tr:nth-child(even) {
-  background: rgba(0, 0, 0, 0.1);
-}
-
-.ff-table tbody tr:nth-child(even):hover {
-  background: rgba(255, 255, 255, 0.08);
-}
-
-/* Striped variant */
-.ff-table-striped tbody tr:nth-child(odd) {
-  background: rgba(255, 255, 255, 0.02);
-}
-
-/* Bordered variant */
-.ff-table-bordered {
-  border: 2px solid rgba(255, 255, 255, 0.3);
-}
-
-.ff-table-bordered th,
-.ff-table-bordered td {
-  border: 1px solid rgba(255, 255, 255, 0.3);
-}
-
-/* Card-based layout for small screens */
-@media (max-width: 576px) {
-  .ff-table-cards {
-    border: 0;
-  }
-
-  .ff-table-cards thead {
-    display: none;
-  }
-
-  .ff-table-cards tr {
-    display: block;
-    margin-bottom: 1rem;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    border-radius: 4px;
-    background: rgba(0, 0, 0, 0.3);
-  }
-
-  .ff-table-cards td {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0.75rem;
+/*
+   Desktop View: Standard Table
+   Restores table layout on screens larger than 768px
+*/
+@media (min-width: 768px) {
+  .ff-table {
+    display: table;
+    background: rgba(0, 0, 0, 0.2);
     border: none;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   }
 
-  .ff-table-cards td:last-child {
-    border-bottom: none;
+  .ff-table thead {
+    display: table-header-group;
   }
 
-  .ff-table-cards td::before {
-    content: attr(data-label);
+  .ff-table tbody {
+    display: table-row-group;
+  }
+
+  .ff-table tr {
+    display: table-row;
+    margin-bottom: 0;
+    border: none;
+    background: transparent;
+    box-shadow: none;
+  }
+
+  .ff-table th,
+  .ff-table td {
+    display: table-cell;
+    padding: 12px 16px;
+    text-align: left;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    min-height: auto;
+  }
+
+  .ff-table td::before {
+    display: none;
+    /* Hide data labels on desktop */
+  }
+
+  .ff-table th {
+    background: rgba(255, 255, 255, 0.1);
     font-weight: bold;
-    margin-right: 1rem;
-    flex-shrink: 0;
-    color: var(--highlight-color, #edd758);
+    font-size: 0.9em;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
   }
 
-  .ff-table-cards tbody tr:nth-child(even) {
-    background: rgba(0, 0, 0, 0.3);
+  /* Hover effects */
+  .ff-table tbody tr:hover {
+    background: rgba(255, 255, 255, 0.05);
   }
+
+  .ff-table tbody tr:nth-child(even) {
+    background: rgba(0, 0, 0, 0.1);
+  }
+
+  .ff-table-striped tbody tr:nth-child(odd) {
+    background: rgba(255, 255, 255, 0.02);
+  }
+
+  .ff-table-striped tbody tr:nth-child(even) {
+    background: transparent;
+  }
+}
+
+/* Wrapper for horizontal scroll if needed (mostly legacy support now) */
+.ff-table-wrapper {
+  width: 100%;
+  margin-bottom: 15px;
 }
 
 /* Small text on very small screens */

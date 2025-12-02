@@ -3,37 +3,70 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  flex-wrap: wrap;
   padding: 10px 14px;
   background: rgba(0, 0, 0, 0.25);
   border: 1px solid rgba(255, 255, 255, 0.04);
   border-radius: 6px;
-  max-width: 100%;
-  box-sizing: border-box;
   position: relative;
+  z-index: 1000;
 }
 
 .ff-navbar-brand {
   font-weight: 700;
-  font-size: 1rem;
+  font-size: 1.1rem;
   text-decoration: none;
   color: inherit;
   white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  z-index: 1002;
+  /* Above the drawer backdrop */
 }
 
-/* Mobile default: Hidden nav, visible toggle */
+/* 
+   Mobile Drawer Menu 
+   Fixed position overlay that slides in.
+*/
 .ff-navbar-nav {
-  display: none;
-  width: 100%;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 75%;
+  /* Drawer width */
+  max-width: 300px;
+  background: #1a1a2e;
+  /* Fallback */
+  background: var(--window-bg, linear-gradient(to bottom, #000044, #000022));
+  border-left: 2px solid rgba(255, 255, 255, 0.3);
+  box-shadow: -5px 0 15px rgba(0, 0, 0, 0.5);
+  display: flex;
   flex-direction: column;
-  gap: 0;
+  padding: 60px 20px 20px 20px;
+  gap: 10px;
+  transform: translateX(100%);
+  /* Hidden by default */
+  transition: transform 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
+  z-index: 99999 !important;
   list-style: none;
   margin: 0;
-  padding: 10px 0 0 0;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-  margin-top: 10px;
+}
+
+
+/* Open state for drawer */
+.ff-navbar.expanded .ff-navbar-nav {
+  transform: translateX(0);
+}
+
+/* Backdrop for drawer (optional, can be added via pseudo-element on nav) */
+.ff-navbar.expanded::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+  backdrop-filter: blur(2px);
 }
 
 .ff-navbar-toggle {
@@ -42,28 +75,21 @@
   border: none;
   color: inherit;
   font-size: 1.5rem;
-  line-height: 1;
   cursor: pointer;
   padding: 8px;
-  min-width: 44px;
-  min-height: 44px;
-}
-
-/* Show nav when expanded (via JS toggle) */
-.ff-navbar.expanded .ff-navbar-nav {
-  display: flex;
+  z-index: 1002;
+  /* Above drawer */
 }
 
 .ff-navbar .ff-nav-link {
-  padding: 12px;
-  border-radius: 0;
-  color: inherit;
+  display: block;
+  padding: 12px 16px;
+  border-radius: 4px;
+  color: yellow !important;
   text-decoration: none;
+  font-size: 1.1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   transition: background 0.2s;
-  white-space: nowrap;
-  width: 100%;
-  text-align: center;
-  min-height: 44px;
 }
 
 .ff-navbar .ff-nav-link:hover {
@@ -72,18 +98,33 @@
 
 .ff-navbar .ff-nav-link.active {
   background: rgba(255, 255, 255, 0.15);
+  border-left: 4px solid var(--highlight-color, #fff);
 }
 
-/* Desktop: Expand navbar, hide toggle */
-@media (min-width: 721px) {
+/* 
+   Desktop View 
+   Reset to horizontal layout
+*/
+@media (min-width: 768px) {
   .ff-navbar-nav {
-    display: flex !important;
-    flex-direction: row;
+    position: static;
     width: auto;
-    gap: 8px;
-    border-top: none;
+    max-width: none;
+    height: auto;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    flex-direction: row;
     padding: 0;
-    margin-top: 0;
+    gap: 5px;
+    transform: none;
+    display: flex !important;
+    /* Override inline style if any */
+  }
+
+  .ff-navbar.expanded::before {
+    display: none;
+    /* No backdrop on desktop */
   }
 
   .ff-navbar-toggle {
@@ -91,10 +132,14 @@
   }
 
   .ff-navbar .ff-nav-link {
-    width: auto;
-    text-align: left;
     padding: 8px 12px;
+    font-size: 1rem;
+    border-bottom: none;
     border-radius: 4px;
-    min-height: auto;
+  }
+
+  .ff-navbar .ff-nav-link.active {
+    border-left: none;
+    background: rgba(255, 255, 255, 0.2);
   }
 }

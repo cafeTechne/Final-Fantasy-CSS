@@ -269,8 +269,178 @@ document.addEventListener('click', function (event) {
     }
 });
 
+
+// Cursor focus management: ensure only one finger cursor shows at a time.
+(function () {
+    let current = null;
+    const selector = '.ff-nav-link, .ff-list-group-item, .ff-dropdown-item, .ff-page-link, .ff-btn';
+
+    function addFocus(el) {
+        if (!el) return;
+        if (current && current !== el) current.classList.remove('ff-cursor-focused');
+        el.classList.add('ff-cursor-focused');
+        current = el;
+    }
+
+    function removeFocus(el, related) {
+        if (!el) return;
+        // If moving to another matched element, let pointerover handler set it.
+        try {
+            const to = related && related.closest ? related.closest(selector) : null;
+            if (!to) {
+                el.classList.remove('ff-cursor-focused');
+                if (current === el) current = null;
+            }
+        } catch (e) {
+            el.classList.remove('ff-cursor-focused');
+            if (current === el) current = null;
+        }
+    }
+
+    document.addEventListener('pointerover', function (e) {
+        const el = e.target.closest(selector);
+        if (el) addFocus(el);
+    });
+
+    document.addEventListener('pointerout', function (e) {
+        const el = e.target.closest(selector);
+        removeFocus(el, e.relatedTarget);
+    });
+})();
+
+// Accordion toggle behavior
+(function () {
+    // Accordion: toggle .active on the item when header clicked
+    document.addEventListener('click', function (e) {
+        const hdr = e.target.closest('.ff-accordion-header');
+        if (hdr) {
+            const item = hdr.closest('.ff-accordion-item');
+            if (item) {
+                item.classList.toggle('active');
+                return;
+            }
+        }
+    });
+})();
+
+// Toast helper
+function ensureToastContainer() {
+    let c = document.querySelector('.ff-toast-container');
+    if (!c) {
+        c = document.createElement('div');
+        c.className = 'ff-toast-container';
+        document.body.appendChild(c);
+    }
+    return c;
+}
+
+function showToast(message, timeout = 4000) {
+    const container = ensureToastContainer();
+    const toast = document.createElement('div');
+    toast.className = 'ff-toast';
+    toast.innerHTML = `<div class="ff-toast-header">Notice <button class="ff-toast-close">&times;</button></div><div class="ff-toast-body">${message}</div>`;
+    container.appendChild(toast);
+    // Force reflow then show
+    requestAnimationFrame(() => toast.classList.add('show'));
+
+    // Close button handler
+    toast.querySelector('.ff-toast-close').addEventListener('click', function () {
+        toast.classList.remove('show');
+        setTimeout(() => toast.remove(), 350);
+    });
+
+    // Auto remove
+    setTimeout(() => {
+        toast.classList.remove('show');
+        setTimeout(() => {
+            try { toast.remove(); } catch (e) { }
+        }, 350);
+    }, timeout);
+}
+
+// Tabs: click + keyboard navigation, ARIA sync
+(function () {
+    function activateTab(tab) {
+        if (!tab) return;
+        const tablist = tab.closest('[role="tablist"]');
+        if (!tablist) return;
+
+        // Deactivate all tabs in this tablist
+        const tabs = Array.from(tablist.querySelectorAll('[role="tab"]'));
+        tabs.forEach(t => {
+            t.setAttribute('aria-selected', 'false');
+            t.classList.remove('active');
+            const pid = t.getAttribute('aria-controls');
+            if (pid) {
+                const panel = document.getElementById(pid);
+                if (panel) { panel.hidden = true; panel.classList.remove('active'); }
+            }
+        });
+
+        // Activate the chosen tab
+        tab.setAttribute('aria-selected', 'true');
+        tab.classList.add('active');
+        const pid = tab.getAttribute('aria-controls');
+        if (pid) {
+            const panel = document.getElementById(pid);
+            if (panel) { panel.hidden = false; panel.classList.add('active'); }
+        }
+        tab.focus();
+        document.dispatchEvent(new CustomEvent('ff:tabs:change', { detail: { tab: tab } }));
+    }
+
+    document.addEventListener('click', function (e) {
+        const tab = e.target.closest('[role="tab"]');
+        if (tab) { activateTab(tab); }
+    });
+
+    document.addEventListener('keydown', function (e) {
+        const key = e.key;
+        const tab = e.target.closest('[role="tab"]');
+        if (!tab) return;
+        const tablist = tab.closest('[role="tablist"]');
+        if (!tablist) return;
+        const tabs = Array.from(tablist.querySelectorAll('[role="tab"]'));
+        const idx = tabs.indexOf(tab);
+        if (key === 'ArrowRight') {
+            e.preventDefault();
+            const next = tabs[(idx + 1) % tabs.length]; activateTab(next);
+        } else if (key === 'ArrowLeft') {
+            e.preventDefault();
+            const prev = tabs[(idx - 1 + tabs.length) % tabs.length]; activateTab(prev);
+        } else if (key === 'Home') {
+            e.preventDefault(); activateTab(tabs[0]);
+        } else if (key === 'End') {
+            e.preventDefault(); activateTab(tabs[tabs.length - 1]);
+        }
+    });
+})();
+
+// Chips: removable chips demo behavior
+(function () {
+    document.addEventListener('click', function (e) {
+        const btn = e.target.closest('.ff-chip-remove');
+        if (!btn) return;
+        const chip = btn.closest('.ff-chip');
+        if (chip) {
+            chip.remove();
+            document.dispatchEvent(new CustomEvent('ff:chip:remove', { detail: { chip: chip } }));
+        }
+    });
+})();
+
 // Initialize on page load
 document.addEventListener('DOMContentLoaded', function () {
+
+    const nav = document.getElementById("mainNav");
+    const toggle = document.getElementById("navToggle");
+
+    if (nav && toggle) {
+        toggle.addEventListener("click", () => {
+            nav.classList.toggle("expanded");
+            console.log("Nav toggle clicked");
+        });
+    }
     console.log('Final Fantasy CSS initialized');
 });
 
