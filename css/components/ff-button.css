@@ -3,8 +3,11 @@
     /* Mobile: Large, touch-friendly, full-width */
     display: block;
     width: 100%;
+    max-width: 100%;
+    min-width: 0;
     min-height: var(--touch-target-min);
     padding: 14px 20px;
+    box-sizing: border-box;
 
     background: transparent;
     border: none;
@@ -15,6 +18,7 @@
     position: relative;
     transition: transform 0.1s, opacity 0.2s;
     text-align: center;
+    white-space: normal;
 
     /* Prevent text selection on touch */
     -webkit-user-select: none;
@@ -31,6 +35,8 @@
     .ff-btn {
         display: inline-block;
         width: auto;
+        max-width: 100%;
+        min-width: 0;
         padding: 12px 18px;
     }
 }

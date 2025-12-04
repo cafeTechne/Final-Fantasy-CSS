@@ -118,6 +118,22 @@ h6 {
   margin: 1.33em 0;
 }
 
+/* Window wrapper sizing */
+.ff-window,
+.ff-window-content {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+  overflow-x: hidden;
+  overflow-y: visible;
+}
+
+.ff-window {
+  max-width: 100%;
+  overflow: hidden;
+}
+
 /* Ensure images/media are responsive */
 img,
 video,

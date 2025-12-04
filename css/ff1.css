@@ -22,6 +22,31 @@
     font-weight: bold;
 }
 
+/* Navbar / drawer */
+.theme-ff1 .ff-navbar {
+    background: var(--content-bg-gradient);
+    border: 3px solid var(--border-color-outer);
+    box-shadow: none;
+    font-family: var(--font-family);
+}
+
+.theme-ff1 .ff-navbar-nav {
+    background: var(--content-bg-gradient);
+    border-left: 3px solid var(--border-color-outer);
+    box-shadow: none;
+}
+
+.theme-ff1 .ff-navbar .ff-nav-link {
+    color: var(--border-color-outer);
+    font-family: var(--font-family);
+}
+
+.theme-ff1 .ff-navbar .ff-nav-link.active {
+    background: var(--highlight-color);
+    color: #000;
+    border-left: 3px solid var(--border-color-outer);
+}
+
 .theme-ff1 .ff-window {
     border-radius: var(--window-border-radius);
     padding: 4px;

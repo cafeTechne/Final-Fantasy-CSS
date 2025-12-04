@@ -28,6 +28,14 @@ body.demo-demo {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 20px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.grid-2 > * {
+  min-width: 0;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 @media (max-width: 768px) {
@@ -97,6 +105,10 @@ body.demo-demo {
   .actions-right .ff-btn {
 
     max-width: 200px;
+  }
+
+  .grid-2 {
+    gap: 14px;
   }
 }
 
@@ -175,9 +187,40 @@ body.demo-demo {
   gap: 10px;
 }
 
+.avatar-buttons-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  justify-content: flex-start;
+}
+
+.avatar-buttons-row .ff-avatar {
+  flex: 0 0 auto;
+}
+
+.avatar-buttons-row .ff-btn {
+  flex: 1 1 140px;
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+}
+
 @media (max-width: 480px) {
   .attrs-grid {
     grid-template-columns: 1fr;
+  }
+
+  .avatar-buttons-row {
+    gap: 8px;
+    width: 100%;
+  }
+
+  .avatar-buttons-row .ff-btn {
+    flex: 1 1 100%;
+    width: 100%;
+    min-width: 0;
   }
 }
 

@@ -3,6 +3,9 @@
   display: flex;
   flex-direction: column;
   gap: 10px;
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
 }
 
 .ff-accordion-item {
@@ -10,6 +13,9 @@
   background: rgba(0, 0, 0, 0.2);
   border-radius: 4px;
   overflow: hidden;
+  max-width: 100%;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .ff-accordion-header {
@@ -31,6 +37,7 @@
   transition: background 0.2s;
   min-height: 48px;
   /* Enforce touch target size */
+  word-break: break-word;
 }
 
 .ff-accordion-header:hover {
@@ -65,10 +72,24 @@
   transition: max-height 320ms cubic-bezier(.2, .9, .3, 1), padding 320ms cubic-bezier(.2, .9, .3, 1);
   background: rgba(0, 0, 0, 0.1);
   /* Slight contrast for body */
+  width: 100%;
+  box-sizing: border-box;
+  word-break: break-word;
 }
 
 .ff-accordion-item.active .ff-accordion-body {
   padding: 20px;
   max-height: 1000px;
   /* Increased max-height to be safe */
+}
+
+/* Small screens: tighten padding to avoid overflow */
+@media (max-width: 480px) {
+  .ff-accordion-header {
+    padding: 14px 16px;
+    font-size: 1rem;
+  }
+  .ff-accordion-item.active .ff-accordion-body {
+    padding: 12px 14px;
+  }
 }

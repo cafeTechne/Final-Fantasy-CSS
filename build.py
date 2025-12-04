@@ -17,7 +17,6 @@ def build_css():
         'css/components/ff-badge.css',
         'css/components/ff-progress.css',
         'css/components/ff-navbar.css',
-        'css/components/ff-nav.css',
         'css/components/ff-breadcrumb.css',
         'css/components/ff-pagination.css',
         'css/components/ff-card.css',
@@ -59,19 +58,29 @@ def build_css():
     
     print(f"Building {output_file}...")
     
+    # Basic guardrails: fail fast on duplicates/missing files so broken imports don't ship
+    seen = set()
+    missing = []
+    for fname in files:
+        if fname in seen:
+            raise RuntimeError(f"Duplicate entry in build list: {fname}")
+        seen.add(fname)
+        if not os.path.exists(fname):
+            missing.append(fname)
+
+    if missing:
+        raise FileNotFoundError(f"Missing CSS sources: {', '.join(missing)}")
+
     with open(output_file, 'w', encoding='utf-8') as outfile:
         # Add header
         outfile.write("/* Final Fantasy CSS Library v2.0 - Bundled */\n\n")
         
         for fname in files:
-            if os.path.exists(fname):
-                print(f"  Adding {fname}")
-                with open(fname, 'r', encoding='utf-8') as infile:
-                    outfile.write(f"/* --- {os.path.basename(fname)} --- */\n")
-                    outfile.write(infile.read())
-                    outfile.write("\n\n")
-            else:
-                print(f"  WARNING: File not found: {fname}")
+            print(f"  Adding {fname}")
+            with open(fname, 'r', encoding='utf-8') as infile:
+                outfile.write(f"/* --- {os.path.basename(fname)} --- */\n")
+                outfile.write(infile.read())
+                outfile.write("\n\n")
                 
     print("Build complete!")
 

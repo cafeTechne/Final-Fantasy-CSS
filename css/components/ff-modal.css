@@ -28,7 +28,7 @@ dialog.ff-modal {
 /* Backdrop styling */
 dialog.ff-modal::backdrop {
     background: rgba(0, 0, 0, 0.8);
-    backdrop-filter: blur(2px);
+    backdrop-filter: none;
 }
 
 /* Animation for open state */
@@ -131,4 +131,58 @@ dialog.ff-modal-fullscreen-sm .ff-modal-body {
 
 .ff-close-btn:hover {
     opacity: 1;
+}
+
+/* Modal surface tokens: themed via inheriting background/border/text */
+.ff-modal-surface {
+    background: var(--content-bg-gradient, rgba(0, 0, 0, 0.9));
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 6px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.theme-ff1 .ff-modal-surface {
+    background: var(--content-bg-gradient, #0000bc);
+    border: 3px solid #fff;
+    box-shadow: none;
+    color: #fff;
+}
+
+.theme-ff4 .ff-modal-surface {
+    background: var(--content-bg-gradient, linear-gradient(to bottom, #000080 0%, #000040 100%));
+    border: 2px solid #a0a0a0;
+}
+
+.theme-ff6 .ff-modal-surface {
+    background: var(--content-bg-gradient, #21217c);
+    border: 1px solid #555;
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.2);
+}
+
+.theme-ff7 .ff-modal-surface {
+    background: var(--content-bg-gradient, linear-gradient(to bottom, #002040, #001020));
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.theme-ff8 .ff-modal-surface {
+    background: var(--content-bg-gradient, linear-gradient(to bottom, #2a2a2a 0%, #1a1a1a 100%));
+    border: 1px solid #777;
+}
+
+.theme-ff9 .ff-modal-surface {
+    background: var(--content-bg-gradient, linear-gradient(to bottom, #505060, #303040));
+    border: 2px solid #6a6a7a;
+    color: #f7f2e8;
+}
+
+.theme-ff13 .ff-modal-surface {
+    background: var(--content-bg-gradient, rgba(255, 255, 255, 0.95));
+    border: 1px solid rgba(160, 192, 224, 0.4);
+    color: #1a1a1a;
+}
+
+.theme-ff15 .ff-modal-surface {
+    background: var(--content-bg-gradient, rgba(10, 10, 15, 0.9));
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #fff;
 }

@@ -6,7 +6,7 @@
   Custom fonts for authentic game aesthetics
 */
 /* Google Fonts - Import for other themes */
-@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Roboto:wght@300;400;500;700&family=Cinzel:wght@400;700&family=Rajdhani:wght@300;400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Roboto:wght@300;400;500;700&family=Cinzel:wght@400;700&family=Rajdhani:wght@300;400;600&family=Share+Tech+Mono&display=swap');
 
 /* FF6 Font - Already included in project */
 @font-face {
@@ -29,6 +29,7 @@
   - FF13: 'Roboto' (modern, clean, readable)
   - FF15: 'Rajdhani' (modern, sleek)
 */
+
 
 /* --- _breakpoints.css --- */
 /* Breakpoint System - Mobile First */
@@ -184,6 +185,22 @@ h5 {
 h6 {
   font-size: var(--h6-size);
   margin: 1.33em 0;
+}
+
+/* Window wrapper sizing */
+.ff-window,
+.ff-window-content {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+  overflow-x: hidden;
+  overflow-y: visible;
+}
+
+.ff-window {
+  max-width: 100%;
+  overflow: hidden;
 }
 
 /* Ensure images/media are responsive */
@@ -346,6 +363,7 @@ svg {
 .ff-progress.mp .ff-progress-bar {
   background: linear-gradient(to right, #99ff99, #00ff00);
 }
+
 
 /* --- _utilities.css --- */
 /* Responsive Utility Classes - Mobile First */
@@ -1400,8 +1418,11 @@ svg {
     /* Mobile: Large, touch-friendly, full-width */
     display: block;
     width: 100%;
+    max-width: 100%;
+    min-width: 0;
     min-height: var(--touch-target-min);
     padding: 14px 20px;
+    box-sizing: border-box;
 
     background: transparent;
     border: none;
@@ -1412,6 +1433,7 @@ svg {
     position: relative;
     transition: transform 0.1s, opacity 0.2s;
     text-align: center;
+    white-space: normal;
 
     /* Prevent text selection on touch */
     -webkit-user-select: none;
@@ -1428,6 +1450,8 @@ svg {
     .ff-btn {
         display: inline-block;
         width: auto;
+        max-width: 100%;
+        min-width: 0;
         padding: 12px 18px;
     }
 }
@@ -1487,6 +1511,7 @@ svg {
     }
 }
 
+
 /* --- ff-badge.css --- */
 /* Badges */
 .ff-badge {
@@ -1544,7 +1569,7 @@ svg {
   border: 1px solid rgba(255, 255, 255, 0.04);
   border-radius: 6px;
   position: relative;
-  z-index: 1000;
+  z-index: 10000;
 }
 
 .ff-navbar-brand {
@@ -1578,10 +1603,12 @@ svg {
   flex-direction: column;
   padding: 60px 20px 20px 20px;
   gap: 10px;
+  filter: none;
+  backdrop-filter: none;
   transform: translateX(100%);
   /* Hidden by default */
   transition: transform 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
-  z-index: 99999 !important;
+  z-index: 10001 !important;
   list-style: none;
   margin: 0;
 }
@@ -1593,16 +1620,16 @@ svg {
 }
 
 /* Backdrop for drawer (optional, can be added via pseudo-element on nav) */
-.ff-navbar.expanded::before {
-  content: '';
+/* Clickable backdrop helper (used when JS inserts an element instead of pseudo) */
+.ff-navbar-backdrop {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0, 0, 0, 0.5);
-  z-index: 999;
-  backdrop-filter: blur(2px);
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: none;
+  z-index: 9995;
 }
 
 .ff-navbar-toggle {
@@ -1621,7 +1648,7 @@ svg {
   display: block;
   padding: 12px 16px;
   border-radius: 4px;
-  color: yellow !important;
+  color: var(--nav-link-color, var(--text-color, inherit));
   text-decoration: none;
   font-size: 1.1rem;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
@@ -1680,129 +1707,6 @@ svg {
   }
 }
 
-/* --- ff-nav.css --- */
-/* --- Navigation (W3Schools Pattern) --- */
-
-/* Container */
-.ff-nav-container {
-    overflow: hidden;
-    background-color: transparent;
-    margin-bottom: 20px;
-    position: relative;
-}
-
-/* Links */
-.ff-nav {
-    display: flex;
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    gap: 5px;
-}
-
-.ff-nav-item {
-    display: block;
-}
-
-.ff-nav-link {
-    display: block;
-    padding: 10px 15px;
-    text-decoration: none;
-    color: inherit;
-    border-bottom: 2px solid transparent;
-    transition: all 0.2s;
-    cursor: pointer;
-}
-
-.ff-nav-link:hover {
-    background: rgba(255, 255, 255, 0.1);
-}
-
-.ff-nav-link.active {
-    border-bottom-color: var(--highlight-color, #fff);
-    background: rgba(255, 255, 255, 0.15);
-}
-
-/* Hide the icon by default */
-.ff-nav-container .ff-nav-icon {
-    display: none;
-}
-
-/* Mobile Responsive */
-@media screen and (max-width: 768px) {
-    .ff-nav-item {
-        display: none;
-        /* Hide items by default */
-    }
-
-    .ff-nav-link.active {
-        /* Keep active item visible? Or hide all? W3Schools hides all usually unless first is home */
-        /* We will hide all to keep it simple, or user can choose */
-    }
-
-    /* Show the icon */
-    .ff-nav-container .ff-nav-icon {
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        padding: 10px 15px;
-        background: linear-gradient(to bottom, #fceabb 0%, #fccd4d 50%, #f8b500 51%, #fbdf93 100%);
-        /* Gold/Yellow */
-        border: 2px solid #fff;
-        border-radius: 4px;
-        color: #5e4b35;
-        /* Brown text */
-        font-weight: bold;
-        font-family: inherit;
-        font-size: 1.1rem;
-        cursor: pointer;
-        text-decoration: none;
-        text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
-        box-shadow: 0 0 0 1px #000, 0 2px 4px rgba(0, 0, 0, 0.5);
-        position: absolute;
-        right: 0;
-        top: 0;
-    }
-
-    .ff-nav-container .ff-nav-icon:hover {
-        background: linear-gradient(to bottom, #fff4d3 0%, #ffda75 50%, #ffc529 51%, #ffedb8 100%);
-    }
-
-    .chocobo-icon {
-        font-size: 1.4rem;
-        filter: drop-shadow(0 1px 0 rgba(255, 255, 255, 0.5));
-    }
-
-    /* When responsive class is added */
-    .ff-nav-container.responsive {
-        position: relative;
-        padding-top: 50px;
-        /* Make space for the icon */
-    }
-
-    .ff-nav-container.responsive .ff-nav-icon {
-        position: absolute;
-        right: 0;
-        top: 0;
-    }
-
-    .ff-nav-container.responsive .ff-nav {
-        flex-direction: column;
-    }
-
-    .ff-nav-container.responsive .ff-nav-item {
-        float: none;
-        display: block;
-        text-align: left;
-        background: rgba(0, 0, 0, 0.3);
-        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    }
-
-    .ff-nav-container.responsive .ff-nav-link {
-        padding: 12px 15px;
-        border-bottom: none;
-    }
-}
 
 /* --- ff-breadcrumb.css --- */
 /* --- Breadcrumbs --- */
@@ -1917,6 +1821,9 @@ svg {
   display: flex;
   flex-direction: column;
   gap: 10px;
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
 }
 
 .ff-accordion-item {
@@ -1924,6 +1831,9 @@ svg {
   background: rgba(0, 0, 0, 0.2);
   border-radius: 4px;
   overflow: hidden;
+  max-width: 100%;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .ff-accordion-header {
@@ -1945,6 +1855,7 @@ svg {
   transition: background 0.2s;
   min-height: 48px;
   /* Enforce touch target size */
+  word-break: break-word;
 }
 
 .ff-accordion-header:hover {
@@ -1979,6 +1890,9 @@ svg {
   transition: max-height 320ms cubic-bezier(.2, .9, .3, 1), padding 320ms cubic-bezier(.2, .9, .3, 1);
   background: rgba(0, 0, 0, 0.1);
   /* Slight contrast for body */
+  width: 100%;
+  box-sizing: border-box;
+  word-break: break-word;
 }
 
 .ff-accordion-item.active .ff-accordion-body {
@@ -1986,6 +1900,18 @@ svg {
   max-height: 1000px;
   /* Increased max-height to be safe */
 }
+
+/* Small screens: tighten padding to avoid overflow */
+@media (max-width: 480px) {
+  .ff-accordion-header {
+    padding: 14px 16px;
+    font-size: 1rem;
+  }
+  .ff-accordion-item.active .ff-accordion-body {
+    padding: 12px 14px;
+  }
+}
+
 
 /* --- ff-tabs.css --- */
 /* --- Tabs (tablist + tabs + panels) --- */
@@ -2113,7 +2039,7 @@ dialog.ff-modal {
 /* Backdrop styling */
 dialog.ff-modal::backdrop {
     background: rgba(0, 0, 0, 0.8);
-    backdrop-filter: blur(2px);
+    backdrop-filter: none;
 }
 
 /* Animation for open state */
@@ -2217,6 +2143,61 @@ dialog.ff-modal-fullscreen-sm .ff-modal-body {
 .ff-close-btn:hover {
     opacity: 1;
 }
+
+/* Modal surface tokens: themed via inheriting background/border/text */
+.ff-modal-surface {
+    background: var(--content-bg-gradient, rgba(0, 0, 0, 0.9));
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 6px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.theme-ff1 .ff-modal-surface {
+    background: var(--content-bg-gradient, #0000bc);
+    border: 3px solid #fff;
+    box-shadow: none;
+    color: #fff;
+}
+
+.theme-ff4 .ff-modal-surface {
+    background: var(--content-bg-gradient, linear-gradient(to bottom, #000080 0%, #000040 100%));
+    border: 2px solid #a0a0a0;
+}
+
+.theme-ff6 .ff-modal-surface {
+    background: var(--content-bg-gradient, #21217c);
+    border: 1px solid #555;
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.2);
+}
+
+.theme-ff7 .ff-modal-surface {
+    background: var(--content-bg-gradient, linear-gradient(to bottom, #002040, #001020));
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.theme-ff8 .ff-modal-surface {
+    background: var(--content-bg-gradient, linear-gradient(to bottom, #2a2a2a 0%, #1a1a1a 100%));
+    border: 1px solid #777;
+}
+
+.theme-ff9 .ff-modal-surface {
+    background: var(--content-bg-gradient, linear-gradient(to bottom, #505060, #303040));
+    border: 2px solid #6a6a7a;
+    color: #f7f2e8;
+}
+
+.theme-ff13 .ff-modal-surface {
+    background: var(--content-bg-gradient, rgba(255, 255, 255, 0.95));
+    border: 1px solid rgba(160, 192, 224, 0.4);
+    color: #1a1a1a;
+}
+
+.theme-ff15 .ff-modal-surface {
+    background: var(--content-bg-gradient, rgba(10, 10, 15, 0.9));
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #fff;
+}
+
 
 /* --- ff-alert.css --- */
 /* --- Alerts --- */
@@ -2508,11 +2489,15 @@ dialog.ff-modal-fullscreen-sm .ff-modal-body {
 */
 .ff-table {
   width: 100%;
+  max-width: 100%;
+  min-width: 0;
   border-collapse: collapse;
   margin-bottom: 15px;
   display: block;
   /* Table becomes block for cards */
   border: 0;
+  box-sizing: border-box;
+  overflow-x: hidden;
 }
 
 .ff-table thead {
@@ -2532,18 +2517,27 @@ dialog.ff-modal-fullscreen-sm .ff-modal-body {
   border-radius: 4px;
   background: rgba(0, 0, 0, 0.3);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  max-width: 100%;
+  overflow: hidden;
+  width: 100%;
 }
 
 .ff-table td {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  padding: 12px 15px;
+  justify-content: space-between;
+  padding: 12px 12px;
   border: none;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   text-align: right;
   min-height: 44px;
   /* Touch target size */
+  box-sizing: border-box;
+  max-width: 100%;
+  gap: 8px;
+  word-break: break-word;
+  white-space: normal;
+  flex-wrap: wrap;
 }
 
 .ff-table td:last-child {
@@ -2559,10 +2553,14 @@ dialog.ff-modal-fullscreen-sm .ff-modal-body {
   font-weight: bold;
   text-transform: uppercase;
   font-size: 0.85em;
-  margin-right: 1rem;
+  margin-right: 0.75rem;
   text-align: left;
   color: var(--highlight-color, #edd758);
   flex-shrink: 0;
+  max-width: 45%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  align-self: center;
 }
 
 /* Striped variant for cards */
@@ -2648,14 +2646,27 @@ dialog.ff-modal-fullscreen-sm .ff-modal-body {
 
   .ff-table th,
   .ff-table td {
-    padding: 8px;
+    padding: 10px 10px;
     font-size: 0.9em;
   }
 
   .ff-table th {
     font-size: 0.85em;
   }
+
+  .ff-table tr {
+    margin-bottom: 0.75rem;
+  }
+
+  .ff-table {
+    overflow-x: hidden;
+  }
+
+  .ff-table td {
+    flex-wrap: nowrap;
+  }
 }
+
 
 /* --- ff-list-group.css --- */
 /* --- List Groups --- */
@@ -2718,6 +2729,8 @@ dialog.ff-modal-fullscreen-sm .ff-modal-body {
   font-size: 1.2em;
   overflow: hidden;
   border: 1px solid rgba(255, 255, 255, 0.2);
+  min-width: 40px;
+  min-height: 40px;
 }
 
 .ff-avatar img {
@@ -2737,6 +2750,8 @@ dialog.ff-modal-fullscreen-sm .ff-modal-body {
   width: 64px;
   height: 64px;
   font-size: 1.5em;
+  min-width: 64px;
+  min-height: 64px;
 }
 
 .ff-avatar.square {
@@ -2765,6 +2780,7 @@ dialog.ff-modal-fullscreen-sm .ff-modal-body {
 .ff-avatar-status.busy {
   background-color: #e74c3c;
 }
+
 
 /* --- ff-chips.css --- */
 /* --- Chips / Tags / Pills --- */
@@ -3078,7 +3094,7 @@ select+.ff-input-group-append {
     position: absolute;
     top: 100%;
     left: 0;
-    z-index: 1000;
+    z-index: 10020;
     min-width: 160px;
     padding: 5px 0;
     margin: 2px 0 0;
@@ -3086,6 +3102,18 @@ select+.ff-input-group-append {
     background: rgba(0, 0, 0, 0.95);
     border: 1px solid rgba(255, 255, 255, 0.3);
     display: none;
+}
+
+.ff-dropdown-menu.ff-dropdown-portal {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: auto;
+    margin: 0;
+    width: 100%;
+    max-width: 100%;
+    display: block !important;
 }
 
 .ff-dropdown.show .ff-dropdown-menu {
@@ -3111,6 +3139,17 @@ select+.ff-input-group-append {
     background: rgba(255, 255, 255, 0.1);
 }
 
+/* Clickable backdrop for mobile sheet */
+.ff-dropdown-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.55);
+    z-index: 10010;
+}
+
 /* Mobile Bottom Sheet */
 @media (max-width: 576px) {
     .ff-dropdown.show .ff-dropdown-menu {
@@ -3119,6 +3158,7 @@ select+.ff-input-group-append {
         left: 0;
         width: 100%;
         margin: 0;
+        z-index: 10020;
         border-radius: 12px 12px 0 0;
         border: 1px solid rgba(255, 255, 255, 0.2);
         border-bottom: none;
@@ -3128,19 +3168,6 @@ select+.ff-input-group-append {
         overflow-y: auto;
         padding-bottom: 20px;
         /* Safe area */
-    }
-
-    /* Backdrop */
-    .ff-dropdown.show::before {
-        content: "";
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0, 0, 0, 0.6);
-        z-index: 999;
-        animation: fadeIn 0.3s;
     }
 
     @keyframes slideUp {
@@ -3169,6 +3196,7 @@ select+.ff-input-group-append {
         font-size: 1.1em;
     }
 }
+
 
 /* --- ff-battle-menu.css --- */
 /* --- Battle Menu (ATB) --- */
@@ -3322,6 +3350,31 @@ select+.ff-input-group-append {
     font-size: 16px;
     line-height: 1.5;
     font-weight: bold;
+}
+
+/* Navbar / drawer */
+.theme-ff1 .ff-navbar {
+    background: var(--content-bg-gradient);
+    border: 3px solid var(--border-color-outer);
+    box-shadow: none;
+    font-family: var(--font-family);
+}
+
+.theme-ff1 .ff-navbar-nav {
+    background: var(--content-bg-gradient);
+    border-left: 3px solid var(--border-color-outer);
+    box-shadow: none;
+}
+
+.theme-ff1 .ff-navbar .ff-nav-link {
+    color: var(--border-color-outer);
+    font-family: var(--font-family);
+}
+
+.theme-ff1 .ff-navbar .ff-nav-link.active {
+    background: var(--highlight-color);
+    color: #000;
+    border-left: 3px solid var(--border-color-outer);
 }
 
 .theme-ff1 .ff-window {
@@ -3495,6 +3548,7 @@ select+.ff-input-group-append {
     background: #0000bc;
 }
 
+
 /* --- ff4.css --- */
 /* FF4 Theme Variables (SNES Style) */
 .theme-ff4 {
@@ -3517,6 +3571,30 @@ select+.ff-input-group-append {
     line-height: 1.6;
     letter-spacing: -0.5px;
     /* Tighten spacing for CRT effect */
+}
+
+/* Navbar / drawer */
+.theme-ff4 .ff-navbar {
+    background: var(--content-bg-gradient);
+    border: 1px solid var(--border-color-outer);
+    box-shadow: none;
+    font-family: var(--font-family);
+}
+
+.theme-ff4 .ff-navbar-nav {
+    background: var(--content-bg-gradient);
+    border-left: 2px solid var(--border-color-inner);
+    box-shadow: none;
+}
+
+.theme-ff4 .ff-navbar .ff-nav-link {
+    color: #f8f8ff;
+    font-family: var(--font-family);
+}
+
+.theme-ff4 .ff-navbar .ff-nav-link.active {
+    background: rgba(255, 255, 255, 0.2);
+    border-left: 3px solid var(--highlight-color);
 }
 
 .theme-ff4 .ff-window {
@@ -3687,6 +3765,7 @@ select+.ff-input-group-append {
     background: rgba(0, 0, 64, 0.8);
 }
 
+
 /* --- ff6.css --- */
 /* FF6 Theme Variables */
 .theme-ff6 {
@@ -3710,6 +3789,30 @@ select+.ff-input-group-append {
     line-height: 1.6;
     letter-spacing: -0.5px;
     /* Tighten spacing for CRT effect */
+}
+
+/* Navbar / drawer */
+.theme-ff6 .ff-navbar {
+    background: var(--content-bg-gradient);
+    border: 1px solid #555;
+    box-shadow: none;
+    font-family: var(--font-family);
+}
+
+.theme-ff6 .ff-navbar-nav {
+    background: var(--content-bg-gradient);
+    border-left: 2px solid var(--highlight-color);
+    box-shadow: none;
+}
+
+.theme-ff6 .ff-navbar .ff-nav-link {
+    color: #ecedee;
+    font-family: var(--font-family);
+}
+
+.theme-ff6 .ff-navbar .ff-nav-link.active {
+    background: rgba(237, 215, 88, 0.2);
+    border-left: 3px solid var(--highlight-color);
 }
 
 .theme-ff6 .ff-window {
@@ -3898,6 +4001,7 @@ select+.ff-input-group-append {
     box-shadow: 0 0 0 1px #000;
 }
 
+
 /* --- ff7.css --- */
 /* FF7 Theme Variables & Tokens */
 .theme-ff7 {
@@ -4022,7 +4126,7 @@ select+.ff-input-group-append {
 .theme-ff7 .ff-btn::before {
     /* Default: hidden unless hovered or focused via JS */
     content: none;
-
+    display: none;
 }
 
 .theme-ff7 .ff-nav-link:hover::before,
@@ -4320,9 +4424,27 @@ select+.ff-input-group-append {
 }
 
 /* Navs */
-.theme-ff8 .ff-nav-link.active {
-    background: rgba(0, 255, 0, 0.2);
-    border-bottom: 2px solid #00ff00;
+.theme-ff8 .ff-navbar {
+    background: var(--content-bg-gradient);
+    border: 1px solid #777;
+    box-shadow: none;
+    font-family: var(--font-family);
+}
+
+.theme-ff8 .ff-navbar-nav {
+    background: var(--content-bg-gradient);
+    border-left: 2px solid var(--highlight-color);
+    box-shadow: none;
+}
+
+.theme-ff8 .ff-navbar .ff-nav-link {
+    color: #ccc;
+    font-family: var(--font-family);
+}
+
+.theme-ff8 .ff-navbar .ff-nav-link.active {
+    background: rgba(0, 255, 0, 0.18);
+    border-bottom: 2px solid var(--highlight-color);
     color: #fff;
 }
 
@@ -4427,6 +4549,7 @@ select+.ff-input-group-append {
     border-left: 4px solid #00ff00;
 }
 
+
 /* --- ff9.css --- */
 /* FF9 Theme Variables */
 .theme-ff9 {
@@ -4446,6 +4569,30 @@ select+.ff-input-group-append {
 
 .theme-ff9 {
     font-family: var(--font-family);
+}
+
+/* Navbar / drawer */
+.theme-ff9 .ff-navbar {
+    background: var(--content-bg-gradient);
+    border: 2px solid #6a6a7a;
+    box-shadow: none;
+    font-family: var(--font-family);
+}
+
+.theme-ff9 .ff-navbar-nav {
+    background: var(--content-bg-gradient);
+    border-left: 2px solid #6a6a7a;
+    box-shadow: none;
+}
+
+.theme-ff9 .ff-navbar .ff-nav-link {
+    color: #f7f2e8;
+    font-family: var(--font-family);
+}
+
+.theme-ff9 .ff-navbar .ff-nav-link.active {
+    background: rgba(212, 175, 55, 0.2);
+    border-left: 3px solid var(--highlight-color);
 }
 
 .theme-ff9 .ff-window {
@@ -4673,6 +4820,7 @@ select+.ff-input-group-append {
     border-left: 4px solid #d4af37;
 }
 
+
 /* --- ff13.css --- */
 /* FF13 Theme Variables (Crystal/Future) */
 .theme-ff13 {
@@ -4699,6 +4847,29 @@ select+.ff-input-group-append {
     letter-spacing: 0.3px;
 }
 
+.theme-ff13 .ff-navbar {
+    background: var(--content-bg-gradient);
+    border: 1px solid rgba(160, 192, 224, 0.4);
+    box-shadow: none;
+    font-family: var(--font-family);
+}
+
+.theme-ff13 .ff-navbar-nav {
+    background: var(--content-bg-gradient);
+    border-left: 1px solid rgba(160, 192, 224, 0.4);
+    box-shadow: none;
+}
+
+.theme-ff13 .ff-navbar .ff-nav-link {
+    color: #1a1a1a;
+    font-family: var(--font-family);
+}
+
+.theme-ff13 .ff-navbar .ff-nav-link.active {
+    background: rgba(0, 170, 255, 0.15);
+    border-left: 3px solid var(--highlight-color);
+}
+
 .theme-ff13 .ff-window {
     border-radius: var(--window-border-radius);
     padding: 1px;
@@ -4706,7 +4877,7 @@ select+.ff-input-group-append {
     background: linear-gradient(45deg, #fff, #c0e0ff);
     border: 1px solid rgba(255, 255, 255, 0.6);
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(5px);
+    backdrop-filter: none;
 }
 
 .theme-ff13 .ff-window-content {
@@ -4786,7 +4957,7 @@ select+.ff-input-group-append {
     background: linear-gradient(45deg, #fff, #c0e0ff);
     border: 1px solid rgba(255, 255, 255, 0.6);
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(5px);
+    backdrop-filter: none;
 }
 
 .theme-ff13 .ff-window-content {
@@ -4934,6 +5105,7 @@ select+.ff-input-group-append {
     color: #333;
 }
 
+
 /* --- ff15.css --- */
 /* FF15 Theme Variables (Modern/Regalia) */
 .theme-ff15 {
@@ -4954,6 +5126,29 @@ select+.ff-input-group-append {
     font-weight: 300;
 }
 
+.theme-ff15 .ff-navbar {
+    background: var(--content-bg-gradient);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: none;
+    font-family: var(--font-family);
+}
+
+.theme-ff15 .ff-navbar-nav {
+    background: var(--content-bg-gradient);
+    border-left: 2px solid var(--highlight-color);
+    box-shadow: none;
+}
+
+.theme-ff15 .ff-navbar .ff-nav-link {
+    color: #fff;
+    font-family: var(--font-family);
+}
+
+.theme-ff15 .ff-navbar .ff-nav-link.active {
+    background: rgba(0, 208, 255, 0.15);
+    border-left: 3px solid var(--highlight-color);
+}
+
 .theme-ff15 .ff-window {
     border-radius: var(--window-border-radius);
     padding: 0;
@@ -4962,7 +5157,7 @@ select+.ff-input-group-append {
     border-left: 4px solid rgba(255, 255, 255, 0.2);
     /* Left border accent */
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-    backdrop-filter: blur(10px);
+    backdrop-filter: none;
 }
 
 .theme-ff15 .ff-window-content {
@@ -5108,4 +5303,5 @@ select+.ff-input-group-append {
     border-left: 4px solid;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
 }
+
 
